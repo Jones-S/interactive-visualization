@@ -9,7 +9,7 @@ function sz1_zeichneSektor ( x, y, rad, startW, endW ) {
   pfadString += "l" + ( Math.cos( startW ) * rad )
   pfadString += "," + ( Math.sin( startW ) * rad ) + " ";
 
-  // Kreisbogen des Sektor (siehe http://www.w3.org/TR/SVG/paths.html#PathData Nummer 8.3.8)
+  // Kreisbogen des Sektor (siehe    Nummer 8.3.8)
   pfadString += "A" + rad + "," + rad;
   pfadString += "," + 0;
   // grosser oder kleiner Bogen (Winkel > 180 Grad --> grosser Bogen
