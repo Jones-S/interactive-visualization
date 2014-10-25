@@ -55,6 +55,7 @@ var diameter = 960,
     radius = diameter / 2,
     innerRadius = radius - 120;
 
+//d3 cluster creates a dendogram
 var cluster = d3.layout.cluster()
     .size([360, innerRadius])
     .sort(null)
@@ -62,6 +63,7 @@ var cluster = d3.layout.cluster()
 
 var bundle = d3.layout.bundle();
 
+//draws circle (?)
 var line = d3.svg.line.radial()
     .interpolate("bundle")
     .tension(.85)
