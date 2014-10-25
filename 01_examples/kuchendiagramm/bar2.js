@@ -21,8 +21,6 @@ $(document).ready(function() {
         // bar.setAttribute("height", nums[i]);
     }
 
-    // var rect = paper.rect(120, 120, 50, 10, 2);
-
 
 
 });
