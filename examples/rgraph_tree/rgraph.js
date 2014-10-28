@@ -1,5 +1,6 @@
 var labelType, useGradients, nativeTextSupport, animate;
 
+
 (function() {
   var ua = navigator.userAgent,
       iStuff = ua.match(/iPhone/i) || ua.match(/iPad/i),
@@ -35,7 +36,6 @@ function init(){
             id: "306208_1",
             name: "Pearl Jam &amp; Cypress Hill",
             data: {
-                relation: "<h4>Pearl Jam &amp; Cypress Hill</h4><b>Connections:</b><ul><li>Pearl Jam <div>(relation: collaboration)</div></li><li>Cypress Hill <div>(relation: collaboration)</div></li></ul>"
             },
             children: [{
                 id: "84_2",
