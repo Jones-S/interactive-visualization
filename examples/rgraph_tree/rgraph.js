@@ -1,5 +1,6 @@
 var labelType, useGradients, nativeTextSupport, animate;
 
+//my branch comment
 (function() {
   var ua = navigator.userAgent,
       iStuff = ua.match(/iPhone/i) || ua.match(/iPad/i),
