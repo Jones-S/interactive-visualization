@@ -1,0 +1,1 @@
+// code to translate and zoom on double click event
