@@ -40,7 +40,7 @@ $(document).ready(function() {
         .append("path")
         .attr("d", line(data))
         .attr("fill", "none")
-        .attr("stroke-width", 1)
+        .attr("stroke-width", 0.04)
         .attr("stroke", "red");
 
 
