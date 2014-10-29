@@ -32,7 +32,7 @@ $(document).ready(function() {
     doubleclick.dblclick(function() {
         // alert("Double Clicked");
         circleGroup.transition()
-            .attr("transform", "translate(80,0)")
+            .attr("transform", "translate(80,5)")
             .attr("transform", "scale(1.4)")
             .duration(300)
             // .ease("elastic")
