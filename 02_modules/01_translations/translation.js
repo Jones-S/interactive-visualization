@@ -2,6 +2,17 @@
 
 $(document).ready(function() {
 
+    var circleData = [{
+        "cx": 20,
+        "cy": 20,
+        "radius": 20,
+        "color": "green"
+    }, {
+        "cx": 70,
+        "cy": 70,
+        "radius": 20,
+        "color": "purple"
+    }];
 
     var svgContainer = d3.select("body").append("svg")
         .attr("width", 200)
@@ -19,7 +30,13 @@ $(document).ready(function() {
 
     var doubleclick = $("svg circle");
     doubleclick.dblclick(function() {
-        alert( "Double Clicked" );
+        // alert("Double Clicked");
+        circleGroup.transition()
+            .attr("transform", "translate(80,0)")
+            .attr("transform", "scale(1.4)")
+            .duration(300)
+            // .ease("elastic")
+            .delay(100);
     });
 
 
