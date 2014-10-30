@@ -36,11 +36,16 @@ $(document).ready(function() {
         console.log("-- Pushed " + dataContainer.length + " objects in our container");
         console.log(dataContainer[170]);
 
+
+
+        //print array values to text in json format
         var text = '{ "gemeinden": [{ "gemIdentifier" : "';
         //add values to string
         for (var i = 0; i < dataContainer.length; i++) {
-            text = text + dataContainer[i]["gemIdentifier"];
+            text = text + dataContainer[i]["gemIdentifier"]; //gemeinde Identifier written into text
             text = text + '",<br/> "moveTo" : [';
+
+            //second for loop for iterating through moveTo counts
             for (var j = 0; j < dataContainer[i]["moveTo"].length; j++) {
                 text = text + '"' + dataContainer[i]["moveTo"][j];
                 if (j == dataContainer[i]["moveTo"].length - 1) {
@@ -48,22 +53,23 @@ $(document).ready(function() {
                 }
 
                 text = text + '"';
-                if (j < dataContainer[i]["moveTo"].length - 1) {
+                if (j < dataContainer[i]["moveTo"].length - 1) { //special treatment for last element -> no comma wanted
                     text = text + ',';
                 };
             };
+
+            //finish object
             text = text + ']<br/>';
             text = text + '}';
-            if (i < dataContainer.length - 1) {
+            if (i < dataContainer.length - 1) { //special treatment for last element -> no new gemIdentifier key wanted
                 text = text + ',<br/> { "gemIdentifier" : "';
             }
         };
 
+        //finish json
         text = text + ']<br/> }';
 
-
-
-
+        //add text as html to .json div
         $(".json").html(text);
 
     });
