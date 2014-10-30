@@ -1,6 +1,4 @@
-jQuery(function() {
-
-    
+$(document).ready(function() {
 
     // load data
     $.get("data/bbgem12.csv", function(data) {
@@ -39,5 +37,34 @@ jQuery(function() {
         console.log(dataContainer[170]);
 
     });
+
+
+
+    //initiate chromestore
+    var cs = new ChromeStore([{
+        path: 'videos/clips'
+    }, {
+        path: 'audio/wav',
+        callback: function() {
+            console.log('finished creating audio structure')
+        }
+    }]);
+
+    //request bytes from filesystem
+    cs.init(1024 * 1024, function(cstore) {
+        console.log('Chromestore initialized');
+    });
+
+    cs.usedAndRemaining(function(used, remaining) {
+        console.log("Used bytes: " + used);
+        console.log("Remaining bytes: " + remaining);
+    });
+
+    cs.getDir('genres/action', {
+        create: true
+    }, function(dirEntry) {
+        console.log('Directory created');
+    });
+
 
 });
