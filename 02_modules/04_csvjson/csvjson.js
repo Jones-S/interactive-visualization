@@ -36,35 +36,65 @@ $(document).ready(function() {
         console.log("-- Pushed " + dataContainer.length + " objects in our container");
         console.log(dataContainer[170]);
 
+        var text = '{ "gemeinden": [{ "gemIdentifier" : "';
+        //add values to string
+        for (var i = 0; i < dataContainer.length; i++) {
+            text = text + dataContainer[i]["gemIdentifier"];
+            text = text + '",<br/> "moveTo" : [';
+            for (var j = 0; j < dataContainer[i]["moveTo"].length; j++) {
+                text = text + '"' + dataContainer[i]["moveTo"][j];
+                if (j == dataContainer[i]["moveTo"].length - 1) {
+                    text = $.trim(text);
+                }
+
+                text = text + '"';
+                if (j < dataContainer[i]["moveTo"].length - 1) {
+                    text = text + ',';
+                };
+            };
+            text = text + ']<br/>';
+            text = text + '}';
+            if (i < dataContainer.length - 1) {
+                text = text + ',<br/> { "gemIdentifier" : "';
+            }
+        };
+
+        text = text + ']<br/> }';
+
+
+
+
+        $(".json").html(text);
+
     });
 
 
 
-    //initiate chromestore
-    var cs = new ChromeStore([{
-        path: 'videos/clips'
-    }, {
-        path: 'audio/wav',
-        callback: function() {
-            console.log('finished creating audio structure')
-        }
-    }]);
+    // //initiate chromestore
+    // var cs = new ChromeStore([{
+    //     path: 'videos/clips'
+    // }, {
+    //     path: 'audio/wav',
+    //     callback: function() {
+    //         console.log('finished creating audio structure')
+    //     }
+    // }]);
 
-    //request bytes from filesystem
-    cs.init(1024 * 1024, function(cstore) {
-        console.log('Chromestore initialized');
-    });
+    // //request bytes from filesystem
+    // cs.init(1024 * 1024, function(cstore) {
+    //     console.log('Chromestore initialized');
+    // });
 
-    cs.usedAndRemaining(function(used, remaining) {
-        console.log("Used bytes: " + used);
-        console.log("Remaining bytes: " + remaining);
-    });
+    // cs.usedAndRemaining(function(used, remaining) {
+    //     console.log("Used bytes: " + used);
+    //     console.log("Remaining bytes: " + remaining);
+    // });
 
-    cs.getDir('genres/action', {
-        create: true
-    }, function(dirEntry) {
-        console.log('Directory created');
-    });
+    // cs.getDir('genres/action', {
+    //     create: true
+    // }, function(dirEntry) {
+    //     console.log('Directory created');
+    // });
 
 
 });
