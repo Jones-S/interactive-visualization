@@ -20,11 +20,8 @@ $(document).ready(function() {
     var data2 = [
 
         {
-            "x": 30,
-            "y": 45
-        }, {
-            "x": 165,
-            "y": 85
+            "x": 0,
+            "y": 0
         }, {
             "x": 425,
             "y": 525
@@ -41,6 +38,8 @@ $(document).ready(function() {
         width = 960 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
 
+    var xWidth = data[data.length - 1]["x"] - data[0]["x"];
+    var yHeight = data[data.length - 1]["y"] - data[0]["y"];
 
     var svgContainer = d3.select("body").append("svg")
         .attr("width", width)
@@ -60,16 +59,26 @@ $(document).ready(function() {
 
     group.append("linearGradient")
         .attr("id", "grad1")
-        .attr("gradientUnits", "userSpaceOnUse")  // {userSpaceOnUse, ObjectBoundingBox}
-        .attr("x1", 0).attr("y1", 0)
-        .attr("x2", 392).attr("y2", 482)
+        .attr("gradientUnits", "userSpaceOnUse") // {userSpaceOnUse, ObjectBoundingBox}
+        .attr("x1", -xWidth).attr("y1", -yHeight)
+        .attr("x2", xWidth).attr("y2", yHeight)
         .selectAll("stop")
-        .data([
-            {offset: "0%", color: "#e8ff00"},
-            {offset: "33%", color: "#59b39d"},
-            {offset: "66%", color: "#e8ff00"},
-            {offset: "100%", color: "#59b39d"}
-        ])
+        .data([{
+            offset: "0%",
+            color: "#e8ff00"
+        }, {
+            offset: "25%",
+            color: "#59b39d"
+        }, {
+            offset: "50%",
+            color: "#e8ff00"
+        }, {
+            offset: "75%",
+            color: "#59b39d"
+        }, {
+            offset: "100%",
+            color: "#e8ff00"
+        }])
         .enter().append("stop")
         .attr("offset", function(d) {
             return d.offset;
@@ -78,44 +87,44 @@ $(document).ready(function() {
             return d.color;
         });
 
-    var xWidth = data[data.length - 1]["x"] - data[0]["x"];
-    var yHeight = data[data.length - 1]["y"] - data[0]["y"];
+
 
     group.append("path")
-      .data(data)
-      .attr("class", "line")
-      .attr("d", line(data))
-      .attr("stroke-width", 0.6)
-      .attr("xWidth", xWidth) //add height & width of path bounding box 
-      .attr("yHeight", yHeight)
-      .attr("stroke", "url(#grad1)");
+        .data(data)
+        .attr("class", "line")
+        .attr("d", line(data))
+        .attr("stroke-width", 0.6)
+        .attr("xWidth", xWidth) //add height & width of path bounding box
+        .attr("yHeight", yHeight)
+        .attr("stroke", "url(#grad1)");
 
     var path2 = group.append("path")
-      .data(data2)
-      .attr("class", "line2")
-      .attr("d", line(data2))
-      .attr("stroke-width", 0.9)
-      .attr("stroke", "url(#grad1)");
+        .data(data2)
+        .attr("class", "line2")
+        .attr("d", line(data2))
+        .attr("stroke-width", 0.9)
+        .attr("stroke", "url(#grad1)");
 
 
     var gradient = d3.select("#grad1")
 
     var doubleclick = $("svg");
 
-    function moveGradient(){
+    function moveGradient() {
         gradient.transition()
-            .attr("x1", 150).attr("y1", 200)
-            .attr("x2", 530).attr("y2", 680)
+            .attr("x1", 0).attr("y1", 0)
+            .attr("x2", 2*xWidth).attr("y2", 2*yHeight)
             .duration(2500)
+            .ease("linear")
             // .ease("elastic")
-            .delay(100)
+            // .delay(100)
             .each("end", myCallback);
     }
 
-    function myCallback(){
+    function myCallback() {
         // alert("Double Clicked");
-        gradient.attr("x1", 0).attr("y1", 0)
-        .attr("x2", 392).attr("y2", 482);
+        gradient.attr("x1", -xWidth).attr("y1", -yHeight)
+        .attr("x2", xWidth).attr("y2", yHeight)
         moveGradient();
 
     }
