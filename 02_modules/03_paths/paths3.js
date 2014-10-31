@@ -17,6 +17,20 @@ $(document).ready(function() {
         }
 
     ];
+    var data2 = [
+
+        {
+            "x": 30,
+            "y": 45
+        }, {
+            "x": 165,
+            "y": 85
+        }, {
+            "x": 425,
+            "y": 525
+        }
+
+    ];
 
     var margin = {
             top: 20,
@@ -64,27 +78,55 @@ $(document).ready(function() {
             return d.color;
         });
 
+    var xWidth = data[data.length - 1]["x"] - data[0]["x"];
+    var yHeight = data[data.length - 1]["y"] - data[0]["y"];
+
     group.append("path")
       .data(data)
       .attr("class", "line")
       .attr("d", line(data))
       .attr("stroke-width", 0.6)
+      .attr("xWidth", xWidth) //add height & width of path bounding box 
+      .attr("yHeight", yHeight)
+      .attr("stroke", "url(#grad1)");
+
+    var path2 = group.append("path")
+      .data(data2)
+      .attr("class", "line2")
+      .attr("d", line(data2))
+      .attr("stroke-width", 0.9)
       .attr("stroke", "url(#grad1)");
 
 
+    var gradient = d3.select("#grad1")
+
     var doubleclick = $("svg");
-    doubleclick.dblclick(function() {
-        // alert("Double Clicked");
-        var gradient = d3.select("#grad1").transition()
+
+    function moveGradient(){
+        gradient.transition()
             .attr("x1", 150).attr("y1", 200)
             .attr("x2", 530).attr("y2", 680)
-            .duration(4000)
+            .duration(2500)
             // .ease("elastic")
-            .delay(100);
+            .delay(100)
+            .each("end", myCallback);
+    }
 
+    function myCallback(){
+        // alert("Double Clicked");
+        gradient.attr("x1", 0).attr("y1", 0)
+        .attr("x2", 392).attr("y2", 482);
+        moveGradient();
+
+    }
+
+    $("svg").dblclick(function() {
+        // alert(d3.select(".line2").attr("width"));
+        var totalLength = path2.node().getTotalLength();
+        console.log(totalLength);
+        moveGradient();
 
     });
-
 
 
 });

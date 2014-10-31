@@ -1,6 +1,7 @@
 body {
   margin: auto;
   width: 960px;
+  background-color: #101b26;
 }
 
 text {
@@ -18,8 +19,8 @@ text {
   display: none;
 }
 
-.line {
+.line, .line2 {
   fill: none;
   stroke: url(#grad1);
-  stroke-width: 1.5px;
+  stroke-width: 2px;
 }
