@@ -29,8 +29,8 @@ $(document).ready(function() {
 
 
     var svgContainer = d3.select("body").append("svg")
-        .attr("width", 600)
-        .attr("height", 600);
+        .attr("width", width)
+        .attr("height", height);
 
     var group = svgContainer.append("g");
 
@@ -41,22 +41,20 @@ $(document).ready(function() {
         .y(function(d) {
             return d.y;
         })
-        .interpolate("basic");
+        .interpolate("bundle");
 
 
     group.append("linearGradient")
         .attr("id", "grad1")
-        .attr("gradientUnits", "userSpaceOnUse")
-        .attr("x1", 0).attr("y1", 150)
-        .attr("x2", 0).attr("y2", 160)
+        .attr("gradientUnits", "userSpaceOnUse")  // {userSpaceOnUse, ObjectBoundingBox}
+        .attr("x1", 0).attr("y1", 0)
+        .attr("x2", 392).attr("y2", 482)
         .selectAll("stop")
         .data([
-            {offset: "0%", color: "red"},
-            {offset: "0.001%", color: "black"},
-            {offset: "11%", color: "black"},
-            {offset: "62%", color: "black"},
-            {offset: "62%", color: "lawngreen"},
-            {offset: "100%", color: "lawngreen"}
+            {offset: "0%", color: "#e8ff00"},
+            {offset: "33%", color: "#59b39d"},
+            {offset: "66%", color: "#e8ff00"},
+            {offset: "100%", color: "#59b39d"}
         ])
         .enter().append("stop")
         .attr("offset", function(d) {
@@ -65,15 +63,6 @@ $(document).ready(function() {
         .attr("stop-color", function(d) {
             return d.color;
         });
-
-    // var paths = group.selectAll("path")
-    //     .data(data)
-    //     .enter()
-    //     .append("path")
-    //     .attr("d", line(data))
-    //     .attr("fill", "none")
-    //     .attr("stroke-width", 0.6)
-    //     .attr("stroke", "#15897a");
 
     group.append("path")
       .data(data)
@@ -85,12 +74,15 @@ $(document).ready(function() {
 
     var doubleclick = $("svg");
     doubleclick.dblclick(function() {
-        alert("Double Clicked");
-        var lineMove = pathGradient.transition()
-            .attr("transform", "translate(800,100)")
-            .duration(300)
+        // alert("Double Clicked");
+        var gradient = d3.select("#grad1").transition()
+            .attr("x1", 150).attr("y1", 200)
+            .attr("x2", 530).attr("y2", 680)
+            .duration(4000)
             // .ease("elastic")
             .delay(100);
+
+
     });
 
 
