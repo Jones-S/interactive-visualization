@@ -17,25 +17,39 @@ $(document).ready(function() {
         }
 
     ];
-    var data2 = [
+    var data2 = [{
+        "x": 0,
+        "y": 0
+    }, {
+        "x": 299,
+        "y": 295
+    }];
 
-        {
-            "x": 0,
-            "y": 0
-        }, {
-            "x": 425,
-            "y": 525
-        }
 
-    ];
+
+    var startX = 0;
+    var startY = 0;
+    var startXend = 300;
+    var startYend = 300;
+
+    for (var i = 340 - 1; i >= 0; i--) {
+        var object = {};
+        object = [{"x": startX, "y": startY}, {"x": startXend, "y": startYend}];
+        // startX += 5;
+        startXend += 5;
+        startX += 5;
+        data2.push(object);
+    };
+
+    // console.log(data2);
 
     var margin = {
             top: 20,
             right: 20,
             bottom: 30,
-            left: 50
+            left: 10
         },
-        width = 960 - margin.left - margin.right,
+        width = 1500
         height = 500 - margin.top - margin.bottom;
 
     var xWidth = data[data.length - 1]["x"] - data[0]["x"];
@@ -55,6 +69,7 @@ $(document).ready(function() {
             return d.y;
         })
         .interpolate("bundle");
+
 
 
     group.append("linearGradient")
@@ -87,6 +102,15 @@ $(document).ready(function() {
             return d.color;
         });
 
+    // var p = group.selectAll("path")
+    //     .data(data2)
+    //     .enter()
+    //     .append("path")
+    //     .attr("class", "lines")
+    //     .attr("d", line(data2))
+    //     .attr("stroke-width", 0.9)
+    //     .attr("stroke", "url(#grad1)");
+
 
 
     group.append("path")
@@ -98,12 +122,16 @@ $(document).ready(function() {
         .attr("yHeight", yHeight)
         .attr("stroke", "url(#grad1)");
 
-    var path2 = group.append("path")
-        .data(data2)
-        .attr("class", "line2")
-        .attr("d", line(data2))
-        .attr("stroke-width", 0.9)
-        .attr("stroke", "url(#grad1)");
+    for (var i = data2.length - 1; i >= 0; i--) {
+        var path2 = group.append("path")
+            .data(data2)
+            .attr("class", "lines")
+            .attr("d", line(data2[i]))
+            .attr("stroke-width", 0.9)
+            .attr("stroke", "url(#grad1)");
+
+    };
+    
 
 
     var gradient = d3.select("#grad1")

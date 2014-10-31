@@ -46,6 +46,7 @@ $(document).ready(function() {
 
     var line = d3.svg.line()
         .x(function(d) {
+            console.log(d);
             return d.x;
         })
         .y(function(d) {
@@ -53,6 +54,7 @@ $(document).ready(function() {
         })
         .interpolate("basic");
 
+    console.log("hduda");
 
     group.append("linearGradient")
         .attr("id", "temperature-gradient")
