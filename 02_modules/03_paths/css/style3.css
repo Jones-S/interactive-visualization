@@ -20,6 +20,6 @@ text {
 
 .line {
   fill: none;
-  stroke: url(#temperature-gradient);
+  stroke: url(#grad1);
   stroke-width: 1.5px;
 }

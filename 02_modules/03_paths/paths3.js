@@ -27,22 +27,12 @@ $(document).ready(function() {
         width = 960 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
 
-    var parseDate = d3.time.format("%Y%m%d").parse;
-
-    var x = d3.time.scale()
-        .range([0, width]);
-
-    var y = d3.scale.linear()
-        .range([height, 0]);
-    var y = d3.scale.linear()
-        .range([height, 0]);
 
     var svgContainer = d3.select("body").append("svg")
         .attr("width", 600)
         .attr("height", 600);
 
-    var group = svgContainer.append("g")
-        .attr("transform", "translate(0, 0)");
+    var group = svgContainer.append("g");
 
     var line = d3.svg.line()
         .x(function(d) {
@@ -55,10 +45,10 @@ $(document).ready(function() {
 
 
     group.append("linearGradient")
-        .attr("id", "temperature-gradient")
+        .attr("id", "grad1")
         .attr("gradientUnits", "userSpaceOnUse")
-        .attr("x1", 0).attr("y1", y(50))
-        .attr("x2", 0).attr("y2", y(60))
+        .attr("x1", 0).attr("y1", 150)
+        .attr("x2", 0).attr("y2", 160)
         .selectAll("stop")
         .data([
             {offset: "0%", color: "red"},
@@ -86,10 +76,11 @@ $(document).ready(function() {
     //     .attr("stroke", "#15897a");
 
     group.append("path")
-      .datum(data)
+      .data(data)
       .attr("class", "line")
-      .attr("d", line)
-      .attr("stroke", "url(#temperature-gradient");
+      .attr("d", line(data))
+      .attr("stroke-width", 0.6)
+      .attr("stroke", "url(#grad1)");
 
 
     var doubleclick = $("svg");
