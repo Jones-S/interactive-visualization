@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  width: 960px;
+/*  background-color: #101b26;
+*/}
+
+text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+/*  stroke: #000;
+*/  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  stroke: #262200;
+  stroke-width: 2px;
+}
