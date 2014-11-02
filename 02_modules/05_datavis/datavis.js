@@ -9,27 +9,6 @@ function map_range(value, low1, high1, low2, high2) {
     return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
 }
 
-//allow deep plucking
-_.mixin(
-    {
-        'pluck': _.wrap(
-            _.pluck,
-            function (oldpluck, collection, props) {
-                if (_.isArray(props)) {
-                    var reply = collection;
-                    _.forEach(props, function (prop) {
-                        reply = oldpluck(reply, prop);
-                    });
-                    return reply;
-                } else {
-                    return oldpluck(collection, props);
-                }
-            }
-        )
-    },
-    { 'chain': true }
-);
-
 
 
 d3.json("data.json", function(error, json) {
@@ -59,35 +38,29 @@ d3.json("data.json", function(error, json) {
         };
 
         var object = {};
-        var paths = []; //this container will hold all the delta (effective people exchange)
 
         _(data["gemeinden"]).forEach(function(gem, j){
             var key = i + "-" + j; //e.g. "0-1" > from gemeinde 0 to gemeinde 1
             //now calculate delta between the gemeinden including itself (always 0)
-            object[key] = {
+            gemObject["connections"][key] = {
                 diff: data["gemeinden"][j]["nach"][i] - data["gemeinden"][i]["nach"][j],
                 pathEnds: []
             }
         });
 
-        paths.push(object);
-        gemObject["connections"] = paths;
         circleInfo.push(gemObject);
-
-        //calc total lines from circle(=gemeinde) with index i
-        //therefore add all deltas (and ignore minus token)
-        // var result = _.pluck([{a:{b:1}}, {a:{b:2}}], ["a", "b"]);
-        var result = _.pluck(circleInfo["connections"], ["0-0", "diff"]);
-        console.log(result);
-
-
-
-        // console.log(allDiffs);
-        // console.log(circleInfo[i]["paths"]);
 
     });
 
-    // console.log(circleInfo);
+    console.log(circleInfo);
+
+    //calc total lines from circle(=gemeinde) with index i
+    //therefore add all deltas (and ignore minus token)
+    var result = _.forEach(circleInfo["connections"], function(num) { 
+            return num;
+        });
+        console.log(result);
+
 
     //draw svg
     var svgContainer = d3.select("body").append("svg")
