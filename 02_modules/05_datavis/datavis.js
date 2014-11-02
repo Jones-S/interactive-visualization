@@ -63,18 +63,16 @@ d3.json("data.json", function(error, json) {
     //therefore add all deltas (and ignore minus token)
     _.forEach(circleInfo, function(obj, i) { //called 5 times with 5 circles
         var totalDeltas = 0; //set total people moving (delta) to 0
-        // console.log(obj);
-        _.forEach(obj["connections"][i], function(conn, i){
+        console.log("salit" + i);
+        _.forEach(obj["connections"][0], function(conn){
             console.log(conn["delta"]);
             totalDeltas += Math.abs(conn["delta"]); //add all deltas and make the positive
         });
-
-        obj["totalDeltas"] = totalDeltas;
-
+        obj["totalDeltas"] = totalDeltas; //set totalDelta to each gemeinde in circleInfo Array
     });
 
 
-    console.log(circleInfo[0]["totalDeltas"]);
+    console.log(circleInfo[3]["totalDeltas"]);
 
 
 
