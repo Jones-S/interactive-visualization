@@ -39,13 +39,12 @@ d3.json("data.json", function(error, json) {
         gemObject = {
             "name" : data["gemeinden"][i]["gemeinde"],
             "centerPos" : { "xM" : 0, "yM" : 0 },
-            "connections" : [
-                // how the content will look like
-                // "0-0" : {   "delta" : 0,
-                //             "pathEnds" : [{ "px" : 0, "py" : 0}] //x und y pos of path ending on the circle, can have more than one element with x,y if more than 1 line
-                //         }
-            ],
-            "totalDeltas": 0
+            // "connections" : [
+            //     // how the content will look like
+            //     // "0-0" : {   "delta" : 0,
+            //     //             "pathEnds" : [{ "x" : 0, "y" : 0}] //x und y pos of path ending on the circle, can have more than one element with x,y if more than 1 line
+            //     //         }
+            // ]
         };
 
         var object = {};
@@ -54,67 +53,56 @@ d3.json("data.json", function(error, json) {
         _(data["gemeinden"]).forEach(function(gem, j){
             var key = i + "-" + j; //e.g. "0-1" > from gemeinde 0 to gemeinde 1
             //now calculate delta between the gemeinden including itself (always 0)
-            object[key] = {
-                delta: data["gemeinden"][j]["nach"][i] - data["gemeinden"][i]["nach"][j],
+            object[key] = { delta: data["gemeinden"][j]["nach"][i] - data["gemeinden"][i]["nach"][j],
                 pathEnds: []
             };
-
         });
-        connections.push(object);
-
-
+        connections.push(object); //
         gemObject["connections"] = connections;
         circleInfo.push(gemObject);
 
     });
 
-
-    //calc total lines from circle(=gemeinde) with index i
-    //therefore add all deltas (and ignore minus token)
-    _.forEach(circleInfo, function(obj, i) { //called 5 times with 5 circles
-        var totalDeltas = 0; //set total people moving (delta) to 0
-        _.forEach(obj["connections"][0], function(conn){
-            // console.log(conn["delta"]);
-            totalDeltas += Math.abs(conn["delta"]); //add all deltas and make the positive
-        });
-        obj["totalDeltas"] = totalDeltas; //set totalDelta to each gemeinde in circleInfo Array
-    });
-
-    //calc width of space where lines are attached to circle
-    _.forEach(circleInfo, function(obj){
-        obj["dockWidth"] = Math.round(obj["totalDeltas"]/20);
-    });
-
     //calc all positions of the lines
     _.forEach(circleInfo, function(obj){
-        var even = (obj["dockWidth"] % 2 == 0); //check if line count is even or odd
-        var lineAngleStep = Math.PI/dockLineDist;
-
         var cx = rad * Math.cos(angle) + bgCircCenterX; //calc x of M of circle
         obj["centerPos"]["xM"] = cx;
         var cy = rad * Math.sin(angle) + bgCircCenterY;
         obj["centerPos"]["yM"] = cy;
         obj["angle"] = angle;
         angle += increase;
+        var lineAngleStep = Math.PI * 2/dockLineDist;
+        var totalLines = 0;
 
+        _.forEach(obj["connections"][0], function(elem){
+            var lines = Math.abs(Math.round(elem["delta"]/20)); //e.g. 7 lines for 140 people
+            totalLines += lines;
+        })
+        obj["totalLines"] = totalLines;
+
+        //calc startAngle (lineAngle) for first line
+        var even = (obj["totalLines"] % 2 == 0); //check if line count is even or odd
         if (even) {
-            var halfLines = obj["dockWidth"]/2;
+            var halfLines = obj["totalLines"]/2;
             //set first point
             var lineAngle = obj["angle"] - halfLines * lineAngleStep;
             console.log(lineAngle);
-            for (var i = obj["dockWidth"]; i >= 0; i--) {
-                // calc x,y of path endings
-                var x = rad * Math.cos(lineAngle) + bgCircleCenterX;
-                var y = rad * Math.sin(lineAngle) + bgCircleCenterY;
-                lineAngle += lineAngleStep;
-                obj["connections"]
-            };
         } else {
-            var halfLines = Math.floor(obj["dockWidth"]/2); //round floor because if odd -> one pathending will be centered
+            var halfLines = Math.floor(obj["totalLines"]/2); //round floor because if odd -> one pathending will be centered
             //set first point
             var lineAngle = obj["angle"] - halfLines * lineAngleStep;
-            console.log(lineAngle);
         };
+
+        _.forEach(obj["connections"][0], function(elem){
+            for (var i = Math.abs(Math.round(elem["delta"]/20)) - 1; i >= 0; i--) {
+                var x = rad * Math.cos(lineAngle) + bgCircCenterX;
+                var y = rad * Math.sin(lineAngle) + bgCircCenterY;
+                lineAngle += lineAngleStep;
+                elem["pathEnds"].push({ "x": x, "y": y });
+            };
+
+
+        });
     });
 
     console.log(circleInfo);
