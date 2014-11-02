@@ -23,18 +23,35 @@ d3.json("data.json", function(error, json) {
 
     // fill circle info array
     var circleInfo = [];
+
     var gemObject = {};
     _(data["gemeinden"]).forEach(function(gem, i){
         gemObject = {
             "name" : data["gemeinden"][i]["gemeinde"],
             "centerPos" : { "xM" : 0, "yM" : 0 },
-            "paths" : {
-                "diff" : 0,
-                "pathXY" : [{ "px" : 0, "py" : 0}] //x und y pos of path ending on the circle, can have more than one element with x,y if more than 1 line
-            }
+            "paths" : [
+                // how the content will look like
+                // "0-0" : {   "diff" : 0,
+                //             "pathXY" : [{ "px" : 0, "py" : 0}] //x und y pos of path ending on the circle, can have more than one element with x,y if more than 1 line
+                //         }
+            ]
         };
+
+        var object = {};
+        var paths = []; //this container will hold all the delta (effective people exchange)
+        _(data["gemeinden"]).forEach(function(gem, j){
+            var key = i + "-" + j; //e.g. "0-1" > from gemeinde 0 to gemeinde 1
+            // console.log("nach1 " + gem["nach"][j] + " nach2 " + data["gemeinden"][j]["nach"][i]);
+            object[key] = data["gemeinden"][j]["nach"][i] - data["gemeinden"][i]["nach"][j];
+        });
+
+        paths.push(object);
+        gemObject["paths"] = paths;
+
         circleInfo.push(gemObject);
     });
+
+    console.log(circleInfo);
 
     //draw svg
     var svgContainer = d3.select("body").append("svg")
@@ -90,7 +107,7 @@ d3.json("data.json", function(error, json) {
         })
 
     // _(circleInfo).forEach(function(num){ console.log("hey " + num["centerPos"]["yM"])});
-    
+
 
 });
 
