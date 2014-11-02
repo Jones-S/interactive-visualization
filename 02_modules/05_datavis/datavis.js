@@ -10,7 +10,6 @@ function map_range(value, low1, high1, low2, high2) {
 }
 
 
-
 d3.json("data.json", function(error, json) {
     if (error) return console.warn(error);
     data = json;
@@ -31,23 +30,29 @@ d3.json("data.json", function(error, json) {
             "centerPos" : { "xM" : 0, "yM" : 0 },
             "connections" : [
                 // how the content will look like
-                // "0-0" : {   "diff" : 0,
+                // "0-0" : {   "delta" : 0,
                 //             "pathEnds" : [{ "px" : 0, "py" : 0}] //x und y pos of path ending on the circle, can have more than one element with x,y if more than 1 line
                 //         }
-            ]
+            ],
+            "totalDeltas": 0
         };
 
         var object = {};
+        var connections = [];
 
         _(data["gemeinden"]).forEach(function(gem, j){
             var key = i + "-" + j; //e.g. "0-1" > from gemeinde 0 to gemeinde 1
             //now calculate delta between the gemeinden including itself (always 0)
-            gemObject["connections"][key] = {
-                diff: data["gemeinden"][j]["nach"][i] - data["gemeinden"][i]["nach"][j],
+            object[key] = {
+                delta: data["gemeinden"][j]["nach"][i] - data["gemeinden"][i]["nach"][j],
                 pathEnds: []
-            }
-        });
+            };
 
+        });
+        connections.push(object);
+
+
+        gemObject["connections"] = connections;
         circleInfo.push(gemObject);
 
     });
@@ -56,10 +61,22 @@ d3.json("data.json", function(error, json) {
 
     //calc total lines from circle(=gemeinde) with index i
     //therefore add all deltas (and ignore minus token)
-    var result = _.forEach(circleInfo["connections"], function(num) { 
-            return num;
+    _.forEach(circleInfo, function(obj, i) { //called 5 times with 5 circles
+        var totalDeltas = 0; //set total people moving (delta) to 0
+        // console.log(obj);
+        _.forEach(obj["connections"][i], function(conn, i){
+            console.log(conn["delta"]);
+            totalDeltas += Math.abs(conn["delta"]); //add all deltas and make the positive
         });
-        console.log(result);
+
+        obj["totalDeltas"] = totalDeltas;
+
+    });
+
+
+    console.log(circleInfo[0]["totalDeltas"]);
+
+
 
 
     //draw svg
