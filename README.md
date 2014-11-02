@@ -32,4 +32,7 @@ http://stackoverflow.com/questions/5649803/remap-or-map-function-in-javascript
 use simple lo-dash functions
 https://egghead.io/lessons/core-javascript-introduction-to-lodash
 
+selections of d3.js explained
+http://bost.ocks.org/mike/selection/
+
 ```
