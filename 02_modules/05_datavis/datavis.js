@@ -14,7 +14,7 @@ $(document).ready(function() {
         .attr("fill", "black");
 
     //add circles
-    var circles = svgGroup.selectAll("circle")
+    var circles = svgGroup.selectAll(".dataCircle")
         .data([
             {cx: "250", cy: "300", r: "12", color: "red"},
             {cx: "300", cy: "300", r: "12", color: "red"},
