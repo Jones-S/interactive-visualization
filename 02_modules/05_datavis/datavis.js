@@ -4,14 +4,12 @@ $(document).ready(function() {
 //because json is loaded asynchronously, all functions concerning data are written inside
 var data;
 
-var colormap = require('colormap')
-options = {
-  colormap: "jet"   // pick a builtin colormap or add your own
-, nshades: 72       // how many divisions
-, format: "hex"     // "hex" or "rgb" or "rgbaString"
-, alpha: 1          // set an alpha value or a linear alpha mapping [start, end]
+//mapping function
+function map_range(value, low1, high1, low2, high2) {
+    return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
 }
-cg = colormap(options)
+
+
 
 d3.json("data.json", function(error, json) {
     if (error) return console.warn(error);
@@ -50,7 +48,19 @@ d3.json("data.json", function(error, json) {
                         angle += increase;
                         return cy;
                     },
-                r: function(d){ return d["trafficCosts"]/15}
+                r: function(d){ return d["population"]/11600}, //todo: write mapping function and set a max size
+                fill: function(d) {
+                    var maxTraffCost = _.max(d["trafficCosts"]); //use loDash to get max
+                    // console.log(maxTraffCost);
+                    var allTraffCosts = _.pluck(d, "trafficCosts"); //extract all trafficCosts into new array
+                    console.log(allTraffCosts);
+
+
+                    //write mapping function to map trafficCosts to RGB from 0 - 255
+                    var colorMap = map_range(d["trafficCosts"], 0, maxTraffCost, 0, 255 );
+                    console.log(colorMap + " - " + d["trafficCosts"]);
+                    return "rgba(" + colorMap +", 0, 0, 0.5)";
+                }
             })
         })
         

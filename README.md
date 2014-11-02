@@ -19,4 +19,17 @@ http://pothibo.com/2013/09/d3-js-how-to-handle-dynamic-json-data/
 loading data with higher functions – examples
 http://stackoverflow.com/questions/20506820/d3-a-sub-array-of-objects
 
+browserify
+bundle your js files into bundle.js using node code
+http://superbigtree.tumblr.com/post/54873453939/introduction-to-browserify
+https://github.com/substack/browserify-handbook
+https://github.com/substack/node-browserify
+
+map
+mapping like known from processing in javascript
+http://stackoverflow.com/questions/5649803/remap-or-map-function-in-javascript
+
+use simple lo-dash functions
+https://egghead.io/lessons/core-javascript-introduction-to-lodash
+
 ```
