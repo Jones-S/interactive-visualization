@@ -26,6 +26,10 @@ d3.json("data.json", function(error, json) {
     var minSize = 2; //min radius of circles independent of population
     var maxTraffCost = _.max(_.pluck(data["gemeinden"], "trafficCosts")); //use loDash to get max
     var dockLineDist = 0.3; //in px
+    //calc circle count and angle step
+    var increase = Math.PI * 2 / data["gemeinden"].length;
+    var angle = 0;
+    var rad = 90; //radius of circle with circles on it
 
     // fill circle info array
     var circleInfo = [];
@@ -70,7 +74,7 @@ d3.json("data.json", function(error, json) {
     _.forEach(circleInfo, function(obj, i) { //called 5 times with 5 circles
         var totalDeltas = 0; //set total people moving (delta) to 0
         _.forEach(obj["connections"][0], function(conn){
-            console.log(conn["delta"]);
+            // console.log(conn["delta"]);
             totalDeltas += Math.abs(conn["delta"]); //add all deltas and make the positive
         });
         obj["totalDeltas"] = totalDeltas; //set totalDelta to each gemeinde in circleInfo Array
@@ -85,8 +89,26 @@ d3.json("data.json", function(error, json) {
     _.forEach(circleInfo, function(obj){
         var even = (obj["dockWidth"] % 2 == 0); //check if line count is even or odd
         var lineAngleStep = Math.PI/dockLineDist;
-        if (even) {
 
+        var cx = rad * Math.cos(angle) + bgCircCenterX; //calc x of M of circle
+        obj["centerPos"]["xM"] = cx;
+        var cy = rad * Math.sin(angle) + bgCircCenterY;
+        obj["centerPos"]["yM"] = cy;
+        obj["angle"] = angle;
+        angle += increase;
+
+        if (even) {
+            var halfLines = obj["dockWidth"]/2;
+            //set first point
+            var lineAngle = obj["angle"] - halfLines * lineAngleStep;
+            console.log(lineAngle);
+            for (var i = obj["dockWidth"]; i >= 0; i--) {
+                // calc x,y of path endings
+                var x = rad * Math.cos(lineAngle) + bgCircleCenterX;
+                var y = rad * Math.sin(lineAngle) + bgCircleCenterY;
+                lineAngle += lineAngleStep;
+                obj["connections"]
+            };
         } else {
             var halfLines = Math.floor(obj["dockWidth"]/2); //round floor because if odd -> one pathending will be centered
             //set first point
@@ -94,10 +116,6 @@ d3.json("data.json", function(error, json) {
             console.log(lineAngle);
         };
     });
-
-
-// TODO: calc. position of circles before drawing them and save vars in array
-// draw circles with that info
 
     console.log(circleInfo);
 
@@ -108,11 +126,6 @@ d3.json("data.json", function(error, json) {
         .attr("height", height);
     //add group to contain all circles
     var svgGroup = svgContainer.append("g");
-
-    //calc circle count and angle step
-    var increase = Math.PI * 2 / data["gemeinden"].length;
-    var angle = 0;
-    var rad = 90; //radius of circle with circles on it
 
     //add bg circle
     var bgCircle = svgGroup.append("circle")
@@ -131,16 +144,10 @@ d3.json("data.json", function(error, json) {
         .each(function(d, i){
             d3.select(this).attr({
                 cx: function(){
-                        var cx = rad * Math.cos(angle) + bgCircCenterX;
-                        circleInfo[i]["centerPos"]["xM"] = cx;
-                        return cx;
+                        return circleInfo[i]["centerPos"]["xM"];
                     },
                 cy: function(){
-                        var cy = rad * Math.sin(angle) + bgCircCenterY;
-                        circleInfo[i]["centerPos"]["yM"] = cy;
-                        circleInfo[i]["angle"] = angle;
-                        angle += increase;
-                        return cy;
+                        return circleInfo[i]["centerPos"]["yM"];
                     },
                 r: function(d){
                     var pop = (d["population"]/11600 < minSize) ? minSize : d["population"]/11600; //if population is producing a too small circle set it to minSize
