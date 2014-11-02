@@ -20,7 +20,7 @@
             "gemeinde": "Winterthur",
             "gemId": 3,
             "population": 200000,
-            "trafficCosts": 600,
+            "trafficCosts": 300,
             "spacePerPerson": 0.7,
             "nach": [45, 5, 0, 1]
         },

@@ -17,6 +17,12 @@ d3.json("data.json", function(error, json) {
     //add group to contain all circles
     var svgGroup = svgContainer.append("g");
 
+    //calc circle count and angle step
+    var increase = Math.PI * 2 / data["gemeinden"].length;
+    console.log(increase);
+    var angle = 0;
+    var rad = 90; //radius of circle with circles on it
+
     //add circles
     var gemCircles = svgGroup.selectAll("circle")
         .data(data["gemeinden"])
@@ -24,10 +30,21 @@ d3.json("data.json", function(error, json) {
         .append("circle");
 
     var gemCircAttr = gemCircles
-        .attr("cx", 30).attr("cy", 30)
-        .attr("r", function(d, i) {
-            return d["trafficCosts"]/100
-        });
+        .each(function(d){
+            d3.select(this).attr({
+                cx: function(){
+                        var cx = rad * Math.cos(angle) + width/2;
+                        return cx;
+                    },
+                cy: function(){
+                        var cy = rad * Math.sin(angle) + height/2;
+                        angle += increase;
+                        return cy;
+                    },
+                r: function(d){ return d["trafficCosts"]/15}
+            })
+        })
+        
 });
 
 
