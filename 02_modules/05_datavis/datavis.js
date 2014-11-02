@@ -4,6 +4,15 @@ $(document).ready(function() {
 //because json is loaded asynchronously, all functions concerning data are written inside
 var data;
 
+var colormap = require('colormap')
+options = {
+  colormap: "jet"   // pick a builtin colormap or add your own
+, nshades: 72       // how many divisions
+, format: "hex"     // "hex" or "rgb" or "rgbaString"
+, alpha: 1          // set an alpha value or a linear alpha mapping [start, end]
+}
+cg = colormap(options)
+
 d3.json("data.json", function(error, json) {
     if (error) return console.warn(error);
     data = json;
