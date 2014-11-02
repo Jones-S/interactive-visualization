@@ -9,6 +9,27 @@ function map_range(value, low1, high1, low2, high2) {
     return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
 }
 
+//allow deep plucking
+_.mixin(
+    {
+        'pluck': _.wrap(
+            _.pluck,
+            function (oldpluck, collection, props) {
+                if (_.isArray(props)) {
+                    var reply = collection;
+                    _.forEach(props, function (prop) {
+                        reply = oldpluck(reply, prop);
+                    });
+                    return reply;
+                } else {
+                    return oldpluck(collection, props);
+                }
+            }
+        )
+    },
+    { 'chain': true }
+);
+
 
 
 d3.json("data.json", function(error, json) {
@@ -29,29 +50,44 @@ d3.json("data.json", function(error, json) {
         gemObject = {
             "name" : data["gemeinden"][i]["gemeinde"],
             "centerPos" : { "xM" : 0, "yM" : 0 },
-            "paths" : [
+            "connections" : [
                 // how the content will look like
                 // "0-0" : {   "diff" : 0,
-                //             "pathXY" : [{ "px" : 0, "py" : 0}] //x und y pos of path ending on the circle, can have more than one element with x,y if more than 1 line
+                //             "pathEnds" : [{ "px" : 0, "py" : 0}] //x und y pos of path ending on the circle, can have more than one element with x,y if more than 1 line
                 //         }
             ]
         };
 
         var object = {};
         var paths = []; //this container will hold all the delta (effective people exchange)
+
         _(data["gemeinden"]).forEach(function(gem, j){
             var key = i + "-" + j; //e.g. "0-1" > from gemeinde 0 to gemeinde 1
-            // console.log("nach1 " + gem["nach"][j] + " nach2 " + data["gemeinden"][j]["nach"][i]);
-            object[key] = data["gemeinden"][j]["nach"][i] - data["gemeinden"][i]["nach"][j];
+            //now calculate delta between the gemeinden including itself (always 0)
+            object[key] = {
+                diff: data["gemeinden"][j]["nach"][i] - data["gemeinden"][i]["nach"][j],
+                pathEnds: []
+            }
         });
 
         paths.push(object);
-        gemObject["paths"] = paths;
-
+        gemObject["connections"] = paths;
         circleInfo.push(gemObject);
+
+        //calc total lines from circle(=gemeinde) with index i
+        //therefore add all deltas (and ignore minus token)
+        // var result = _.pluck([{a:{b:1}}, {a:{b:2}}], ["a", "b"]);
+        var result = _.pluck(circleInfo["connections"], ["0-0", "diff"]);
+        console.log(result);
+
+
+
+        // console.log(allDiffs);
+        // console.log(circleInfo[i]["paths"]);
+
     });
 
-    console.log(circleInfo);
+    // console.log(circleInfo);
 
     //draw svg
     var svgContainer = d3.select("body").append("svg")
