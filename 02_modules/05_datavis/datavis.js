@@ -25,11 +25,11 @@ d3.json("data.json", function(error, json) {
     var bgCircCenterY = height/2;
     var minSize = 2; //min radius of circles independent of population
     var maxTraffCost = _.max(_.pluck(data["gemeinden"], "trafficCosts")); //use loDash to get max
-    var dockLineDist = 0.3; //in px
+    var dockLineDist = Math.PI / 100; //in radians
     //calc circle count and angle step
     var increase = Math.PI * 2 / data["gemeinden"].length;
     var angle = 0;
-    var rad = 90; //radius of circle with circles on it
+    var rad = 120; //radius of circle with circles on it
 
     // fill circle info array
     var circleInfo = [];
@@ -71,7 +71,7 @@ d3.json("data.json", function(error, json) {
         obj["centerPos"]["yM"] = cy;
         obj["angle"] = angle;
         angle += increase;
-        var lineAngleStep = Math.PI * 2/dockLineDist;
+        var lineAngleStep = dockLineDist;
         var totalLines = 0;
 
         _.forEach(obj["connections"][0], function(elem){
@@ -150,6 +150,47 @@ d3.json("data.json", function(error, json) {
                     }
             })
         })
+
+    //draw first line
+   var line = d3.svg.line()
+        .x(function(d) {
+            console.log(d.x);
+            return d.x;
+        })
+        .y(function(d) {
+            return d.y;
+        })
+        .interpolate("basis");
+
+    var path = [];
+    path[0] = circleInfo[0]["connections"][0]["0-1"]["pathEnds"][0];
+    path[1] = { x: bgCircCenterX, y: bgCircCenterY };
+    path[2] = circleInfo[1]["connections"][0]["1-0"]["pathEnds"][6];
+    console.log(path);
+
+
+    svgGroup.append("path")
+        .data(path)
+        .attr("class", "line")
+        .attr("d", line(path))
+        .attr("fill", "none")
+        .attr("stroke-width", 0.6)
+        .attr("stroke", "#15897a");
+
+    var path = [];
+    path[0] = circleInfo[0]["connections"][0]["0-1"]["pathEnds"][1];
+    path[1] = { x: bgCircCenterX, y: bgCircCenterY };
+    path[2] = circleInfo[1]["connections"][0]["1-0"]["pathEnds"][5];
+    console.log(path);
+
+
+    svgGroup.append("path")
+        .data(path)
+        .attr("class", "line")
+        .attr("d", line(path))
+        .attr("fill", "none")
+        .attr("stroke-width", 0.6)
+        .attr("stroke", "#15897a");
 
     // _(circleInfo).forEach(function(num){ console.log("hey " + num["centerPos"]["yM"])});
 
