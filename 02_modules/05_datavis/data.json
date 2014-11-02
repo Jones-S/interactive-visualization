@@ -2,42 +2,37 @@
     "gemeinden": [
         {
             "gemeinde": "Zürich",
-            "gemId": "1",
-            "population": "350000",
-            "trafficCosts": "210",
-            "spacePerPerson": "0.25",
-            "nach": [
-                {"0"}, {"5"}, {"10"}, {"60"}]
+            "gemId": 1,
+            "population": 350000,
+            "trafficCosts": 210,
+            "spacePerPerson": 0.25,
+            "nach": [0, 5, 10, 60]
         },
         {
             "gemeinde": "Bülach",
-            "gemId": "2",
-            "population": "120000",
-            "trafficCosts": "60",
-            "spacePerPerson": "1.2",
-            "nach": [
-                {"145"}, {"0"}, {"60"}, {"6"}]
+            "gemId": 2,
+            "population": 120000,
+            "trafficCosts": 60,
+            "spacePerPerson": 1.2,
+            "nach": [145, 0, 60, 6]
         },
         {
             "gemeinde": "Winterthur",
-            "gemId": "3",
-            "population": "200000",
-            "trafficCosts": "600",
-            "spacePerPerson": "0.7",
-            "nach": [
-                {"45"}, {"5"}, {"0"}, {"1"}]
+            "gemId": 3,
+            "population": 200000,
+            "trafficCosts": 600,
+            "spacePerPerson": 0.7,
+            "nach": [45, 5, 0, 1]
         },
         {
             "gemeinde": "Weiningen",
-            "gemId": "4",
-            "population": "5000",
-            "trafficCosts": "20",
-            "spacePerPerson": "6.3",
-            "nach": [
-                {"22"}, {"36"}, {"3"}, {"0"}]
-        },
+            "gemId": 4,
+            "population": 5000,
+            "trafficCosts": 20,
+            "spacePerPerson": 6.3,
+            "nach": [22, 36, 3, 0]
+        }
 
     ]
-    
 
 }

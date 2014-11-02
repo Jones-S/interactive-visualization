@@ -2,19 +2,13 @@ $(document).ready(function() {
 
     //first load json data into array
 
-    $.getJSON("data.json", function(data) {
-        var gem = []; //store all gemeinden info in gem variable
-        $.each(data, function(key, val) {
-            gem.push("<li id='" + key + "'>" + val + "</li>");
-        });
+    var data; // a global
 
-        $("<ul/>", {
-            "class": "my-new-list",
-            html: gem.join("")
-        }).appendTo("body");
-
-        console.log(gem);
-
+    d3.json("data.json", function(error, json) {
+        if (error) return console.warn(error);
+        data = json;
+        console.log(data);
     });
+
 
 });
