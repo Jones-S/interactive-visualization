@@ -111,6 +111,28 @@ d3.json("data.json", function(error, json) {
     });
 
     //move x,y of pathends
+    _.forEach(circleInfo, function(obj, i){
+        var totalLines = obj["totalLines"];
+        var moveFrom = i;
+        //calc x,y for every connection
+        _.forEach(obj["connections"][0], function(elem, j){
+            var linesOfConnection = Math.abs(Math.round(elem["delta"]/20);
+            var moveTo = j;
+            var key = i + "-" + j;
+            var indexFromLeft = 0; //how many lines were added from left
+            var indexFromRight = 0; //respectively from the right side
+            if (i != j && i < j) { //if 1-1 dont do nothing, if 0-1, 0-2 etc start add pathends from left side of dock
+
+            } else if ( i != j && i > j){ //if 1-1 don't do nothing, if 3-0, 3-1 etc start adding pathend coordinates from the right side
+
+            };
+        });
+
+        //access key [from - to], e.g. "1-0"
+
+
+    });
+
 
     console.log(circleInfo);
 
