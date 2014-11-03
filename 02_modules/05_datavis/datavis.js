@@ -79,34 +79,32 @@ d3.json("data.json", function(error, json) {
             totalLines += lines;
         })
         obj["totalLines"] = totalLines;
-
-        //calc startAngle (lineAngle) for first line
-        var even = (obj["totalLines"] % 2 == 0); //check if line count is even or odd
-        if (even) {
-            var halfLines = obj["totalLines"]/2;
-            //set first point
-            var lineAngle = obj["angle"] - halfLines * lineAngleStep;
-            // console.log(lineAngle);
-        } else {
-            var halfLines = Math.floor(obj["totalLines"]/2); //round floor because if odd -> one pathending will be centered
-            //set first point
-            var lineAngle = obj["angle"] - halfLines * lineAngleStep;
+            //calc startAngle (lineAngle) for first line
+            var even = (obj["totalLines"] % 2 == 0); //check if line count is even or odd
+            var halflines = 0;
+            if (even) {
+                halfLines = obj["totalLines"]/2;
+                halflines -= 0.5; //because in the center is no point
+            } else {
+                halfLines = Math.floor(obj["totalLines"]/2); //round floor because if odd -> one pathending will be centered
+            };
+            //set first points form left and right in dock
+            var firstLeft = obj["angle"] - halfLines * lineAngleStep;
+            var firstRight = obj["angle"] + halfLines * lineAngleStep;
+            obj["firstPoints"] = { "left" : firstLeft, "right" : firstRight }; //save them to the array
+            if(obj["totalLines"] > 0){
         };
-
     });
 
     //set all x,y of paths in center or the circles
     _.forEach(circleInfo, function(obj){
-            // var x = rad * Math.cos(lineAngle) + bgCircCenterX;
-            // var y = rad * Math.sin(lineAngle) + bgCircCenterY;
-            // lineAngle += lineAngleStep;
-            var x = obj["centerPos"]["xM"];
-            var y = obj["centerPos"]["yM"];
-            _.forEach(obj["connections"][0], function(elem){
-                for (var i = Math.abs(Math.round(elem["delta"]/20)) - 1; i >= 0; i--) { //for every line (calc first)
-                    elem["pathEnds"].push({ "x": x , "y": y });
-                };
-            });
+        var x = obj["centerPos"]["xM"];
+        var y = obj["centerPos"]["yM"];
+        _.forEach(obj["connections"][0], function(elem){
+            for (var i = Math.abs(Math.round(elem["delta"]/20)) - 1; i >= 0; i--) { //for every line (calc first)
+                elem["pathEnds"].push({ "x": x , "y": y });
+            };
+        });
 
     });
 
@@ -114,6 +112,9 @@ d3.json("data.json", function(error, json) {
     _.forEach(circleInfo, function(obj, i){
         var totalLines = obj["totalLines"];
         var moveFrom = i;
+        var startLeft = obj.firstPoints.left;
+        var startRight = obj.firstPoints.right;
+
         //calc x,y for every connection
         _.forEach(obj["connections"][0], function(elem, j){
             var linesOfConnection = Math.abs(Math.round(elem["delta"]/20));
@@ -122,9 +123,12 @@ d3.json("data.json", function(error, json) {
             var to = moveFromTo[1];
             var indexFromLeft = 0; //how many lines were added from left
             var indexFromRight = 0; //respectively from the right side
+
             if (from != to && from < to) { //if 1-1 dont do nothing, if 0-1, 0-2 etc start add pathends from left side of dock
                 elem["pathEnds"][0] = {x : 99, y: 99};
-                console.log("hura");
+                // var x = rad * Math.cos(lineAngle) + bgCircCenterX;
+                // var y = rad * Math.sin(lineAngle) + bgCircCenterY;
+                // lineAngle += lineAngleStep;
             } else if ( from != to && from > to){ //if 1-1 don't do nothing, if 3-0, 3-1 etc start adding pathend coordinates from the right side
 
             };
