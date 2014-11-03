@@ -192,6 +192,37 @@ d3.json("data.json", function(error, json) {
         .attr("stroke-width", 0.6)
         .attr("stroke", "#15897a");
 
+    var path = [];
+    path[0] = circleInfo[0]["connections"][0]["0-1"]["pathEnds"][2];
+    path[1] = { x: bgCircCenterX, y: bgCircCenterY };
+    path[2] = circleInfo[1]["connections"][0]["1-0"]["pathEnds"][4];
+    console.log(path);
+
+
+    svgGroup.append("path")
+        .data(path)
+        .attr("class", "line")
+        .attr("d", line(path))
+        .attr("fill", "none")
+        .attr("stroke-width", 0.6)
+        .attr("stroke", "#15897a");
+
+        var path = [];
+    path[0] = _.last(circleInfo[0]["connections"][0]["0-1"]["pathEnds"]);
+    path[1] = { x: bgCircCenterX, y: bgCircCenterY };
+    path[2] = circleInfo[1]["connections"][0]["1-0"]["pathEnds"][0];
+    console.log(path);
+
+
+    svgGroup.append("path")
+        .data(path)
+        .attr("class", "line")
+        .attr("d", line(path))
+        .attr("fill", "none")
+        .attr("stroke-width", 0.6)
+        .attr("stroke", "#15897a");
+
+
     // _(circleInfo).forEach(function(num){ console.log("hey " + num["centerPos"]["yM"])});
 
 
