@@ -116,14 +116,16 @@ d3.json("data.json", function(error, json) {
         var moveFrom = i;
         //calc x,y for every connection
         _.forEach(obj["connections"][0], function(elem, j){
-            var linesOfConnection = Math.abs(Math.round(elem["delta"]/20);
-            var moveTo = j;
-            var key = i + "-" + j;
+            var linesOfConnection = Math.abs(Math.round(elem["delta"]/20));
+            var moveFromTo = j.split("-"); // split "0-2" = j into {0, 2} 0= from 2 = to
+            var from = moveFromTo[0];
+            var to = moveFromTo[1];
             var indexFromLeft = 0; //how many lines were added from left
             var indexFromRight = 0; //respectively from the right side
-            if (i != j && i < j) { //if 1-1 dont do nothing, if 0-1, 0-2 etc start add pathends from left side of dock
-
-            } else if ( i != j && i > j){ //if 1-1 don't do nothing, if 3-0, 3-1 etc start adding pathend coordinates from the right side
+            if (from != to && from < to) { //if 1-1 dont do nothing, if 0-1, 0-2 etc start add pathends from left side of dock
+                elem["pathEnds"][0] = {x : 99, y: 99};
+                console.log("hura");
+            } else if ( from != to && from > to){ //if 1-1 don't do nothing, if 3-0, 3-1 etc start adding pathend coordinates from the right side
 
             };
         });
