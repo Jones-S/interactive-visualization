@@ -86,24 +86,31 @@ d3.json("data.json", function(error, json) {
             var halfLines = obj["totalLines"]/2;
             //set first point
             var lineAngle = obj["angle"] - halfLines * lineAngleStep;
-            console.log(lineAngle);
+            // console.log(lineAngle);
         } else {
             var halfLines = Math.floor(obj["totalLines"]/2); //round floor because if odd -> one pathending will be centered
             //set first point
             var lineAngle = obj["angle"] - halfLines * lineAngleStep;
         };
 
-        _.forEach(obj["connections"][0], function(elem){
-            for (var i = Math.abs(Math.round(elem["delta"]/20)) - 1; i >= 0; i--) {
-                var x = rad * Math.cos(lineAngle) + bgCircCenterX;
-                var y = rad * Math.sin(lineAngle) + bgCircCenterY;
-                lineAngle += lineAngleStep;
-                elem["pathEnds"].push({ "x": x, "y": y });
-            };
-
-
-        });
     });
+
+    //set all x,y of paths in center or the circles
+    _.forEach(circleInfo, function(obj){
+            // var x = rad * Math.cos(lineAngle) + bgCircCenterX;
+            // var y = rad * Math.sin(lineAngle) + bgCircCenterY;
+            // lineAngle += lineAngleStep;
+            var x = obj["centerPos"]["xM"];
+            var y = obj["centerPos"]["yM"];
+            _.forEach(obj["connections"][0], function(elem){
+                for (var i = Math.abs(Math.round(elem["delta"]/20)) - 1; i >= 0; i--) { //for every line (calc first)
+                    elem["pathEnds"].push({ "x": x , "y": y });
+                };
+            });
+
+    });
+
+    //move x,y of pathends
 
     console.log(circleInfo);
 
@@ -154,7 +161,6 @@ d3.json("data.json", function(error, json) {
     //draw first line
    var line = d3.svg.line()
         .x(function(d) {
-            console.log(d.x);
             return d.x;
         })
         .y(function(d) {
@@ -166,7 +172,6 @@ d3.json("data.json", function(error, json) {
     path[0] = circleInfo[0]["connections"][0]["0-1"]["pathEnds"][0];
     path[1] = { x: bgCircCenterX, y: bgCircCenterY };
     path[2] = circleInfo[1]["connections"][0]["1-0"]["pathEnds"][6];
-    console.log(path);
 
 
     svgGroup.append("path")
@@ -181,7 +186,6 @@ d3.json("data.json", function(error, json) {
     path[0] = circleInfo[0]["connections"][0]["0-1"]["pathEnds"][1];
     path[1] = { x: bgCircCenterX, y: bgCircCenterY };
     path[2] = circleInfo[1]["connections"][0]["1-0"]["pathEnds"][5];
-    console.log(path);
 
 
     svgGroup.append("path")
@@ -196,7 +200,6 @@ d3.json("data.json", function(error, json) {
     path[0] = circleInfo[0]["connections"][0]["0-1"]["pathEnds"][2];
     path[1] = { x: bgCircCenterX, y: bgCircCenterY };
     path[2] = circleInfo[1]["connections"][0]["1-0"]["pathEnds"][4];
-    console.log(path);
 
 
     svgGroup.append("path")
@@ -211,7 +214,6 @@ d3.json("data.json", function(error, json) {
     path[0] = _.last(circleInfo[0]["connections"][0]["0-1"]["pathEnds"]);
     path[1] = { x: bgCircCenterX, y: bgCircCenterY };
     path[2] = circleInfo[1]["connections"][0]["1-0"]["pathEnds"][0];
-    console.log(path);
 
 
     svgGroup.append("path")
