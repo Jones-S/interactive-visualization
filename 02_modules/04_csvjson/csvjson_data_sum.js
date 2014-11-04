@@ -2,8 +2,11 @@ $(document).ready(function() {
 
     var nameKey,
         moveTo,
-        resultat = {};
-        gemeinden={};
+        flats,
+        costs,
+        resultat = {},
+        gemeinden = {},
+        allAdded = [];
 
     // load data
     $.get("data/gemeinde_nameKey.json", function(data) {
@@ -31,7 +34,7 @@ $(document).ready(function() {
     });
 
     function evalData() {
-        if (nameKey && moveTo && flats) {
+        if (nameKey && moveTo && flats && costs) {
 
             //  function getGemeideName(gemeindeId) {
             //     return nameKey[gemeindeId];
@@ -41,11 +44,15 @@ $(document).ready(function() {
 
                 var reduced = _.reduce(gemeindeData['moveTo'], function(result, key) { // rechnet Total moveIn Gemeinde aus
                     return parseInt(result, 10) + parseInt(key, 10);
-                }, 0);    
+                }, 0);
 
-                console.log(nameKey[gemeindeData['gemIdentifier']], reduced);
-              
+
+                // console.log(nameKey[gemeindeData['gemIdentifier']], reduced);
+                allAdded.push(reduced);
+                
             });
+
+            // console.log(allAdded);
 
            var group = [];
            // console.log(moveTo['gemeinden'][0]['moveTo'].length);
@@ -64,18 +71,30 @@ $(document).ready(function() {
             // resultat = {  nameKey[gemeindeId];
 
             //               }
-            console.log(group);
+            // console.log(group);
 
             gemeinden["gemeinden"] = [];
-            _.forEach(nameKey, function(obj, index){
+            var i = 0;
+            _.forEach(nameKey, function(obj, key){
+               // console.log("elem ", key);
                 var  object = {};
-                object["gemId"]= moveTo['gemeinden'][index]['gemIdentifier'];
-                object["gemName"] = nameKey[index];
-                object["moveOutTot"]=[];
-             
-                console.log(object);
+                object["gemId"]= key;
+                object["gemName"] = obj;
+                object["moveOutTot"]=allAdded[i];
+                object["moveInTot"]=group[i];
+                object["emptyFlatsPercent"]=flats[key];
+                object["trafficcostPerPerson"]=costs[key];
+                object["moveTo"]= moveTo['gemeinden'][i]['moveTo'];
+                i++;
 
+                gemeinden.push(object);
+                console.log(gemeinden['gemeinden']);
+                window.gemeinden = gemeinden;
+
+
+                // _.find(moveTo['gemeinden'], function (obj) { return obj['gemIdentifier'] === key });
             });
+
 
         }
     }

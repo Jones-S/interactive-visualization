@@ -7,10 +7,10 @@ jQuery(function() {
 
 
 $.get('data/data_leerwoh.csv', function( in_data ) {
-	console.log( "-- Daten sind da - length:" + in_data.length );
+	// console.log( "-- Daten sind da - length:" + in_data.length );
 
 	var line = in_data.split('\n',300);
-	console.log( "Wir haben " + line.length + " Zeilen gefunden" );
+	// console.log( "Wir haben " + line.length + " Zeilen gefunden" );
 
 	var propertyNames = line[0].split(';');
 	var datacontainer =[];
@@ -29,7 +29,7 @@ $.get('data/data_leerwoh.csv', function( in_data ) {
 		}; 
 		datacontainer.push(object);
 	};
-	console.log('pushed'+ datacontainer.length+'object in container');
+	// console.log('pushed'+ datacontainer.length+'object in container');
 
 	console.log(datacontainer);
 
