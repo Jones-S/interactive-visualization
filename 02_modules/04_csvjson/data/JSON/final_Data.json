@@ -1,13 +1,13 @@
 {
   "gemeinden": [
     {
-      "1gemId": "1",
-      "2gemName": "Aeugst a.A.",
-      "3moveOutTot": 57,
-      "4moveInTot": 88,
-      "5emptyFlatsPercent": "0.47",
-      "6trafficcostPerPerson": "159",
-      "7moveTo": [
+      "gemId": "1",
+      "gemName": "Aeugst a.A.",
+      "moveOutTot": 57,
+      "moveInTot": 88,
+      "emptyFlatsPercent": "0.47",
+      "trafficcostPerPerson": "159",
+      "moveTo": [
         "0",
         "13",
         "1",
@@ -179,16 +179,17 @@
         "0",
         "0",
         "7"
-      ]
+      ],
+      "population": "1959"
     },
     {
-      "1gemId": "2",
-      "2gemName": "Affoltern a.A.",
-      "3moveOutTot": 502,
-      "4moveInTot": 486,
-      "5emptyFlatsPercent": "0.42",
-      "6trafficcostPerPerson": "170",
-      "7moveTo": [
+      "gemId": "2",
+      "gemName": "Affoltern a.A.",
+      "moveOutTot": 502,
+      "moveInTot": 486,
+      "emptyFlatsPercent": "0.42",
+      "trafficcostPerPerson": "170",
+      "moveTo": [
         "12",
         "0",
         "21",
@@ -360,16 +361,17 @@
         "3",
         "0",
         "115"
-      ]
+      ],
+      "population": "11265"
     },
     {
-      "1gemId": "3",
-      "2gemName": "Bonstetten",
-      "3moveOutTot": 221,
-      "4moveInTot": 256,
-      "5emptyFlatsPercent": "0.17",
-      "6trafficcostPerPerson": "142",
-      "7moveTo": [
+      "gemId": "3",
+      "gemName": "Bonstetten",
+      "moveOutTot": 221,
+      "moveInTot": 256,
+      "emptyFlatsPercent": "0.17",
+      "trafficcostPerPerson": "142",
+      "moveTo": [
         "2",
         "27",
         "0",
@@ -541,16 +543,17 @@
         "5",
         "0",
         "43"
-      ]
+      ],
+      "population": "5191"
     },
     {
-      "1gemId": "4",
-      "2gemName": "Hausen a.A.",
-      "3moveOutTot": 98,
-      "4moveInTot": 119,
-      "5emptyFlatsPercent": "1.39",
-      "6trafficcostPerPerson": "258",
-      "7moveTo": [
+      "gemId": "4",
+      "gemName": "Hausen a.A.",
+      "moveOutTot": 98,
+      "moveInTot": 119,
+      "emptyFlatsPercent": "1.39",
+      "trafficcostPerPerson": "258",
+      "moveTo": [
         "5",
         "13",
         "1",
@@ -722,16 +725,17 @@
         "1",
         "1",
         "23"
-      ]
+      ],
+      "population": "3372"
     },
     {
-      "1gemId": "5",
-      "2gemName": "Hedingen",
-      "3moveOutTot": 127,
-      "4moveInTot": 156,
-      "5emptyFlatsPercent": "2.49",
-      "6trafficcostPerPerson": "253",
-      "7moveTo": [
+      "gemId": "5",
+      "gemName": "Hedingen",
+      "moveOutTot": 127,
+      "moveInTot": 156,
+      "emptyFlatsPercent": "2.49",
+      "trafficcostPerPerson": "253",
+      "moveTo": [
         "4",
         "23",
         "4",
@@ -903,16 +907,17 @@
         "0",
         "0",
         "28"
-      ]
+      ],
+      "population": "3506"
     },
     {
-      "1gemId": "6",
-      "2gemName": "Kappel a.A.",
-      "3moveOutTot": 43,
-      "4moveInTot": 16,
-      "5emptyFlatsPercent": "5.90",
-      "6trafficcostPerPerson": "216",
-      "7moveTo": [
+      "gemId": "6",
+      "gemName": "Kappel a.A.",
+      "moveOutTot": 43,
+      "moveInTot": 16,
+      "emptyFlatsPercent": "5.90",
+      "trafficcostPerPerson": "216",
+      "moveTo": [
         "0",
         "8",
         "0",
@@ -1084,16 +1089,17 @@
         "0",
         "0",
         "2"
-      ]
+      ],
+      "population": "922"
     },
     {
-      "1gemId": "7",
-      "2gemName": "Knonau",
-      "3moveOutTot": 64,
-      "4moveInTot": 85,
-      "5emptyFlatsPercent": "1.75",
-      "6trafficcostPerPerson": "254",
-      "7moveTo": [
+      "gemId": "7",
+      "gemName": "Knonau",
+      "moveOutTot": 64,
+      "moveInTot": 85,
+      "emptyFlatsPercent": "1.75",
+      "trafficcostPerPerson": "254",
+      "moveTo": [
         "0",
         "11",
         "2",
@@ -1265,16 +1271,17 @@
         "1",
         "0",
         "5"
-      ]
+      ],
+      "population": "1979"
     },
     {
-      "1gemId": "8",
-      "2gemName": "Maschwanden",
-      "3moveOutTot": 29,
-      "4moveInTot": 19,
-      "5emptyFlatsPercent": "1.02",
-      "6trafficcostPerPerson": "262",
-      "7moveTo": [
+      "gemId": "8",
+      "gemName": "Maschwanden",
+      "moveOutTot": 29,
+      "moveInTot": 19,
+      "emptyFlatsPercent": "1.02",
+      "trafficcostPerPerson": "262",
+      "moveTo": [
         "0",
         "2",
         "1",
@@ -1446,16 +1453,17 @@
         "0",
         "0",
         "2"
-      ]
+      ],
+      "population": "641"
     },
     {
-      "1gemId": "9",
-      "2gemName": "Mettmenstetten",
-      "3moveOutTot": 140,
-      "4moveInTot": 179,
-      "5emptyFlatsPercent": "2.43",
-      "6trafficcostPerPerson": "196",
-      "7moveTo": [
+      "gemId": "9",
+      "gemName": "Mettmenstetten",
+      "moveOutTot": 140,
+      "moveInTot": 179,
+      "emptyFlatsPercent": "2.43",
+      "trafficcostPerPerson": "196",
+      "moveTo": [
         "11",
         "21",
         "2",
@@ -1627,16 +1635,17 @@
         "1",
         "0",
         "30"
-      ]
+      ],
+      "population": "4414"
     },
     {
-      "1gemId": "10",
-      "2gemName": "Obfelden",
-      "3moveOutTot": 157,
-      "4moveInTot": 212,
-      "5emptyFlatsPercent": "0.75",
-      "6trafficcostPerPerson": "147",
-      "7moveTo": [
+      "gemId": "10",
+      "gemName": "Obfelden",
+      "moveOutTot": 157,
+      "moveInTot": 212,
+      "emptyFlatsPercent": "0.75",
+      "trafficcostPerPerson": "147",
+      "moveTo": [
         "2",
         "47",
         "6",
@@ -1808,16 +1817,17 @@
         "4",
         "0",
         "14"
-      ]
+      ],
+      "population": "4828"
     },
     {
-      "1gemId": "11",
-      "2gemName": "Ottenbach",
-      "3moveOutTot": 88,
-      "4moveInTot": 121,
-      "5emptyFlatsPercent": "0.36",
-      "6trafficcostPerPerson": "120",
-      "7moveTo": [
+      "gemId": "11",
+      "gemName": "Ottenbach",
+      "moveOutTot": 88,
+      "moveInTot": 121,
+      "emptyFlatsPercent": "0.36",
+      "trafficcostPerPerson": "120",
+      "moveTo": [
         "1",
         "17",
         "6",
@@ -1989,16 +1999,17 @@
         "2",
         "0",
         "11"
-      ]
+      ],
+      "population": "2479"
     },
     {
-      "1gemId": "12",
-      "2gemName": "Rifferswil",
-      "3moveOutTot": 29,
-      "4moveInTot": 28,
-      "5emptyFlatsPercent": "0.25",
-      "6trafficcostPerPerson": "214",
-      "7moveTo": [
+      "gemId": "12",
+      "gemName": "Rifferswil",
+      "moveOutTot": 29,
+      "moveInTot": 28,
+      "emptyFlatsPercent": "0.25",
+      "trafficcostPerPerson": "214",
+      "moveTo": [
         "2",
         "8",
         "1",
@@ -2170,16 +2181,17 @@
         "0",
         "1",
         "7"
-      ]
+      ],
+      "population": "957"
     },
     {
-      "1gemId": "13",
-      "2gemName": "Stallikon",
-      "3moveOutTot": 132,
-      "4moveInTot": 171,
-      "5emptyFlatsPercent": "0.98",
-      "6trafficcostPerPerson": "473",
-      "7moveTo": [
+      "gemId": "13",
+      "gemName": "Stallikon",
+      "moveOutTot": 132,
+      "moveInTot": 171,
+      "emptyFlatsPercent": "0.98",
+      "trafficcostPerPerson": "473",
+      "moveTo": [
         "4",
         "9",
         "3",
@@ -2351,16 +2363,17 @@
         "0",
         "0",
         "34"
-      ]
+      ],
+      "population": "3297"
     },
     {
-      "1gemId": "14",
-      "2gemName": "Wettswil a.A.",
-      "3moveOutTot": 175,
-      "4moveInTot": 198,
-      "5emptyFlatsPercent": "0.00",
-      "6trafficcostPerPerson": "314",
-      "7moveTo": [
+      "gemId": "14",
+      "gemName": "Wettswil a.A.",
+      "moveOutTot": 175,
+      "moveInTot": 198,
+      "emptyFlatsPercent": "0.00",
+      "trafficcostPerPerson": "314",
+      "moveTo": [
         "0",
         "14",
         "25",
@@ -2532,16 +2545,17 @@
         "1",
         "0",
         "37"
-      ]
+      ],
+      "population": "4574"
     },
     {
-      "1gemId": "21",
-      "2gemName": "Adlikon",
-      "3moveOutTot": 37,
-      "4moveInTot": 21,
-      "5emptyFlatsPercent": "1.69",
-      "6trafficcostPerPerson": "608",
-      "7moveTo": [
+      "gemId": "21",
+      "gemName": "Adlikon",
+      "moveOutTot": 37,
+      "moveInTot": 21,
+      "emptyFlatsPercent": "1.69",
+      "trafficcostPerPerson": "608",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -2713,16 +2727,17 @@
         "0",
         "0",
         "2"
-      ]
+      ],
+      "population": "562"
     },
     {
-      "1gemId": "22",
-      "2gemName": "Benken",
-      "3moveOutTot": 24,
-      "4moveInTot": 33,
-      "5emptyFlatsPercent": "3.10",
-      "6trafficcostPerPerson": "186",
-      "7moveTo": [
+      "gemId": "22",
+      "gemName": "Benken",
+      "moveOutTot": 24,
+      "moveInTot": 33,
+      "emptyFlatsPercent": "3.10",
+      "trafficcostPerPerson": "186",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -2894,16 +2909,17 @@
         "0",
         "0",
         "0"
-      ]
+      ],
+      "population": "823"
     },
     {
-      "1gemId": "23",
-      "2gemName": "Berg a.I.",
-      "3moveOutTot": 20,
-      "4moveInTot": 25,
-      "5emptyFlatsPercent": "1.13",
-      "6trafficcostPerPerson": "153",
-      "7moveTo": [
+      "gemId": "23",
+      "gemName": "Berg a.I.",
+      "moveOutTot": 20,
+      "moveInTot": 25,
+      "emptyFlatsPercent": "1.13",
+      "trafficcostPerPerson": "153",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -3075,16 +3091,17 @@
         "0",
         "0",
         "0"
-      ]
+      ],
+      "population": "587"
     },
     {
-      "1gemId": "24",
-      "2gemName": "Buch a.I.",
-      "3moveOutTot": 28,
-      "4moveInTot": 49,
-      "5emptyFlatsPercent": "0.55",
-      "6trafficcostPerPerson": "452",
-      "7moveTo": [
+      "gemId": "24",
+      "gemName": "Buch a.I.",
+      "moveOutTot": 28,
+      "moveInTot": 49,
+      "emptyFlatsPercent": "0.55",
+      "trafficcostPerPerson": "452",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -3256,16 +3273,17 @@
         "0",
         "0",
         "0"
-      ]
+      ],
+      "population": "898"
     },
     {
-      "1gemId": "25",
-      "2gemName": "Dachsen",
-      "3moveOutTot": 78,
-      "4moveInTot": 57,
-      "5emptyFlatsPercent": "2.62",
-      "6trafficcostPerPerson": "295",
-      "7moveTo": [
+      "gemId": "25",
+      "gemName": "Dachsen",
+      "moveOutTot": 78,
+      "moveInTot": 57,
+      "emptyFlatsPercent": "2.62",
+      "trafficcostPerPerson": "295",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -3437,16 +3455,17 @@
         "0",
         "0",
         "6"
-      ]
+      ],
+      "population": "1955"
     },
     {
-      "1gemId": "26",
-      "2gemName": "Dorf",
-      "3moveOutTot": 16,
-      "4moveInTot": 15,
-      "5emptyFlatsPercent": "1.57",
-      "6trafficcostPerPerson": "103",
-      "7moveTo": [
+      "gemId": "26",
+      "gemName": "Dorf",
+      "moveOutTot": 16,
+      "moveInTot": 15,
+      "emptyFlatsPercent": "1.57",
+      "trafficcostPerPerson": "103",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -3618,16 +3637,17 @@
         "0",
         "0",
         "0"
-      ]
+      ],
+      "population": "634"
     },
     {
-      "1gemId": "27",
-      "2gemName": "Feuerthalen",
-      "3moveOutTot": 56,
-      "4moveInTot": 54,
-      "5emptyFlatsPercent": "0.71",
-      "6trafficcostPerPerson": "300",
-      "7moveTo": [
+      "gemId": "27",
+      "gemName": "Feuerthalen",
+      "moveOutTot": 56,
+      "moveInTot": 54,
+      "emptyFlatsPercent": "0.71",
+      "trafficcostPerPerson": "300",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -3799,16 +3819,17 @@
         "0",
         "0",
         "5"
-      ]
+      ],
+      "population": "3459"
     },
     {
-      "1gemId": "28",
-      "2gemName": "Flaach",
-      "3moveOutTot": 43,
-      "4moveInTot": 97,
-      "5emptyFlatsPercent": "0.19",
-      "6trafficcostPerPerson": "204",
-      "7moveTo": [
+      "gemId": "28",
+      "gemName": "Flaach",
+      "moveOutTot": 43,
+      "moveInTot": 97,
+      "emptyFlatsPercent": "0.19",
+      "trafficcostPerPerson": "204",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -3980,16 +4001,17 @@
         "0",
         "0",
         "3"
-      ]
+      ],
+      "population": "1330"
     },
     {
-      "1gemId": "29",
-      "2gemName": "Flurlingen",
-      "3moveOutTot": 43,
-      "4moveInTot": 25,
-      "5emptyFlatsPercent": "0.31",
-      "6trafficcostPerPerson": "247",
-      "7moveTo": [
+      "gemId": "29",
+      "gemName": "Flurlingen",
+      "moveOutTot": 43,
+      "moveInTot": 25,
+      "emptyFlatsPercent": "0.31",
+      "trafficcostPerPerson": "247",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -4161,16 +4183,17 @@
         "0",
         "0",
         "2"
-      ]
+      ],
+      "population": "1415"
     },
     {
-      "1gemId": "30",
-      "2gemName": "Andelfingen",
-      "3moveOutTot": 75,
-      "4moveInTot": 131,
-      "5emptyFlatsPercent": "0.88",
-      "6trafficcostPerPerson": "343",
-      "7moveTo": [
+      "gemId": "30",
+      "gemName": "Andelfingen",
+      "moveOutTot": 75,
+      "moveInTot": 131,
+      "emptyFlatsPercent": "0.88",
+      "trafficcostPerPerson": "343",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -4342,16 +4365,17 @@
         "0",
         "0",
         "8"
-      ]
+      ],
+      "population": "2062"
     },
     {
-      "1gemId": "31",
-      "2gemName": "Henggart",
-      "3moveOutTot": 81,
-      "4moveInTot": 82,
-      "5emptyFlatsPercent": "0.32",
-      "6trafficcostPerPerson": "179",
-      "7moveTo": [
+      "gemId": "31",
+      "gemName": "Henggart",
+      "moveOutTot": 81,
+      "moveInTot": 82,
+      "emptyFlatsPercent": "0.32",
+      "trafficcostPerPerson": "179",
+      "moveTo": [
         "0",
         "1",
         "0",
@@ -4523,16 +4547,17 @@
         "0",
         "0",
         "2"
-      ]
+      ],
+      "population": "2248"
     },
     {
-      "1gemId": "32",
-      "2gemName": "Humlikon",
-      "3moveOutTot": 20,
-      "4moveInTot": 26,
-      "5emptyFlatsPercent": "1.09",
-      "6trafficcostPerPerson": "269",
-      "7moveTo": [
+      "gemId": "32",
+      "gemName": "Humlikon",
+      "moveOutTot": 20,
+      "moveInTot": 26,
+      "emptyFlatsPercent": "1.09",
+      "trafficcostPerPerson": "269",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -4704,16 +4729,17 @@
         "0",
         "0",
         "0"
-      ]
+      ],
+      "population": "484"
     },
     {
-      "1gemId": "33",
-      "2gemName": "Kleinandelfingen",
-      "3moveOutTot": 83,
-      "4moveInTot": 77,
-      "5emptyFlatsPercent": "1.07",
-      "6trafficcostPerPerson": "188",
-      "7moveTo": [
+      "gemId": "33",
+      "gemName": "Kleinandelfingen",
+      "moveOutTot": 83,
+      "moveInTot": 77,
+      "emptyFlatsPercent": "1.07",
+      "trafficcostPerPerson": "188",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -4885,16 +4911,17 @@
         "0",
         "0",
         "2"
-      ]
+      ],
+      "population": "2008"
     },
     {
-      "1gemId": "34",
-      "2gemName": "Laufen-Uhwiesen",
-      "3moveOutTot": 32,
-      "4moveInTot": 55,
-      "5emptyFlatsPercent": "0.58",
-      "6trafficcostPerPerson": "255",
-      "7moveTo": [
+      "gemId": "34",
+      "gemName": "Laufen-Uhwiesen",
+      "moveOutTot": 32,
+      "moveInTot": 55,
+      "emptyFlatsPercent": "0.58",
+      "trafficcostPerPerson": "255",
+      "moveTo": [
         "0",
         "0",
         "1",
@@ -5066,16 +5093,17 @@
         "0",
         "0",
         "1"
-      ]
+      ],
+      "population": "1560"
     },
     {
-      "1gemId": "35",
-      "2gemName": "Marthalen",
-      "3moveOutTot": 93,
-      "4moveInTot": 73,
-      "5emptyFlatsPercent": "0.46",
-      "6trafficcostPerPerson": "384",
-      "7moveTo": [
+      "gemId": "35",
+      "gemName": "Marthalen",
+      "moveOutTot": 93,
+      "moveInTot": 73,
+      "emptyFlatsPercent": "0.46",
+      "trafficcostPerPerson": "384",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -5247,16 +5275,17 @@
         "0",
         "0",
         "5"
-      ]
+      ],
+      "population": "1964"
     },
     {
-      "1gemId": "36",
-      "2gemName": "Oberstammheim",
-      "3moveOutTot": 29,
-      "4moveInTot": 46,
-      "5emptyFlatsPercent": "0.39",
-      "6trafficcostPerPerson": "217",
-      "7moveTo": [
+      "gemId": "36",
+      "gemName": "Oberstammheim",
+      "moveOutTot": 29,
+      "moveInTot": 46,
+      "emptyFlatsPercent": "0.39",
+      "trafficcostPerPerson": "217",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -5428,16 +5457,17 @@
         "0",
         "0",
         "1"
-      ]
+      ],
+      "population": "1125"
     },
     {
-      "1gemId": "37",
-      "2gemName": "Ossingen",
-      "3moveOutTot": 68,
-      "4moveInTot": 60,
-      "5emptyFlatsPercent": "1.67",
-      "6trafficcostPerPerson": "240",
-      "7moveTo": [
+      "gemId": "37",
+      "gemName": "Ossingen",
+      "moveOutTot": 68,
+      "moveInTot": 60,
+      "emptyFlatsPercent": "1.67",
+      "trafficcostPerPerson": "240",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -5609,16 +5639,17 @@
         "0",
         "0",
         "3"
-      ]
+      ],
+      "population": "1348"
     },
     {
-      "1gemId": "38",
-      "2gemName": "Rheinau",
-      "3moveOutTot": 40,
-      "4moveInTot": 48,
-      "5emptyFlatsPercent": "1.30",
-      "6trafficcostPerPerson": "191",
-      "7moveTo": [
+      "gemId": "38",
+      "gemName": "Rheinau",
+      "moveOutTot": 40,
+      "moveInTot": 48,
+      "emptyFlatsPercent": "1.30",
+      "trafficcostPerPerson": "191",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -5790,16 +5821,17 @@
         "0",
         "0",
         "3"
-      ]
+      ],
+      "population": "1346"
     },
     {
-      "1gemId": "39",
-      "2gemName": "Thalheim a.d.Th.",
-      "3moveOutTot": 32,
-      "4moveInTot": 58,
-      "5emptyFlatsPercent": "1.34",
-      "6trafficcostPerPerson": "236",
-      "7moveTo": [
+      "gemId": "39",
+      "gemName": "Thalheim a.d.Th.",
+      "moveOutTot": 32,
+      "moveInTot": 58,
+      "emptyFlatsPercent": "1.34",
+      "trafficcostPerPerson": "236",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -5971,16 +6003,17 @@
         "0",
         "0",
         "2"
-      ]
+      ],
+      "population": "898"
     },
     {
-      "1gemId": "40",
-      "2gemName": "Trüllikon",
-      "3moveOutTot": 47,
-      "4moveInTot": 50,
-      "5emptyFlatsPercent": "2.11",
-      "6trafficcostPerPerson": "183",
-      "7moveTo": [
+      "gemId": "40",
+      "gemName": "Trüllikon",
+      "moveOutTot": 47,
+      "moveInTot": 50,
+      "emptyFlatsPercent": "2.11",
+      "trafficcostPerPerson": "183",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -6152,16 +6185,17 @@
         "0",
         "0",
         "2"
-      ]
+      ],
+      "population": "982"
     },
     {
-      "1gemId": "41",
-      "2gemName": "Truttikon",
-      "3moveOutTot": 15,
-      "4moveInTot": 16,
-      "5emptyFlatsPercent": "0.55",
-      "6trafficcostPerPerson": "190",
-      "7moveTo": [
+      "gemId": "41",
+      "gemName": "Truttikon",
+      "moveOutTot": 15,
+      "moveInTot": 16,
+      "emptyFlatsPercent": "0.55",
+      "trafficcostPerPerson": "190",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -6333,16 +6367,17 @@
         "0",
         "0",
         "2"
-      ]
+      ],
+      "population": "465"
     },
     {
-      "1gemId": "42",
-      "2gemName": "Unterstammheim",
-      "3moveOutTot": 25,
-      "4moveInTot": 24,
-      "5emptyFlatsPercent": "2.12",
-      "6trafficcostPerPerson": "578",
-      "7moveTo": [
+      "gemId": "42",
+      "gemName": "Unterstammheim",
+      "moveOutTot": 25,
+      "moveInTot": 24,
+      "emptyFlatsPercent": "2.12",
+      "trafficcostPerPerson": "578",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -6514,16 +6549,17 @@
         "0",
         "0",
         "1"
-      ]
+      ],
+      "population": "861"
     },
     {
-      "1gemId": "43",
-      "2gemName": "Volken",
-      "3moveOutTot": 11,
-      "4moveInTot": 20,
-      "5emptyFlatsPercent": "0.00",
-      "6trafficcostPerPerson": "336",
-      "7moveTo": [
+      "gemId": "43",
+      "gemName": "Volken",
+      "moveOutTot": 11,
+      "moveInTot": 20,
+      "emptyFlatsPercent": "0.00",
+      "trafficcostPerPerson": "336",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -6695,16 +6731,17 @@
         "0",
         "0",
         "1"
-      ]
+      ],
+      "population": "311"
     },
     {
-      "1gemId": "44",
-      "2gemName": "Waltalingen",
-      "3moveOutTot": 23,
-      "4moveInTot": 13,
-      "5emptyFlatsPercent": "1.05",
-      "6trafficcostPerPerson": "296",
-      "7moveTo": [
+      "gemId": "44",
+      "gemName": "Waltalingen",
+      "moveOutTot": 23,
+      "moveInTot": 13,
+      "emptyFlatsPercent": "1.05",
+      "trafficcostPerPerson": "296",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -6876,16 +6913,17 @@
         "0",
         "0",
         "2"
-      ]
+      ],
+      "population": "675"
     },
     {
-      "1gemId": "51",
-      "2gemName": "Bachenbülach",
-      "3moveOutTot": 242,
-      "4moveInTot": 242,
-      "5emptyFlatsPercent": "0.11",
-      "6trafficcostPerPerson": "92",
-      "7moveTo": [
+      "gemId": "51",
+      "gemName": "Bachenbülach",
+      "moveOutTot": 242,
+      "moveInTot": 242,
+      "emptyFlatsPercent": "0.11",
+      "trafficcostPerPerson": "92",
+      "moveTo": [
         "0",
         "1",
         "0",
@@ -7057,16 +7095,17 @@
         "1",
         "0",
         "29"
-      ]
+      ],
+      "population": "4009"
     },
     {
-      "1gemId": "52",
-      "2gemName": "Bassersdorf",
-      "3moveOutTot": 626,
-      "4moveInTot": 568,
-      "5emptyFlatsPercent": "0.61",
-      "6trafficcostPerPerson": "133",
-      "7moveTo": [
+      "gemId": "52",
+      "gemName": "Bassersdorf",
+      "moveOutTot": 626,
+      "moveInTot": 568,
+      "emptyFlatsPercent": "0.61",
+      "trafficcostPerPerson": "133",
+      "moveTo": [
         "0",
         "1",
         "1",
@@ -7238,16 +7277,17 @@
         "1",
         "1",
         "80"
-      ]
+      ],
+      "population": "11229"
     },
     {
-      "1gemId": "53",
-      "2gemName": "Bülach",
-      "3moveOutTot": 987,
-      "4moveInTot": 1227,
-      "5emptyFlatsPercent": "1.76",
-      "6trafficcostPerPerson": "103",
-      "7moveTo": [
+      "gemId": "53",
+      "gemName": "Bülach",
+      "moveOutTot": 987,
+      "moveInTot": 1227,
+      "emptyFlatsPercent": "1.76",
+      "trafficcostPerPerson": "103",
+      "moveTo": [
         "0",
         "7",
         "1",
@@ -7419,16 +7459,17 @@
         "4",
         "2",
         "151"
-      ]
+      ],
+      "population": "17928"
     },
     {
-      "1gemId": "54",
-      "2gemName": "Dietlikon",
-      "3moveOutTot": 426,
-      "4moveInTot": 460,
-      "5emptyFlatsPercent": "0.18",
-      "6trafficcostPerPerson": "220",
-      "7moveTo": [
+      "gemId": "54",
+      "gemName": "Dietlikon",
+      "moveOutTot": 426,
+      "moveInTot": 460,
+      "emptyFlatsPercent": "0.18",
+      "trafficcostPerPerson": "220",
+      "moveTo": [
         "0",
         "4",
         "0",
@@ -7600,16 +7641,17 @@
         "7",
         "0",
         "70"
-      ]
+      ],
+      "population": "7164"
     },
     {
-      "1gemId": "55",
-      "2gemName": "Eglisau",
-      "3moveOutTot": 191,
-      "4moveInTot": 293,
-      "5emptyFlatsPercent": "1.69",
-      "6trafficcostPerPerson": "166",
-      "7moveTo": [
+      "gemId": "55",
+      "gemName": "Eglisau",
+      "moveOutTot": 191,
+      "moveInTot": 293,
+      "emptyFlatsPercent": "1.69",
+      "trafficcostPerPerson": "166",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -7781,16 +7823,17 @@
         "4",
         "0",
         "38"
-      ]
+      ],
+      "population": "4701"
     },
     {
-      "1gemId": "56",
-      "2gemName": "Embrach",
-      "3moveOutTot": 477,
-      "4moveInTot": 440,
-      "5emptyFlatsPercent": "1.66",
-      "6trafficcostPerPerson": "110",
-      "7moveTo": [
+      "gemId": "56",
+      "gemName": "Embrach",
+      "moveOutTot": 477,
+      "moveInTot": 440,
+      "emptyFlatsPercent": "1.66",
+      "trafficcostPerPerson": "110",
+      "moveTo": [
         "0",
         "1",
         "0",
@@ -7962,16 +8005,17 @@
         "0",
         "2",
         "67"
-      ]
+      ],
+      "population": "8975"
     },
     {
-      "1gemId": "57",
-      "2gemName": "Freienstein-Teufen",
-      "3moveOutTot": 107,
-      "4moveInTot": 124,
-      "5emptyFlatsPercent": "0.50",
-      "6trafficcostPerPerson": "187",
-      "7moveTo": [
+      "gemId": "57",
+      "gemName": "Freienstein-Teufen",
+      "moveOutTot": 107,
+      "moveInTot": 124,
+      "emptyFlatsPercent": "0.50",
+      "trafficcostPerPerson": "187",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -8143,16 +8187,17 @@
         "0",
         "0",
         "9"
-      ]
+      ],
+      "population": "2317"
     },
     {
-      "1gemId": "58",
-      "2gemName": "Glattfelden",
-      "3moveOutTot": 185,
-      "4moveInTot": 213,
-      "5emptyFlatsPercent": "0.84",
-      "6trafficcostPerPerson": "214",
-      "7moveTo": [
+      "gemId": "58",
+      "gemName": "Glattfelden",
+      "moveOutTot": 185,
+      "moveInTot": 213,
+      "emptyFlatsPercent": "0.84",
+      "trafficcostPerPerson": "214",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -8324,16 +8369,17 @@
         "0",
         "0",
         "28"
-      ]
+      ],
+      "population": "4546"
     },
     {
-      "1gemId": "59",
-      "2gemName": "Hochfelden",
-      "3moveOutTot": 120,
-      "4moveInTot": 123,
-      "5emptyFlatsPercent": "1.19",
-      "6trafficcostPerPerson": "195",
-      "7moveTo": [
+      "gemId": "59",
+      "gemName": "Hochfelden",
+      "moveOutTot": 120,
+      "moveInTot": 123,
+      "emptyFlatsPercent": "1.19",
+      "trafficcostPerPerson": "195",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -8505,16 +8551,17 @@
         "0",
         "0",
         "11"
-      ]
+      ],
+      "population": "2021"
     },
     {
-      "1gemId": "60",
-      "2gemName": "Höri",
-      "3moveOutTot": 142,
-      "4moveInTot": 254,
-      "5emptyFlatsPercent": "0.19",
-      "6trafficcostPerPerson": "114",
-      "7moveTo": [
+      "gemId": "60",
+      "gemName": "Höri",
+      "moveOutTot": 142,
+      "moveInTot": 254,
+      "emptyFlatsPercent": "0.19",
+      "trafficcostPerPerson": "114",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -8686,16 +8733,17 @@
         "0",
         "1",
         "14"
-      ]
+      ],
+      "population": "2611"
     },
     {
-      "1gemId": "61",
-      "2gemName": "Hüntwangen",
-      "3moveOutTot": 29,
-      "4moveInTot": 69,
-      "5emptyFlatsPercent": "1.69",
-      "6trafficcostPerPerson": "124",
-      "7moveTo": [
+      "gemId": "61",
+      "gemName": "Hüntwangen",
+      "moveOutTot": 29,
+      "moveInTot": 69,
+      "emptyFlatsPercent": "1.69",
+      "trafficcostPerPerson": "124",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -8867,16 +8915,17 @@
         "0",
         "0",
         "2"
-      ]
+      ],
+      "population": "1002"
     },
     {
-      "1gemId": "62",
-      "2gemName": "Kloten",
-      "3moveOutTot": 1028,
-      "4moveInTot": 949,
-      "5emptyFlatsPercent": "1.10",
-      "6trafficcostPerPerson": "278",
-      "7moveTo": [
+      "gemId": "62",
+      "gemName": "Kloten",
+      "moveOutTot": 1028,
+      "moveInTot": 949,
+      "emptyFlatsPercent": "1.10",
+      "trafficcostPerPerson": "278",
+      "moveTo": [
         "0",
         "2",
         "2",
@@ -9048,16 +9097,17 @@
         "3",
         "1",
         "223"
-      ]
+      ],
+      "population": "18373"
     },
     {
-      "1gemId": "63",
-      "2gemName": "Lufingen",
-      "3moveOutTot": 100,
-      "4moveInTot": 89,
-      "5emptyFlatsPercent": "0.00",
-      "6trafficcostPerPerson": "174",
-      "7moveTo": [
+      "gemId": "63",
+      "gemName": "Lufingen",
+      "moveOutTot": 100,
+      "moveInTot": 89,
+      "emptyFlatsPercent": "0.00",
+      "trafficcostPerPerson": "174",
+      "moveTo": [
         "0",
         "1",
         "0",
@@ -9229,16 +9279,17 @@
         "1",
         "0",
         "7"
-      ]
+      ],
+      "population": "1836"
     },
     {
-      "1gemId": "64",
-      "2gemName": "Nürensdorf",
-      "3moveOutTot": 252,
-      "4moveInTot": 295,
-      "5emptyFlatsPercent": "1.64",
-      "6trafficcostPerPerson": "183",
-      "7moveTo": [
+      "gemId": "64",
+      "gemName": "Nürensdorf",
+      "moveOutTot": 252,
+      "moveInTot": 295,
+      "emptyFlatsPercent": "1.64",
+      "trafficcostPerPerson": "183",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -9410,16 +9461,17 @@
         "0",
         "0",
         "32"
-      ]
+      ],
+      "population": "5261"
     },
     {
-      "1gemId": "65",
-      "2gemName": "Oberembrach",
-      "3moveOutTot": 114,
-      "4moveInTot": 72,
-      "5emptyFlatsPercent": "1.11",
-      "6trafficcostPerPerson": "286",
-      "7moveTo": [
+      "gemId": "65",
+      "gemName": "Oberembrach",
+      "moveOutTot": 114,
+      "moveInTot": 72,
+      "emptyFlatsPercent": "1.11",
+      "trafficcostPerPerson": "286",
+      "moveTo": [
         "0",
         "0",
         "6",
@@ -9591,16 +9643,17 @@
         "1",
         "0",
         "14"
-      ]
+      ],
+      "population": "1025"
     },
     {
-      "1gemId": "66",
-      "2gemName": "Opfikon",
-      "3moveOutTot": 1393,
-      "4moveInTot": 1084,
-      "5emptyFlatsPercent": "0.92",
-      "6trafficcostPerPerson": "278",
-      "7moveTo": [
+      "gemId": "66",
+      "gemName": "Opfikon",
+      "moveOutTot": 1393,
+      "moveInTot": 1084,
+      "emptyFlatsPercent": "0.92",
+      "trafficcostPerPerson": "278",
+      "moveTo": [
         "1",
         "2",
         "1",
@@ -9772,16 +9825,17 @@
         "5",
         "2",
         "451"
-      ]
+      ],
+      "population": "16045"
     },
     {
-      "1gemId": "67",
-      "2gemName": "Rafz",
-      "3moveOutTot": 146,
-      "4moveInTot": 151,
-      "5emptyFlatsPercent": "1.03",
-      "6trafficcostPerPerson": "181",
-      "7moveTo": [
+      "gemId": "67",
+      "gemName": "Rafz",
+      "moveOutTot": 146,
+      "moveInTot": 151,
+      "emptyFlatsPercent": "1.03",
+      "trafficcostPerPerson": "181",
+      "moveTo": [
         "0",
         "1",
         "0",
@@ -9953,16 +10007,17 @@
         "0",
         "0",
         "29"
-      ]
+      ],
+      "population": "4085"
     },
     {
-      "1gemId": "68",
-      "2gemName": "Rorbas",
-      "3moveOutTot": 188,
-      "4moveInTot": 177,
-      "5emptyFlatsPercent": "0.91",
-      "6trafficcostPerPerson": "103",
-      "7moveTo": [
+      "gemId": "68",
+      "gemName": "Rorbas",
+      "moveOutTot": 188,
+      "moveInTot": 177,
+      "emptyFlatsPercent": "0.91",
+      "trafficcostPerPerson": "103",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -10134,16 +10189,17 @@
         "0",
         "0",
         "22"
-      ]
+      ],
+      "population": "2503"
     },
     {
-      "1gemId": "69",
-      "2gemName": "Wallisellen",
-      "3moveOutTot": 807,
-      "4moveInTot": 830,
-      "5emptyFlatsPercent": "1.41",
-      "6trafficcostPerPerson": "297",
-      "7moveTo": [
+      "gemId": "69",
+      "gemName": "Wallisellen",
+      "moveOutTot": 807,
+      "moveInTot": 830,
+      "emptyFlatsPercent": "1.41",
+      "trafficcostPerPerson": "297",
+      "moveTo": [
         "0",
         "0",
         "5",
@@ -10315,16 +10371,17 @@
         "2",
         "0",
         "205"
-      ]
+      ],
+      "population": "14149"
     },
     {
-      "1gemId": "70",
-      "2gemName": "Wasterkingen",
-      "3moveOutTot": 23,
-      "4moveInTot": 23,
-      "5emptyFlatsPercent": "0.00",
-      "6trafficcostPerPerson": "176",
-      "7moveTo": [
+      "gemId": "70",
+      "gemName": "Wasterkingen",
+      "moveOutTot": 23,
+      "moveInTot": 23,
+      "emptyFlatsPercent": "0.00",
+      "trafficcostPerPerson": "176",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -10496,16 +10553,17 @@
         "0",
         "0",
         "3"
-      ]
+      ],
+      "population": "547"
     },
     {
-      "1gemId": "71",
-      "2gemName": "Wil",
-      "3moveOutTot": 60,
-      "4moveInTot": 51,
-      "5emptyFlatsPercent": "0.17",
-      "6trafficcostPerPerson": "243",
-      "7moveTo": [
+      "gemId": "71",
+      "gemName": "Wil",
+      "moveOutTot": 60,
+      "moveInTot": 51,
+      "emptyFlatsPercent": "0.17",
+      "trafficcostPerPerson": "243",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -10677,16 +10735,17 @@
         "0",
         "0",
         "6"
-      ]
+      ],
+      "population": "1298"
     },
     {
-      "1gemId": "72",
-      "2gemName": "Winkel",
-      "3moveOutTot": 223,
-      "4moveInTot": 358,
-      "5emptyFlatsPercent": "2.24",
-      "6trafficcostPerPerson": "297",
-      "7moveTo": [
+      "gemId": "72",
+      "gemName": "Winkel",
+      "moveOutTot": 223,
+      "moveInTot": 358,
+      "emptyFlatsPercent": "2.24",
+      "trafficcostPerPerson": "297",
+      "moveTo": [
         "0",
         "0",
         "1",
@@ -10858,16 +10917,17 @@
         "2",
         "0",
         "26"
-      ]
+      ],
+      "population": "4084"
     },
     {
-      "1gemId": "81",
-      "2gemName": "Bachs",
-      "3moveOutTot": 16,
-      "4moveInTot": 40,
-      "5emptyFlatsPercent": "0.00",
-      "6trafficcostPerPerson": "265",
-      "7moveTo": [
+      "gemId": "81",
+      "gemName": "Bachs",
+      "moveOutTot": 16,
+      "moveInTot": 40,
+      "emptyFlatsPercent": "0.00",
+      "trafficcostPerPerson": "265",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -11039,16 +11099,17 @@
         "0",
         "0",
         "0"
-      ]
+      ],
+      "population": "574"
     },
     {
-      "1gemId": "82",
-      "2gemName": "Boppelsen",
-      "3moveOutTot": 64,
-      "4moveInTot": 45,
-      "5emptyFlatsPercent": "0.91",
-      "6trafficcostPerPerson": "525",
-      "7moveTo": [
+      "gemId": "82",
+      "gemName": "Boppelsen",
+      "moveOutTot": 64,
+      "moveInTot": 45,
+      "emptyFlatsPercent": "0.91",
+      "trafficcostPerPerson": "525",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -11220,16 +11281,17 @@
         "0",
         "0",
         "12"
-      ]
+      ],
+      "population": "1274"
     },
     {
-      "1gemId": "83",
-      "2gemName": "Buchs",
-      "3moveOutTot": 353,
-      "4moveInTot": 606,
-      "5emptyFlatsPercent": "0.35",
-      "6trafficcostPerPerson": "136",
-      "7moveTo": [
+      "gemId": "83",
+      "gemName": "Buchs",
+      "moveOutTot": 353,
+      "moveInTot": 606,
+      "emptyFlatsPercent": "0.35",
+      "trafficcostPerPerson": "136",
+      "moveTo": [
         "0",
         "2",
         "1",
@@ -11401,16 +11463,17 @@
         "4",
         "1",
         "82"
-      ]
+      ],
+      "population": "6047"
     },
     {
-      "1gemId": "84",
-      "2gemName": "Dällikon",
-      "3moveOutTot": 173,
-      "4moveInTot": 226,
-      "5emptyFlatsPercent": "0.36",
-      "6trafficcostPerPerson": "136",
-      "7moveTo": [
+      "gemId": "84",
+      "gemName": "Dällikon",
+      "moveOutTot": 173,
+      "moveInTot": 226,
+      "emptyFlatsPercent": "0.36",
+      "trafficcostPerPerson": "136",
+      "moveTo": [
         "0",
         "1",
         "0",
@@ -11582,16 +11645,17 @@
         "2",
         "0",
         "36"
-      ]
+      ],
+      "population": "3722"
     },
     {
-      "1gemId": "85",
-      "2gemName": "Dänikon",
-      "3moveOutTot": 101,
-      "4moveInTot": 105,
-      "5emptyFlatsPercent": "0.25",
-      "6trafficcostPerPerson": "184",
-      "7moveTo": [
+      "gemId": "85",
+      "gemName": "Dänikon",
+      "moveOutTot": 101,
+      "moveInTot": 105,
+      "emptyFlatsPercent": "0.25",
+      "trafficcostPerPerson": "184",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -11763,16 +11827,17 @@
         "1",
         "0",
         "22"
-      ]
+      ],
+      "population": "1929"
     },
     {
-      "1gemId": "86",
-      "2gemName": "Dielsdorf",
-      "3moveOutTot": 377,
-      "4moveInTot": 369,
-      "5emptyFlatsPercent": "0.33",
-      "6trafficcostPerPerson": "158",
-      "7moveTo": [
+      "gemId": "86",
+      "gemName": "Dielsdorf",
+      "moveOutTot": 377,
+      "moveInTot": 369,
+      "emptyFlatsPercent": "0.33",
+      "trafficcostPerPerson": "158",
+      "moveTo": [
         "0",
         "2",
         "2",
@@ -11944,16 +12009,17 @@
         "1",
         "1",
         "47"
-      ]
+      ],
+      "population": "5787"
     },
     {
-      "1gemId": "87",
-      "2gemName": "Hüttikon",
-      "3moveOutTot": 26,
-      "4moveInTot": 50,
-      "5emptyFlatsPercent": "0.72",
-      "6trafficcostPerPerson": "323",
-      "7moveTo": [
+      "gemId": "87",
+      "gemName": "Hüttikon",
+      "moveOutTot": 26,
+      "moveInTot": 50,
+      "emptyFlatsPercent": "0.72",
+      "trafficcostPerPerson": "323",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -12125,16 +12191,17 @@
         "0",
         "0",
         "4"
-      ]
+      ],
+      "population": "668"
     },
     {
-      "1gemId": "88",
-      "2gemName": "Neerach",
-      "3moveOutTot": 172,
-      "4moveInTot": 180,
-      "5emptyFlatsPercent": "1.68",
-      "6trafficcostPerPerson": "271",
-      "7moveTo": [
+      "gemId": "88",
+      "gemName": "Neerach",
+      "moveOutTot": 172,
+      "moveInTot": 180,
+      "emptyFlatsPercent": "1.68",
+      "trafficcostPerPerson": "271",
+      "moveTo": [
         "0",
         "2",
         "1",
@@ -12306,16 +12373,17 @@
         "1",
         "1",
         "10"
-      ]
+      ],
+      "population": "3019"
     },
     {
-      "1gemId": "89",
-      "2gemName": "Niederglatt",
-      "3moveOutTot": 291,
-      "4moveInTot": 255,
-      "5emptyFlatsPercent": "0.65",
-      "6trafficcostPerPerson": "87",
-      "7moveTo": [
+      "gemId": "89",
+      "gemName": "Niederglatt",
+      "moveOutTot": 291,
+      "moveInTot": 255,
+      "emptyFlatsPercent": "0.65",
+      "trafficcostPerPerson": "87",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -12487,16 +12555,17 @@
         "1",
         "0",
         "30"
-      ]
+      ],
+      "population": "4568"
     },
     {
-      "1gemId": "90",
-      "2gemName": "Niederhasli",
-      "3moveOutTot": 464,
-      "4moveInTot": 502,
-      "5emptyFlatsPercent": "0.67",
-      "6trafficcostPerPerson": "124",
-      "7moveTo": [
+      "gemId": "90",
+      "gemName": "Niederhasli",
+      "moveOutTot": 464,
+      "moveInTot": 502,
+      "emptyFlatsPercent": "0.67",
+      "trafficcostPerPerson": "124",
+      "moveTo": [
         "0",
         "2",
         "0",
@@ -12668,16 +12737,17 @@
         "0",
         "0",
         "72"
-      ]
+      ],
+      "population": "8710"
     },
     {
-      "1gemId": "91",
-      "2gemName": "Niederweningen",
-      "3moveOutTot": 108,
-      "4moveInTot": 130,
-      "5emptyFlatsPercent": "0.54",
-      "6trafficcostPerPerson": "279",
-      "7moveTo": [
+      "gemId": "91",
+      "gemName": "Niederweningen",
+      "moveOutTot": 108,
+      "moveInTot": 130,
+      "emptyFlatsPercent": "0.54",
+      "trafficcostPerPerson": "279",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -12849,16 +12919,17 @@
         "0",
         "0",
         "15"
-      ]
+      ],
+      "population": "2758"
     },
     {
-      "1gemId": "92",
-      "2gemName": "Oberglatt",
-      "3moveOutTot": 421,
-      "4moveInTot": 415,
-      "5emptyFlatsPercent": "1.64",
-      "6trafficcostPerPerson": "156",
-      "7moveTo": [
+      "gemId": "92",
+      "gemName": "Oberglatt",
+      "moveOutTot": 421,
+      "moveInTot": 415,
+      "emptyFlatsPercent": "1.64",
+      "trafficcostPerPerson": "156",
+      "moveTo": [
         "0",
         "2",
         "1",
@@ -13030,16 +13101,17 @@
         "1",
         "0",
         "80"
-      ]
+      ],
+      "population": "6060"
     },
     {
-      "1gemId": "93",
-      "2gemName": "Oberweningen",
-      "3moveOutTot": 94,
-      "4moveInTot": 107,
-      "5emptyFlatsPercent": "1.07",
-      "6trafficcostPerPerson": "157",
-      "7moveTo": [
+      "gemId": "93",
+      "gemName": "Oberweningen",
+      "moveOutTot": 94,
+      "moveInTot": 107,
+      "emptyFlatsPercent": "1.07",
+      "trafficcostPerPerson": "157",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -13211,16 +13283,17 @@
         "1",
         "1",
         "7"
-      ]
+      ],
+      "population": "1749"
     },
     {
-      "1gemId": "94",
-      "2gemName": "Otelfingen",
-      "3moveOutTot": 95,
-      "4moveInTot": 201,
-      "5emptyFlatsPercent": "0.53",
-      "6trafficcostPerPerson": "205",
-      "7moveTo": [
+      "gemId": "94",
+      "gemName": "Otelfingen",
+      "moveOutTot": 95,
+      "moveInTot": 201,
+      "emptyFlatsPercent": "0.53",
+      "trafficcostPerPerson": "205",
+      "moveTo": [
         "1",
         "0",
         "0",
@@ -13392,16 +13465,17 @@
         "0",
         "1",
         "17"
-      ]
+      ],
+      "population": "2751"
     },
     {
-      "1gemId": "95",
-      "2gemName": "Regensberg",
-      "3moveOutTot": 33,
-      "4moveInTot": 33,
-      "5emptyFlatsPercent": "0.75",
-      "6trafficcostPerPerson": "167",
-      "7moveTo": [
+      "gemId": "95",
+      "gemName": "Regensberg",
+      "moveOutTot": 33,
+      "moveInTot": 33,
+      "emptyFlatsPercent": "0.75",
+      "trafficcostPerPerson": "167",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -13573,16 +13647,17 @@
         "0",
         "0",
         "10"
-      ]
+      ],
+      "population": "490"
     },
     {
-      "1gemId": "96",
-      "2gemName": "Regensdorf",
-      "3moveOutTot": 942,
-      "4moveInTot": 869,
-      "5emptyFlatsPercent": "0.48",
-      "6trafficcostPerPerson": "128",
-      "7moveTo": [
+      "gemId": "96",
+      "gemName": "Regensdorf",
+      "moveOutTot": 942,
+      "moveInTot": 869,
+      "emptyFlatsPercent": "0.48",
+      "trafficcostPerPerson": "128",
+      "moveTo": [
         "0",
         "1",
         "4",
@@ -13754,16 +13829,17 @@
         "6",
         "4",
         "265"
-      ]
+      ],
+      "population": "16951"
     },
     {
-      "1gemId": "97",
-      "2gemName": "Rümlang",
-      "3moveOutTot": 440,
-      "4moveInTot": 421,
-      "5emptyFlatsPercent": "0.87",
-      "6trafficcostPerPerson": "207",
-      "7moveTo": [
+      "gemId": "97",
+      "gemName": "Rümlang",
+      "moveOutTot": 440,
+      "moveInTot": 421,
+      "emptyFlatsPercent": "0.87",
+      "trafficcostPerPerson": "207",
+      "moveTo": [
         "0",
         "1",
         "0",
@@ -13935,16 +14011,17 @@
         "1",
         "1",
         "111"
-      ]
+      ],
+      "population": "7006"
     },
     {
-      "1gemId": "98",
-      "2gemName": "Schleinikon",
-      "3moveOutTot": 21,
-      "4moveInTot": 24,
-      "5emptyFlatsPercent": "0.00",
-      "6trafficcostPerPerson": "147",
-      "7moveTo": [
+      "gemId": "98",
+      "gemName": "Schleinikon",
+      "moveOutTot": 21,
+      "moveInTot": 24,
+      "emptyFlatsPercent": "0.00",
+      "trafficcostPerPerson": "147",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -14116,16 +14193,17 @@
         "0",
         "0",
         "4"
-      ]
+      ],
+      "population": "718"
     },
     {
-      "1gemId": "99",
-      "2gemName": "Schöfflisdorf",
-      "3moveOutTot": 70,
-      "4moveInTot": 86,
-      "5emptyFlatsPercent": "0.49",
-      "6trafficcostPerPerson": "191",
-      "7moveTo": [
+      "gemId": "99",
+      "gemName": "Schöfflisdorf",
+      "moveOutTot": 70,
+      "moveInTot": 86,
+      "emptyFlatsPercent": "0.49",
+      "trafficcostPerPerson": "191",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -14297,16 +14375,17 @@
         "0",
         "0",
         "14"
-      ]
+      ],
+      "population": "1373"
     },
     {
-      "1gemId": "100",
-      "2gemName": "Stadel",
-      "3moveOutTot": 96,
-      "4moveInTot": 127,
-      "5emptyFlatsPercent": "1.54",
-      "6trafficcostPerPerson": "251",
-      "7moveTo": [
+      "gemId": "100",
+      "gemName": "Stadel",
+      "moveOutTot": 96,
+      "moveInTot": 127,
+      "emptyFlatsPercent": "1.54",
+      "trafficcostPerPerson": "251",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -14478,16 +14557,17 @@
         "0",
         "0",
         "11"
-      ]
+      ],
+      "population": "2010"
     },
     {
-      "1gemId": "101",
-      "2gemName": "Steinmaur",
-      "3moveOutTot": 226,
-      "4moveInTot": 250,
-      "5emptyFlatsPercent": "2.17",
-      "6trafficcostPerPerson": "162",
-      "7moveTo": [
+      "gemId": "101",
+      "gemName": "Steinmaur",
+      "moveOutTot": 226,
+      "moveInTot": 250,
+      "emptyFlatsPercent": "2.17",
+      "trafficcostPerPerson": "162",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -14659,16 +14739,17 @@
         "1",
         "0",
         "30"
-      ]
+      ],
+      "population": "3276"
     },
     {
-      "1gemId": "102",
-      "2gemName": "Weiach",
-      "3moveOutTot": 40,
-      "4moveInTot": 80,
-      "5emptyFlatsPercent": "1.23",
-      "6trafficcostPerPerson": "147",
-      "7moveTo": [
+      "gemId": "102",
+      "gemName": "Weiach",
+      "moveOutTot": 40,
+      "moveInTot": 80,
+      "emptyFlatsPercent": "1.23",
+      "trafficcostPerPerson": "147",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -14840,16 +14921,17 @@
         "0",
         "0",
         "2"
-      ]
+      ],
+      "population": "1076"
     },
     {
-      "1gemId": "111",
-      "2gemName": "Bäretswil",
-      "3moveOutTot": 270,
-      "4moveInTot": 284,
-      "5emptyFlatsPercent": "0.36",
-      "6trafficcostPerPerson": "236",
-      "7moveTo": [
+      "gemId": "111",
+      "gemName": "Bäretswil",
+      "moveOutTot": 270,
+      "moveInTot": 284,
+      "emptyFlatsPercent": "0.36",
+      "trafficcostPerPerson": "236",
+      "moveTo": [
         "0",
         "3",
         "0",
@@ -15021,16 +15103,17 @@
         "0",
         "0",
         "17"
-      ]
+      ],
+      "population": "4928"
     },
     {
-      "1gemId": "112",
-      "2gemName": "Bubikon",
-      "3moveOutTot": 314,
-      "4moveInTot": 354,
-      "5emptyFlatsPercent": "0.31",
-      "6trafficcostPerPerson": "233",
-      "7moveTo": [
+      "gemId": "112",
+      "gemName": "Bubikon",
+      "moveOutTot": 314,
+      "moveInTot": 354,
+      "emptyFlatsPercent": "0.31",
+      "trafficcostPerPerson": "233",
+      "moveTo": [
         "0",
         "0",
         "2",
@@ -15202,16 +15285,17 @@
         "2",
         "0",
         "24"
-      ]
+      ],
+      "population": "6856"
     },
     {
-      "1gemId": "113",
-      "2gemName": "Dürnten",
-      "3moveOutTot": 362,
-      "4moveInTot": 378,
-      "5emptyFlatsPercent": "0.96",
-      "6trafficcostPerPerson": "172",
-      "7moveTo": [
+      "gemId": "113",
+      "gemName": "Dürnten",
+      "moveOutTot": 362,
+      "moveInTot": 378,
+      "emptyFlatsPercent": "0.96",
+      "trafficcostPerPerson": "172",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -15383,16 +15467,17 @@
         "0",
         "0",
         "26"
-      ]
+      ],
+      "population": "7159"
     },
     {
-      "1gemId": "114",
-      "2gemName": "Fischenthal",
-      "3moveOutTot": 130,
-      "4moveInTot": 132,
-      "5emptyFlatsPercent": "0.59",
-      "6trafficcostPerPerson": "327",
-      "7moveTo": [
+      "gemId": "114",
+      "gemName": "Fischenthal",
+      "moveOutTot": 130,
+      "moveInTot": 132,
+      "emptyFlatsPercent": "0.59",
+      "trafficcostPerPerson": "327",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -15564,16 +15649,17 @@
         "0",
         "0",
         "2"
-      ]
+      ],
+      "population": "2330"
     },
     {
-      "1gemId": "115",
-      "2gemName": "Gossau",
-      "3moveOutTot": 480,
-      "4moveInTot": 536,
-      "5emptyFlatsPercent": "0.42",
-      "6trafficcostPerPerson": "251",
-      "7moveTo": [
+      "gemId": "115",
+      "gemName": "Gossau",
+      "moveOutTot": 480,
+      "moveInTot": 536,
+      "emptyFlatsPercent": "0.42",
+      "trafficcostPerPerson": "251",
+      "moveTo": [
         "0",
         "1",
         "0",
@@ -15745,16 +15831,17 @@
         "0",
         "0",
         "40"
-      ]
+      ],
+      "population": "9709"
     },
     {
-      "1gemId": "116",
-      "2gemName": "Grüningen",
-      "3moveOutTot": 167,
-      "4moveInTot": 169,
-      "5emptyFlatsPercent": "0.42",
-      "6trafficcostPerPerson": "274",
-      "7moveTo": [
+      "gemId": "116",
+      "gemName": "Grüningen",
+      "moveOutTot": 167,
+      "moveInTot": 169,
+      "emptyFlatsPercent": "0.42",
+      "trafficcostPerPerson": "274",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -15926,16 +16013,17 @@
         "0",
         "0",
         "14"
-      ]
+      ],
+      "population": "3222"
     },
     {
-      "1gemId": "117",
-      "2gemName": "Hinwil",
-      "3moveOutTot": 502,
-      "4moveInTot": 456,
-      "5emptyFlatsPercent": "0.90",
-      "6trafficcostPerPerson": "213",
-      "7moveTo": [
+      "gemId": "117",
+      "gemName": "Hinwil",
+      "moveOutTot": 502,
+      "moveInTot": 456,
+      "emptyFlatsPercent": "0.90",
+      "trafficcostPerPerson": "213",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -16107,16 +16195,17 @@
         "0",
         "0",
         "40"
-      ]
+      ],
+      "population": "10602"
     },
     {
-      "1gemId": "118",
-      "2gemName": "Rüti",
-      "3moveOutTot": 520,
-      "4moveInTot": 577,
-      "5emptyFlatsPercent": "0.38",
-      "6trafficcostPerPerson": "190",
-      "7moveTo": [
+      "gemId": "118",
+      "gemName": "Rüti",
+      "moveOutTot": 520,
+      "moveInTot": 577,
+      "emptyFlatsPercent": "0.38",
+      "trafficcostPerPerson": "190",
+      "moveTo": [
         "0",
         "2",
         "1",
@@ -16288,16 +16377,17 @@
         "2",
         "0",
         "54"
-      ]
+      ],
+      "population": "11928"
     },
     {
-      "1gemId": "119",
-      "2gemName": "Seegräben",
-      "3moveOutTot": 100,
-      "4moveInTot": 112,
-      "5emptyFlatsPercent": "0.52",
-      "6trafficcostPerPerson": "134",
-      "7moveTo": [
+      "gemId": "119",
+      "gemName": "Seegräben",
+      "moveOutTot": 100,
+      "moveInTot": 112,
+      "emptyFlatsPercent": "0.52",
+      "trafficcostPerPerson": "134",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -16469,16 +16559,17 @@
         "0",
         "1",
         "15"
-      ]
+      ],
+      "population": "1307"
     },
     {
-      "1gemId": "120",
-      "2gemName": "Wald",
-      "3moveOutTot": 373,
-      "4moveInTot": 386,
-      "5emptyFlatsPercent": "0.58",
-      "6trafficcostPerPerson": "248",
-      "7moveTo": [
+      "gemId": "120",
+      "gemName": "Wald",
+      "moveOutTot": 373,
+      "moveInTot": 386,
+      "emptyFlatsPercent": "0.58",
+      "trafficcostPerPerson": "248",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -16650,16 +16741,17 @@
         "1",
         "0",
         "40"
-      ]
+      ],
+      "population": "9321"
     },
     {
-      "1gemId": "121",
-      "2gemName": "Wetzikon",
-      "3moveOutTot": 1123,
-      "4moveInTot": 1381,
-      "5emptyFlatsPercent": "1.33",
-      "6trafficcostPerPerson": "174",
-      "7moveTo": [
+      "gemId": "121",
+      "gemName": "Wetzikon",
+      "moveOutTot": 1123,
+      "moveInTot": 1381,
+      "emptyFlatsPercent": "1.33",
+      "trafficcostPerPerson": "174",
+      "moveTo": [
         "1",
         "3",
         "0",
@@ -16831,16 +16923,17 @@
         "1",
         "0",
         "126"
-      ]
+      ],
+      "population": "23254"
     },
     {
-      "1gemId": "131",
-      "2gemName": "Adliswil",
-      "3moveOutTot": 846,
-      "4moveInTot": 1151,
-      "5emptyFlatsPercent": "0.89",
-      "6trafficcostPerPerson": "210",
-      "7moveTo": [
+      "gemId": "131",
+      "gemName": "Adliswil",
+      "moveOutTot": 846,
+      "moveInTot": 1151,
+      "emptyFlatsPercent": "0.89",
+      "trafficcostPerPerson": "210",
+      "moveTo": [
         "5",
         "16",
         "7",
@@ -17012,16 +17105,17 @@
         "11",
         "0",
         "298"
-      ]
+      ],
+      "population": "17997"
     },
     {
-      "1gemId": "132",
-      "2gemName": "Hirzel",
-      "3moveOutTot": 50,
-      "4moveInTot": 64,
-      "5emptyFlatsPercent": "0.56",
-      "6trafficcostPerPerson": "311",
-      "7moveTo": [
+      "gemId": "132",
+      "gemName": "Hirzel",
+      "moveOutTot": 50,
+      "moveInTot": 64,
+      "emptyFlatsPercent": "0.56",
+      "trafficcostPerPerson": "311",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -17193,16 +17287,17 @@
         "0",
         "0",
         "8"
-      ]
+      ],
+      "population": "2134"
     },
     {
-      "1gemId": "133",
-      "2gemName": "Horgen",
-      "3moveOutTot": 821,
-      "4moveInTot": 840,
-      "5emptyFlatsPercent": "1.33",
-      "6trafficcostPerPerson": "298",
-      "7moveTo": [
+      "gemId": "133",
+      "gemName": "Horgen",
+      "moveOutTot": 821,
+      "moveInTot": 840,
+      "emptyFlatsPercent": "1.33",
+      "trafficcostPerPerson": "298",
+      "moveTo": [
         "1",
         "6",
         "0",
@@ -17374,16 +17469,17 @@
         "2",
         "0",
         "182"
-      ]
+      ],
+      "population": "19252"
     },
     {
-      "1gemId": "134",
-      "2gemName": "Hütten",
-      "3moveOutTot": 29,
-      "4moveInTot": 23,
-      "5emptyFlatsPercent": "0.00",
-      "6trafficcostPerPerson": "517",
-      "7moveTo": [
+      "gemId": "134",
+      "gemName": "Hütten",
+      "moveOutTot": 29,
+      "moveInTot": 23,
+      "emptyFlatsPercent": "0.00",
+      "trafficcostPerPerson": "517",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -17555,16 +17651,17 @@
         "1",
         "0",
         "5"
-      ]
+      ],
+      "population": "897"
     },
     {
-      "1gemId": "135",
-      "2gemName": "Kilchberg",
-      "3moveOutTot": 438,
-      "4moveInTot": 482,
-      "5emptyFlatsPercent": "0.72",
-      "6trafficcostPerPerson": "959",
-      "7moveTo": [
+      "gemId": "135",
+      "gemName": "Kilchberg",
+      "moveOutTot": 438,
+      "moveInTot": 482,
+      "emptyFlatsPercent": "0.72",
+      "trafficcostPerPerson": "959",
+      "moveTo": [
         "2",
         "0",
         "7",
@@ -17736,16 +17833,17 @@
         "0",
         "0",
         "128"
-      ]
+      ],
+      "population": "7641"
     },
     {
-      "1gemId": "136",
-      "2gemName": "Langnau a.A.",
-      "3moveOutTot": 345,
-      "4moveInTot": 340,
-      "5emptyFlatsPercent": "0.65",
-      "6trafficcostPerPerson": "311",
-      "7moveTo": [
+      "gemId": "136",
+      "gemName": "Langnau a.A.",
+      "moveOutTot": 345,
+      "moveInTot": 340,
+      "emptyFlatsPercent": "0.65",
+      "trafficcostPerPerson": "311",
+      "moveTo": [
         "0",
         "5",
         "1",
@@ -17917,16 +18015,17 @@
         "3",
         "0",
         "67"
-      ]
+      ],
+      "population": "7223"
     },
     {
-      "1gemId": "137",
-      "2gemName": "Oberrieden",
-      "3moveOutTot": 206,
-      "4moveInTot": 236,
-      "5emptyFlatsPercent": "0.00",
-      "6trafficcostPerPerson": "248",
-      "7moveTo": [
+      "gemId": "137",
+      "gemName": "Oberrieden",
+      "moveOutTot": 206,
+      "moveInTot": 236,
+      "emptyFlatsPercent": "0.00",
+      "trafficcostPerPerson": "248",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -18098,16 +18197,17 @@
         "0",
         "0",
         "52"
-      ]
+      ],
+      "population": "4965"
     },
     {
-      "1gemId": "138",
-      "2gemName": "Richterswil",
-      "3moveOutTot": 392,
-      "4moveInTot": 541,
-      "5emptyFlatsPercent": "0.73",
-      "6trafficcostPerPerson": "252",
-      "7moveTo": [
+      "gemId": "138",
+      "gemName": "Richterswil",
+      "moveOutTot": 392,
+      "moveInTot": 541,
+      "emptyFlatsPercent": "0.73",
+      "trafficcostPerPerson": "252",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -18279,16 +18379,17 @@
         "0",
         "0",
         "102"
-      ]
+      ],
+      "population": "12825"
     },
     {
-      "1gemId": "139",
-      "2gemName": "Rüschlikon",
-      "3moveOutTot": 350,
-      "4moveInTot": 304,
-      "5emptyFlatsPercent": "0.46",
-      "6trafficcostPerPerson": "354",
-      "7moveTo": [
+      "gemId": "139",
+      "gemName": "Rüschlikon",
+      "moveOutTot": 350,
+      "moveInTot": 304,
+      "emptyFlatsPercent": "0.46",
+      "trafficcostPerPerson": "354",
+      "moveTo": [
         "0",
         "1",
         "0",
@@ -18460,16 +18561,17 @@
         "0",
         "0",
         "92"
-      ]
+      ],
+      "population": "5418"
     },
     {
-      "1gemId": "140",
-      "2gemName": "Schönenberg",
-      "3moveOutTot": 76,
-      "4moveInTot": 76,
-      "5emptyFlatsPercent": "0.98",
-      "6trafficcostPerPerson": "254",
-      "7moveTo": [
+      "gemId": "140",
+      "gemName": "Schönenberg",
+      "moveOutTot": 76,
+      "moveInTot": 76,
+      "emptyFlatsPercent": "0.98",
+      "trafficcostPerPerson": "254",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -18641,16 +18743,17 @@
         "0",
         "0",
         "8"
-      ]
+      ],
+      "population": "1894"
     },
     {
-      "1gemId": "141",
-      "2gemName": "Thalwil",
-      "3moveOutTot": 831,
-      "4moveInTot": 831,
-      "5emptyFlatsPercent": "0.35",
-      "6trafficcostPerPerson": "201",
-      "7moveTo": [
+      "gemId": "141",
+      "gemName": "Thalwil",
+      "moveOutTot": 831,
+      "moveInTot": 831,
+      "emptyFlatsPercent": "0.35",
+      "trafficcostPerPerson": "201",
+      "moveTo": [
         "3",
         "10",
         "19",
@@ -18822,16 +18925,17 @@
         "3",
         "0",
         "165"
-      ]
+      ],
+      "population": "17309"
     },
     {
-      "1gemId": "142",
-      "2gemName": "Wädenswil",
-      "3moveOutTot": 785,
-      "4moveInTot": 725,
-      "5emptyFlatsPercent": "0.66",
-      "6trafficcostPerPerson": "201",
-      "7moveTo": [
+      "gemId": "142",
+      "gemName": "Wädenswil",
+      "moveOutTot": 785,
+      "moveInTot": 725,
+      "emptyFlatsPercent": "0.66",
+      "trafficcostPerPerson": "201",
+      "moveTo": [
         "1",
         "9",
         "3",
@@ -19003,16 +19107,17 @@
         "0",
         "4",
         "162"
-      ]
+      ],
+      "population": "20907"
     },
     {
-      "1gemId": "151",
-      "2gemName": "Erlenbach",
-      "3moveOutTot": 272,
-      "4moveInTot": 286,
-      "5emptyFlatsPercent": "1.48",
-      "6trafficcostPerPerson": "458",
-      "7moveTo": [
+      "gemId": "151",
+      "gemName": "Erlenbach",
+      "moveOutTot": 272,
+      "moveInTot": 286,
+      "emptyFlatsPercent": "1.48",
+      "trafficcostPerPerson": "458",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -19184,16 +19289,17 @@
         "2",
         "0",
         "56"
-      ]
+      ],
+      "population": "5318"
     },
     {
-      "1gemId": "152",
-      "2gemName": "Herrliberg",
-      "3moveOutTot": 329,
-      "4moveInTot": 324,
-      "5emptyFlatsPercent": "1.02",
-      "6trafficcostPerPerson": "541",
-      "7moveTo": [
+      "gemId": "152",
+      "gemName": "Herrliberg",
+      "moveOutTot": 329,
+      "moveInTot": 324,
+      "emptyFlatsPercent": "1.02",
+      "trafficcostPerPerson": "541",
+      "moveTo": [
         "0",
         "3",
         "0",
@@ -19365,16 +19471,17 @@
         "0",
         "0",
         "69"
-      ]
+      ],
+      "population": "6127"
     },
     {
-      "1gemId": "153",
-      "2gemName": "Hombrechtikon",
-      "3moveOutTot": 358,
-      "4moveInTot": 343,
-      "5emptyFlatsPercent": "0.69",
-      "6trafficcostPerPerson": "220",
-      "7moveTo": [
+      "gemId": "153",
+      "gemName": "Hombrechtikon",
+      "moveOutTot": 358,
+      "moveInTot": 343,
+      "emptyFlatsPercent": "0.69",
+      "trafficcostPerPerson": "220",
+      "moveTo": [
         "0",
         "1",
         "1",
@@ -19546,16 +19653,17 @@
         "1",
         "0",
         "39"
-      ]
+      ],
+      "population": "8100"
     },
     {
-      "1gemId": "154",
-      "2gemName": "Küsnacht",
-      "3moveOutTot": 707,
-      "4moveInTot": 722,
-      "5emptyFlatsPercent": "1.76",
-      "6trafficcostPerPerson": "359",
-      "7moveTo": [
+      "gemId": "154",
+      "gemName": "Küsnacht",
+      "moveOutTot": 707,
+      "moveInTot": 722,
+      "emptyFlatsPercent": "1.76",
+      "trafficcostPerPerson": "359",
+      "moveTo": [
         "2",
         "2",
         "1",
@@ -19727,16 +19835,17 @@
         "2",
         "0",
         "199"
-      ]
+      ],
+      "population": "13485"
     },
     {
-      "1gemId": "155",
-      "2gemName": "Männedorf",
-      "3moveOutTot": 485,
-      "4moveInTot": 446,
-      "5emptyFlatsPercent": "0.34",
-      "6trafficcostPerPerson": "208",
-      "7moveTo": [
+      "gemId": "155",
+      "gemName": "Männedorf",
+      "moveOutTot": 485,
+      "moveInTot": 446,
+      "emptyFlatsPercent": "0.34",
+      "trafficcostPerPerson": "208",
+      "moveTo": [
         "0",
         "0",
         "8",
@@ -19908,16 +20017,17 @@
         "0",
         "1",
         "86"
-      ]
+      ],
+      "population": "10462"
     },
     {
-      "1gemId": "156",
-      "2gemName": "Meilen",
-      "3moveOutTot": 614,
-      "4moveInTot": 692,
-      "5emptyFlatsPercent": "2.17",
-      "6trafficcostPerPerson": "277",
-      "7moveTo": [
+      "gemId": "156",
+      "gemName": "Meilen",
+      "moveOutTot": 614,
+      "moveInTot": 692,
+      "emptyFlatsPercent": "2.17",
+      "trafficcostPerPerson": "277",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -20089,16 +20199,17 @@
         "0",
         "0",
         "131"
-      ]
+      ],
+      "population": "12777"
     },
     {
-      "1gemId": "157",
-      "2gemName": "Oetwil a.S.",
-      "3moveOutTot": 266,
-      "4moveInTot": 253,
-      "5emptyFlatsPercent": "0.39",
-      "6trafficcostPerPerson": "208",
-      "7moveTo": [
+      "gemId": "157",
+      "gemName": "Oetwil a.S.",
+      "moveOutTot": 266,
+      "moveInTot": 253,
+      "emptyFlatsPercent": "0.39",
+      "trafficcostPerPerson": "208",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -20270,16 +20381,17 @@
         "2",
         "0",
         "30"
-      ]
+      ],
+      "population": "4546"
     },
     {
-      "1gemId": "158",
-      "2gemName": "Stäfa",
-      "3moveOutTot": 553,
-      "4moveInTot": 556,
-      "5emptyFlatsPercent": "1.31",
-      "6trafficcostPerPerson": "235",
-      "7moveTo": [
+      "gemId": "158",
+      "gemName": "Stäfa",
+      "moveOutTot": 553,
+      "moveInTot": 556,
+      "emptyFlatsPercent": "1.31",
+      "trafficcostPerPerson": "235",
+      "moveTo": [
         "4",
         "0",
         "0",
@@ -20451,16 +20563,17 @@
         "0",
         "0",
         "108"
-      ]
+      ],
+      "population": "13866"
     },
     {
-      "1gemId": "159",
-      "2gemName": "Uetikon a.S.",
-      "3moveOutTot": 260,
-      "4moveInTot": 354,
-      "5emptyFlatsPercent": "1.03",
-      "6trafficcostPerPerson": "231",
-      "7moveTo": [
+      "gemId": "159",
+      "gemName": "Uetikon a.S.",
+      "moveOutTot": 260,
+      "moveInTot": 354,
+      "emptyFlatsPercent": "1.03",
+      "trafficcostPerPerson": "231",
+      "moveTo": [
         "0",
         "1",
         "0",
@@ -20632,16 +20745,17 @@
         "0",
         "0",
         "30"
-      ]
+      ],
+      "population": "5932"
     },
     {
-      "1gemId": "160",
-      "2gemName": "Zumikon",
-      "3moveOutTot": 257,
-      "4moveInTot": 279,
-      "5emptyFlatsPercent": "1.46",
-      "6trafficcostPerPerson": "490",
-      "7moveTo": [
+      "gemId": "160",
+      "gemName": "Zumikon",
+      "moveOutTot": 257,
+      "moveInTot": 279,
+      "emptyFlatsPercent": "1.46",
+      "trafficcostPerPerson": "490",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -20813,16 +20927,17 @@
         "0",
         "0",
         "72"
-      ]
+      ],
+      "population": "5162"
     },
     {
-      "1gemId": "161",
-      "2gemName": "Zollikon",
-      "3moveOutTot": 710,
-      "4moveInTot": 739,
-      "5emptyFlatsPercent": "0.84",
-      "6trafficcostPerPerson": "226",
-      "7moveTo": [
+      "gemId": "161",
+      "gemName": "Zollikon",
+      "moveOutTot": 710,
+      "moveInTot": 739,
+      "emptyFlatsPercent": "0.84",
+      "trafficcostPerPerson": "226",
+      "moveTo": [
         "0",
         "1",
         "0",
@@ -20994,16 +21109,17 @@
         "0",
         "1",
         "237"
-      ]
+      ],
+      "population": "12152"
     },
     {
-      "1gemId": "171",
-      "2gemName": "Bauma",
-      "3moveOutTot": 268,
-      "4moveInTot": 219,
-      "5emptyFlatsPercent": "0.48",
-      "6trafficcostPerPerson": "187",
-      "7moveTo": [
+      "gemId": "171",
+      "gemName": "Bauma",
+      "moveOutTot": 268,
+      "moveInTot": 219,
+      "emptyFlatsPercent": "0.48",
+      "trafficcostPerPerson": "187",
+      "moveTo": [
         "0",
         "1",
         "0",
@@ -21175,16 +21291,17 @@
         "0",
         "1",
         "26"
-      ]
+      ],
+      "population": "4218"
     },
     {
-      "1gemId": "172",
-      "2gemName": "Fehraltorf",
-      "3moveOutTot": 364,
-      "4moveInTot": 596,
-      "5emptyFlatsPercent": "0.69",
-      "6trafficcostPerPerson": "208",
-      "7moveTo": [
+      "gemId": "172",
+      "gemName": "Fehraltorf",
+      "moveOutTot": 364,
+      "moveInTot": 596,
+      "emptyFlatsPercent": "0.69",
+      "trafficcostPerPerson": "208",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -21356,16 +21473,17 @@
         "0",
         "4",
         "44"
-      ]
+      ],
+      "population": "6221"
     },
     {
-      "1gemId": "173",
-      "2gemName": "Hittnau",
-      "3moveOutTot": 175,
-      "4moveInTot": 187,
-      "5emptyFlatsPercent": "1.59",
-      "6trafficcostPerPerson": "279",
-      "7moveTo": [
+      "gemId": "173",
+      "gemName": "Hittnau",
+      "moveOutTot": 175,
+      "moveInTot": 187,
+      "emptyFlatsPercent": "1.59",
+      "trafficcostPerPerson": "279",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -21537,16 +21655,17 @@
         "0",
         "0",
         "12"
-      ]
+      ],
+      "population": "3506"
     },
     {
-      "1gemId": "174",
-      "2gemName": "Illnau-Effretikon",
-      "3moveOutTot": 739,
-      "4moveInTot": 759,
-      "5emptyFlatsPercent": "0.80",
-      "6trafficcostPerPerson": "186",
-      "7moveTo": [
+      "gemId": "174",
+      "gemName": "Illnau-Effretikon",
+      "moveOutTot": 739,
+      "moveInTot": 759,
+      "emptyFlatsPercent": "0.80",
+      "trafficcostPerPerson": "186",
+      "moveTo": [
         "0",
         "1",
         "0",
@@ -21718,16 +21837,17 @@
         "3",
         "0",
         "94"
-      ]
+      ],
+      "population": "16099"
     },
     {
-      "1gemId": "175",
-      "2gemName": "Kyburg",
-      "3moveOutTot": 41,
-      "4moveInTot": 16,
-      "5emptyFlatsPercent": "1.05",
-      "6trafficcostPerPerson": "567",
-      "7moveTo": [
+      "gemId": "175",
+      "gemName": "Kyburg",
+      "moveOutTot": 41,
+      "moveInTot": 16,
+      "emptyFlatsPercent": "1.05",
+      "trafficcostPerPerson": "567",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -21899,16 +22019,17 @@
         "0",
         "0",
         "1"
-      ]
+      ],
+      "population": "406"
     },
     {
-      "1gemId": "176",
-      "2gemName": "Lindau",
-      "3moveOutTot": 222,
-      "4moveInTot": 308,
-      "5emptyFlatsPercent": "0.97",
-      "6trafficcostPerPerson": "299",
-      "7moveTo": [
+      "gemId": "176",
+      "gemName": "Lindau",
+      "moveOutTot": 222,
+      "moveInTot": 308,
+      "emptyFlatsPercent": "0.97",
+      "trafficcostPerPerson": "299",
+      "moveTo": [
         "0",
         "1",
         "0",
@@ -22080,16 +22201,17 @@
         "0",
         "0",
         "21"
-      ]
+      ],
+      "population": "5207"
     },
     {
-      "1gemId": "177",
-      "2gemName": "Pfäffikon",
-      "3moveOutTot": 513,
-      "4moveInTot": 652,
-      "5emptyFlatsPercent": "1.25",
-      "6trafficcostPerPerson": "207",
-      "7moveTo": [
+      "gemId": "177",
+      "gemName": "Pfäffikon",
+      "moveOutTot": 513,
+      "moveInTot": 652,
+      "emptyFlatsPercent": "1.25",
+      "trafficcostPerPerson": "207",
+      "moveTo": [
         "0",
         "1",
         "0",
@@ -22261,16 +22383,17 @@
         "1",
         "0",
         "49"
-      ]
+      ],
+      "population": "11012"
     },
     {
-      "1gemId": "178",
-      "2gemName": "Russikon",
-      "3moveOutTot": 231,
-      "4moveInTot": 243,
-      "5emptyFlatsPercent": "0.67",
-      "6trafficcostPerPerson": "317",
-      "7moveTo": [
+      "gemId": "178",
+      "gemName": "Russikon",
+      "moveOutTot": 231,
+      "moveInTot": 243,
+      "emptyFlatsPercent": "0.67",
+      "trafficcostPerPerson": "317",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -22442,16 +22565,17 @@
         "0",
         "0",
         "13"
-      ]
+      ],
+      "population": "4132"
     },
     {
-      "1gemId": "179",
-      "2gemName": "Sternenberg",
-      "3moveOutTot": 17,
-      "4moveInTot": 22,
-      "5emptyFlatsPercent": "1.58",
-      "6trafficcostPerPerson": "703",
-      "7moveTo": [
+      "gemId": "179",
+      "gemName": "Sternenberg",
+      "moveOutTot": 17,
+      "moveInTot": 22,
+      "emptyFlatsPercent": "1.58",
+      "trafficcostPerPerson": "703",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -22623,16 +22747,17 @@
         "0",
         "0",
         "0"
-      ]
+      ],
+      "population": "351"
     },
     {
-      "1gemId": "180",
-      "2gemName": "Weisslingen",
-      "3moveOutTot": 147,
-      "4moveInTot": 121,
-      "5emptyFlatsPercent": "0.82",
-      "6trafficcostPerPerson": "215",
-      "7moveTo": [
+      "gemId": "180",
+      "gemName": "Weisslingen",
+      "moveOutTot": 147,
+      "moveInTot": 121,
+      "emptyFlatsPercent": "0.82",
+      "trafficcostPerPerson": "215",
+      "moveTo": [
         "0",
         "1",
         "0",
@@ -22804,16 +22929,17 @@
         "0",
         "0",
         "10"
-      ]
+      ],
+      "population": "3173"
     },
     {
-      "1gemId": "181",
-      "2gemName": "Wila",
-      "3moveOutTot": 105,
-      "4moveInTot": 122,
-      "5emptyFlatsPercent": "1.93",
-      "6trafficcostPerPerson": "371",
-      "7moveTo": [
+      "gemId": "181",
+      "gemName": "Wila",
+      "moveOutTot": 105,
+      "moveInTot": 122,
+      "emptyFlatsPercent": "1.93",
+      "trafficcostPerPerson": "371",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -22985,16 +23111,17 @@
         "0",
         "0",
         "4"
-      ]
+      ],
+      "population": "1942"
     },
     {
-      "1gemId": "182",
-      "2gemName": "Wildberg",
-      "3moveOutTot": 45,
-      "4moveInTot": 53,
-      "5emptyFlatsPercent": "1.19",
-      "6trafficcostPerPerson": "264",
-      "7moveTo": [
+      "gemId": "182",
+      "gemName": "Wildberg",
+      "moveOutTot": 45,
+      "moveInTot": 53,
+      "emptyFlatsPercent": "1.19",
+      "trafficcostPerPerson": "264",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -23166,16 +23293,17 @@
         "0",
         "0",
         "2"
-      ]
+      ],
+      "population": "1002"
     },
     {
-      "1gemId": "191",
-      "2gemName": "Dübendorf",
-      "3moveOutTot": 1510,
-      "4moveInTot": 1436,
-      "5emptyFlatsPercent": "0.98",
-      "6trafficcostPerPerson": "190",
-      "7moveTo": [
+      "gemId": "191",
+      "gemName": "Dübendorf",
+      "moveOutTot": 1510,
+      "moveInTot": 1436,
+      "emptyFlatsPercent": "0.98",
+      "trafficcostPerPerson": "190",
+      "moveTo": [
         "0",
         "9",
         "1",
@@ -23347,16 +23475,17 @@
         "8",
         "2",
         "373"
-      ]
+      ],
+      "population": "25299"
     },
     {
-      "1gemId": "192",
-      "2gemName": "Egg",
-      "3moveOutTot": 488,
-      "4moveInTot": 468,
-      "5emptyFlatsPercent": "0.83",
-      "6trafficcostPerPerson": "223",
-      "7moveTo": [
+      "gemId": "192",
+      "gemName": "Egg",
+      "moveOutTot": 488,
+      "moveInTot": 468,
+      "emptyFlatsPercent": "0.83",
+      "trafficcostPerPerson": "223",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -23528,16 +23657,17 @@
         "0",
         "2",
         "96"
-      ]
+      ],
+      "population": "8302"
     },
     {
-      "1gemId": "193",
-      "2gemName": "Fällanden",
-      "3moveOutTot": 442,
-      "4moveInTot": 468,
-      "5emptyFlatsPercent": "1.43",
-      "6trafficcostPerPerson": "236",
-      "7moveTo": [
+      "gemId": "193",
+      "gemName": "Fällanden",
+      "moveOutTot": 442,
+      "moveInTot": 468,
+      "emptyFlatsPercent": "1.43",
+      "trafficcostPerPerson": "236",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -23709,16 +23839,17 @@
         "0",
         "0",
         "93"
-      ]
+      ],
+      "population": "8067"
     },
     {
-      "1gemId": "194",
-      "2gemName": "Greifensee",
-      "3moveOutTot": 298,
-      "4moveInTot": 335,
-      "5emptyFlatsPercent": "0.25",
-      "6trafficcostPerPerson": "110",
-      "7moveTo": [
+      "gemId": "194",
+      "gemName": "Greifensee",
+      "moveOutTot": 298,
+      "moveInTot": 335,
+      "emptyFlatsPercent": "0.25",
+      "trafficcostPerPerson": "110",
+      "moveTo": [
         "5",
         "1",
         "4",
@@ -23890,16 +24021,17 @@
         "0",
         "0",
         "40"
-      ]
+      ],
+      "population": "5214"
     },
     {
-      "1gemId": "195",
-      "2gemName": "Maur",
-      "3moveOutTot": 506,
-      "4moveInTot": 573,
-      "5emptyFlatsPercent": "1.02",
-      "6trafficcostPerPerson": "249",
-      "7moveTo": [
+      "gemId": "195",
+      "gemName": "Maur",
+      "moveOutTot": 506,
+      "moveInTot": 573,
+      "emptyFlatsPercent": "1.02",
+      "trafficcostPerPerson": "249",
+      "moveTo": [
         "0",
         "3",
         "0",
@@ -24071,16 +24203,17 @@
         "2",
         "1",
         "111"
-      ]
+      ],
+      "population": "9610"
     },
     {
-      "1gemId": "196",
-      "2gemName": "Mönchaltorf",
-      "3moveOutTot": 157,
-      "4moveInTot": 137,
-      "5emptyFlatsPercent": "1.03",
-      "6trafficcostPerPerson": "221",
-      "7moveTo": [
+      "gemId": "196",
+      "gemName": "Mönchaltorf",
+      "moveOutTot": 157,
+      "moveInTot": 137,
+      "emptyFlatsPercent": "1.03",
+      "trafficcostPerPerson": "221",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -24252,16 +24385,17 @@
         "0",
         "0",
         "24"
-      ]
+      ],
+      "population": "3439"
     },
     {
-      "1gemId": "197",
-      "2gemName": "Schwerzenbach",
-      "3moveOutTot": 250,
-      "4moveInTot": 384,
-      "5emptyFlatsPercent": "1.12",
-      "6trafficcostPerPerson": "184",
-      "7moveTo": [
+      "gemId": "197",
+      "gemName": "Schwerzenbach",
+      "moveOutTot": 250,
+      "moveInTot": 384,
+      "emptyFlatsPercent": "1.12",
+      "trafficcostPerPerson": "184",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -24433,16 +24567,17 @@
         "0",
         "0",
         "34"
-      ]
+      ],
+      "population": "4737"
     },
     {
-      "1gemId": "198",
-      "2gemName": "Uster",
-      "3moveOutTot": 1475,
-      "4moveInTot": 1299,
-      "5emptyFlatsPercent": "1.30",
-      "6trafficcostPerPerson": "224",
-      "7moveTo": [
+      "gemId": "198",
+      "gemName": "Uster",
+      "moveOutTot": 1475,
+      "moveInTot": 1299,
+      "emptyFlatsPercent": "1.30",
+      "trafficcostPerPerson": "224",
+      "moveTo": [
         "0",
         "3",
         "1",
@@ -24614,16 +24749,17 @@
         "3",
         "0",
         "236"
-      ]
+      ],
+      "population": "32710"
     },
     {
-      "1gemId": "199",
-      "2gemName": "Volketswil",
-      "3moveOutTot": 997,
-      "4moveInTot": 933,
-      "5emptyFlatsPercent": "0.56",
-      "6trafficcostPerPerson": "153",
-      "7moveTo": [
+      "gemId": "199",
+      "gemName": "Volketswil",
+      "moveOutTot": 997,
+      "moveInTot": 933,
+      "emptyFlatsPercent": "0.56",
+      "trafficcostPerPerson": "153",
+      "moveTo": [
         "0",
         "0",
         "1",
@@ -24795,16 +24931,17 @@
         "1",
         "1",
         "118"
-      ]
+      ],
+      "population": "17743"
     },
     {
-      "1gemId": "200",
-      "2gemName": "Wangen-Brüttisellen",
-      "3moveOutTot": 429,
-      "4moveInTot": 367,
-      "5emptyFlatsPercent": "0.42",
-      "6trafficcostPerPerson": "167",
-      "7moveTo": [
+      "gemId": "200",
+      "gemName": "Wangen-Brüttisellen",
+      "moveOutTot": 429,
+      "moveInTot": 367,
+      "emptyFlatsPercent": "0.42",
+      "trafficcostPerPerson": "167",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -24976,16 +25113,17 @@
         "1",
         "0",
         "54"
-      ]
+      ],
+      "population": "7573"
     },
     {
-      "1gemId": "211",
-      "2gemName": "Altikon",
-      "3moveOutTot": 26,
-      "4moveInTot": 30,
-      "5emptyFlatsPercent": "0.00",
-      "6trafficcostPerPerson": "231",
-      "7moveTo": [
+      "gemId": "211",
+      "gemName": "Altikon",
+      "moveOutTot": 26,
+      "moveInTot": 30,
+      "emptyFlatsPercent": "0.00",
+      "trafficcostPerPerson": "231",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -25157,14 +25295,15 @@
         "0",
         "0",
         "1"
-      ]
+      ],
+      "population": "618"
     },
     {
-      "1gemId": "212",
-      "2gemName": "Bertschikon",
-      "3moveOutTot": 34,
-      "4moveInTot": 43,
-      "7moveTo": [
+      "gemId": "212",
+      "gemName": "Bertschikon",
+      "moveOutTot": 34,
+      "moveInTot": 43,
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -25339,13 +25478,13 @@
       ]
     },
     {
-      "1gemId": "213",
-      "2gemName": "Brütten",
-      "3moveOutTot": 92,
-      "4moveInTot": 117,
-      "5emptyFlatsPercent": "0.80",
-      "6trafficcostPerPerson": "223",
-      "7moveTo": [
+      "gemId": "213",
+      "gemName": "Brütten",
+      "moveOutTot": 92,
+      "moveInTot": 117,
+      "emptyFlatsPercent": "0.80",
+      "trafficcostPerPerson": "223",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -25517,16 +25656,17 @@
         "0",
         "0",
         "4"
-      ]
+      ],
+      "population": "1985"
     },
     {
-      "1gemId": "214",
-      "2gemName": "Dägerlen",
-      "3moveOutTot": 53,
-      "4moveInTot": 43,
-      "5emptyFlatsPercent": "0.77",
-      "6trafficcostPerPerson": "257",
-      "7moveTo": [
+      "gemId": "214",
+      "gemName": "Dägerlen",
+      "moveOutTot": 53,
+      "moveInTot": 43,
+      "emptyFlatsPercent": "0.77",
+      "trafficcostPerPerson": "257",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -25698,16 +25838,17 @@
         "0",
         "0",
         "2"
-      ]
+      ],
+      "population": "986"
     },
     {
-      "1gemId": "215",
-      "2gemName": "Dättlikon",
-      "3moveOutTot": 30,
-      "4moveInTot": 26,
-      "5emptyFlatsPercent": "0.96",
-      "6trafficcostPerPerson": "64",
-      "7moveTo": [
+      "gemId": "215",
+      "gemName": "Dättlikon",
+      "moveOutTot": 30,
+      "moveInTot": 26,
+      "emptyFlatsPercent": "0.96",
+      "trafficcostPerPerson": "64",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -25879,16 +26020,17 @@
         "0",
         "0",
         "1"
-      ]
+      ],
+      "population": "748"
     },
     {
-      "1gemId": "216",
-      "2gemName": "Dinhard",
-      "3moveOutTot": 55,
-      "4moveInTot": 58,
-      "5emptyFlatsPercent": "0.17",
-      "6trafficcostPerPerson": "241",
-      "7moveTo": [
+      "gemId": "216",
+      "gemName": "Dinhard",
+      "moveOutTot": 55,
+      "moveInTot": 58,
+      "emptyFlatsPercent": "0.17",
+      "trafficcostPerPerson": "241",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -26060,16 +26202,17 @@
         "0",
         "0",
         "2"
-      ]
+      ],
+      "population": "1451"
     },
     {
-      "1gemId": "217",
-      "2gemName": "Elgg",
-      "3moveOutTot": 119,
-      "4moveInTot": 172,
-      "5emptyFlatsPercent": "0.42",
-      "6trafficcostPerPerson": "254",
-      "7moveTo": [
+      "gemId": "217",
+      "gemName": "Elgg",
+      "moveOutTot": 119,
+      "moveInTot": 172,
+      "emptyFlatsPercent": "0.42",
+      "trafficcostPerPerson": "254",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -26241,16 +26384,17 @@
         "0",
         "0",
         "9"
-      ]
+      ],
+      "population": "4032"
     },
     {
-      "1gemId": "218",
-      "2gemName": "Ellikon a.d.Th.",
-      "3moveOutTot": 22,
-      "4moveInTot": 42,
-      "5emptyFlatsPercent": "0.00",
-      "6trafficcostPerPerson": "153",
-      "7moveTo": [
+      "gemId": "218",
+      "gemName": "Ellikon a.d.Th.",
+      "moveOutTot": 22,
+      "moveInTot": 42,
+      "emptyFlatsPercent": "0.00",
+      "trafficcostPerPerson": "153",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -26422,16 +26566,17 @@
         "0",
         "0",
         "1"
-      ]
+      ],
+      "population": "914"
     },
     {
-      "1gemId": "219",
-      "2gemName": "Elsau",
-      "3moveOutTot": 149,
-      "4moveInTot": 155,
-      "5emptyFlatsPercent": "0.76",
-      "6trafficcostPerPerson": "327",
-      "7moveTo": [
+      "gemId": "219",
+      "gemName": "Elsau",
+      "moveOutTot": 149,
+      "moveInTot": 155,
+      "emptyFlatsPercent": "0.76",
+      "trafficcostPerPerson": "327",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -26603,16 +26748,17 @@
         "0",
         "0",
         "7"
-      ]
+      ],
+      "population": "3351"
     },
     {
-      "1gemId": "220",
-      "2gemName": "Hagenbuch",
-      "3moveOutTot": 50,
-      "4moveInTot": 56,
-      "5emptyFlatsPercent": "0.21",
-      "6trafficcostPerPerson": "249",
-      "7moveTo": [
+      "gemId": "220",
+      "gemName": "Hagenbuch",
+      "moveOutTot": 50,
+      "moveInTot": 56,
+      "emptyFlatsPercent": "0.21",
+      "trafficcostPerPerson": "249",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -26784,16 +26930,17 @@
         "0",
         "0",
         "2"
-      ]
+      ],
+      "population": "1104"
     },
     {
-      "1gemId": "221",
-      "2gemName": "Hettlingen",
-      "3moveOutTot": 146,
-      "4moveInTot": 144,
-      "5emptyFlatsPercent": "0.42",
-      "6trafficcostPerPerson": "180",
-      "7moveTo": [
+      "gemId": "221",
+      "gemName": "Hettlingen",
+      "moveOutTot": 146,
+      "moveInTot": 144,
+      "emptyFlatsPercent": "0.42",
+      "trafficcostPerPerson": "180",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -26965,16 +27112,17 @@
         "0",
         "0",
         "5"
-      ]
+      ],
+      "population": "2987"
     },
     {
-      "1gemId": "222",
-      "2gemName": "Hofstetten",
-      "3moveOutTot": 17,
-      "4moveInTot": 24,
-      "5emptyFlatsPercent": "1.62",
-      "6trafficcostPerPerson": "277",
-      "7moveTo": [
+      "gemId": "222",
+      "gemName": "Hofstetten",
+      "moveOutTot": 17,
+      "moveInTot": 24,
+      "emptyFlatsPercent": "1.62",
+      "trafficcostPerPerson": "277",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -27146,16 +27294,17 @@
         "0",
         "0",
         "0"
-      ]
+      ],
+      "population": "481"
     },
     {
-      "1gemId": "223",
-      "2gemName": "Neftenbach",
-      "3moveOutTot": 244,
-      "4moveInTot": 337,
-      "5emptyFlatsPercent": "0.67",
-      "6trafficcostPerPerson": "181",
-      "7moveTo": [
+      "gemId": "223",
+      "gemName": "Neftenbach",
+      "moveOutTot": 244,
+      "moveInTot": 337,
+      "emptyFlatsPercent": "0.67",
+      "trafficcostPerPerson": "181",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -27327,16 +27476,17 @@
         "1",
         "0",
         "4"
-      ]
+      ],
+      "population": "5419"
     },
     {
-      "1gemId": "224",
-      "2gemName": "Pfungen",
-      "3moveOutTot": 196,
-      "4moveInTot": 244,
-      "5emptyFlatsPercent": "0.52",
-      "6trafficcostPerPerson": "158",
-      "7moveTo": [
+      "gemId": "224",
+      "gemName": "Pfungen",
+      "moveOutTot": 196,
+      "moveInTot": 244,
+      "emptyFlatsPercent": "0.52",
+      "trafficcostPerPerson": "158",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -27508,16 +27658,17 @@
         "0",
         "0",
         "12"
-      ]
+      ],
+      "population": "3382"
     },
     {
-      "1gemId": "225",
-      "2gemName": "Rickenbach",
-      "3moveOutTot": 112,
-      "4moveInTot": 114,
-      "5emptyFlatsPercent": "1.59",
-      "6trafficcostPerPerson": "155",
-      "7moveTo": [
+      "gemId": "225",
+      "gemName": "Rickenbach",
+      "moveOutTot": 112,
+      "moveInTot": 114,
+      "emptyFlatsPercent": "1.59",
+      "trafficcostPerPerson": "155",
+      "moveTo": [
         "0",
         "0",
         "1",
@@ -27689,16 +27840,17 @@
         "0",
         "0",
         "7"
-      ]
+      ],
+      "population": "2549"
     },
     {
-      "1gemId": "226",
-      "2gemName": "Schlatt",
-      "3moveOutTot": 29,
-      "4moveInTot": 39,
-      "5emptyFlatsPercent": "0.00",
-      "6trafficcostPerPerson": "226",
-      "7moveTo": [
+      "gemId": "226",
+      "gemName": "Schlatt",
+      "moveOutTot": 29,
+      "moveInTot": 39,
+      "emptyFlatsPercent": "0.00",
+      "trafficcostPerPerson": "226",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -27870,16 +28022,17 @@
         "0",
         "0",
         "0"
-      ]
+      ],
+      "population": "738"
     },
     {
-      "1gemId": "227",
-      "2gemName": "Seuzach",
-      "3moveOutTot": 291,
-      "4moveInTot": 348,
-      "5emptyFlatsPercent": "0.22",
-      "6trafficcostPerPerson": "205",
-      "7moveTo": [
+      "gemId": "227",
+      "gemName": "Seuzach",
+      "moveOutTot": 291,
+      "moveInTot": 348,
+      "emptyFlatsPercent": "0.22",
+      "trafficcostPerPerson": "205",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -28051,16 +28204,17 @@
         "0",
         "0",
         "15"
-      ]
+      ],
+      "population": "7128"
     },
     {
-      "1gemId": "228",
-      "2gemName": "Turbenthal",
-      "3moveOutTot": 201,
-      "4moveInTot": 237,
-      "5emptyFlatsPercent": "0.42",
-      "6trafficcostPerPerson": "244",
-      "7moveTo": [
+      "gemId": "228",
+      "gemName": "Turbenthal",
+      "moveOutTot": 201,
+      "moveInTot": 237,
+      "emptyFlatsPercent": "0.42",
+      "trafficcostPerPerson": "244",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -28232,14 +28386,15 @@
         "1",
         "0",
         "9"
-      ]
+      ],
+      "population": "4300"
     },
     {
-      "1gemId": "229",
-      "2gemName": "Wiesendangen",
-      "3moveOutTot": 146,
-      "4moveInTot": 191,
-      "7moveTo": [
+      "gemId": "229",
+      "gemName": "Wiesendangen",
+      "moveOutTot": 146,
+      "moveInTot": 191,
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -28414,13 +28569,13 @@
       ]
     },
     {
-      "1gemId": "230",
-      "2gemName": "Winterthur",
-      "3moveOutTot": 2912,
-      "4moveInTot": 3145,
-      "5emptyFlatsPercent": "0.15",
-      "6trafficcostPerPerson": "328",
-      "7moveTo": [
+      "gemId": "230",
+      "gemName": "Winterthur",
+      "moveOutTot": 2912,
+      "moveInTot": 3145,
+      "emptyFlatsPercent": "0.15",
+      "trafficcostPerPerson": "328",
+      "moveTo": [
         "1",
         "7",
         "3",
@@ -28592,16 +28747,17 @@
         "3",
         "3",
         "625"
-      ]
+      ],
+      "population": "104366"
     },
     {
-      "1gemId": "231",
-      "2gemName": "Zell",
-      "3moveOutTot": 364,
-      "4moveInTot": 370,
-      "5emptyFlatsPercent": "1.15",
-      "6trafficcostPerPerson": "189",
-      "7moveTo": [
+      "gemId": "231",
+      "gemName": "Zell",
+      "moveOutTot": 364,
+      "moveInTot": 370,
+      "emptyFlatsPercent": "1.15",
+      "trafficcostPerPerson": "189",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -28773,16 +28929,17 @@
         "0",
         "0",
         "36"
-      ]
+      ],
+      "population": "5485"
     },
     {
-      "1gemId": "241",
-      "2gemName": "Aesch",
-      "3moveOutTot": 30,
-      "4moveInTot": 83,
-      "5emptyFlatsPercent": "1.17",
-      "6trafficcostPerPerson": "297",
-      "7moveTo": [
+      "gemId": "241",
+      "gemName": "Aesch",
+      "moveOutTot": 30,
+      "moveInTot": 83,
+      "emptyFlatsPercent": "1.17",
+      "trafficcostPerPerson": "297",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -28954,16 +29111,17 @@
         "5",
         "0",
         "7"
-      ]
+      ],
+      "population": "1158"
     },
     {
-      "1gemId": "242",
-      "2gemName": "Birmensdorf",
-      "3moveOutTot": 267,
-      "4moveInTot": 288,
-      "5emptyFlatsPercent": "0.74",
-      "6trafficcostPerPerson": "323",
-      "7moveTo": [
+      "gemId": "242",
+      "gemName": "Birmensdorf",
+      "moveOutTot": 267,
+      "moveInTot": 288,
+      "emptyFlatsPercent": "0.74",
+      "trafficcostPerPerson": "323",
+      "moveTo": [
         "1",
         "6",
         "11",
@@ -29135,16 +29293,17 @@
         "10",
         "0",
         "76"
-      ]
+      ],
+      "population": "5951"
     },
     {
-      "1gemId": "243",
-      "2gemName": "Dietikon",
-      "3moveOutTot": 900,
-      "4moveInTot": 1281,
-      "5emptyFlatsPercent": "0.66",
-      "6trafficcostPerPerson": "163",
-      "7moveTo": [
+      "gemId": "243",
+      "gemName": "Dietikon",
+      "moveOutTot": 900,
+      "moveInTot": 1281,
+      "emptyFlatsPercent": "0.66",
+      "trafficcostPerPerson": "163",
+      "moveTo": [
         "0",
         "9",
         "4",
@@ -29316,16 +29475,17 @@
         "56",
         "23",
         "281"
-      ]
+      ],
+      "population": "24772"
     },
     {
-      "1gemId": "244",
-      "2gemName": "Geroldswil",
-      "3moveOutTot": 214,
-      "4moveInTot": 251,
-      "5emptyFlatsPercent": "0.42",
-      "6trafficcostPerPerson": "158",
-      "7moveTo": [
+      "gemId": "244",
+      "gemName": "Geroldswil",
+      "moveOutTot": 214,
+      "moveInTot": 251,
+      "emptyFlatsPercent": "0.42",
+      "trafficcostPerPerson": "158",
+      "moveTo": [
         "0",
         "0",
         "3",
@@ -29497,16 +29657,17 @@
         "16",
         "16",
         "37"
-      ]
+      ],
+      "population": "4742"
     },
     {
-      "1gemId": "245",
-      "2gemName": "Oberengstringen",
-      "3moveOutTot": 381,
-      "4moveInTot": 335,
-      "5emptyFlatsPercent": "0.37",
-      "6trafficcostPerPerson": "126",
-      "7moveTo": [
+      "gemId": "245",
+      "gemName": "Oberengstringen",
+      "moveOutTot": 381,
+      "moveInTot": 335,
+      "emptyFlatsPercent": "0.37",
+      "trafficcostPerPerson": "126",
+      "moveTo": [
         "0",
         "1",
         "0",
@@ -29678,16 +29839,17 @@
         "12",
         "14",
         "145"
-      ]
+      ],
+      "population": "6397"
     },
     {
-      "1gemId": "246",
-      "2gemName": "Oetwil a.d.L",
-      "3moveOutTot": 145,
-      "4moveInTot": 145,
-      "5emptyFlatsPercent": "0.68",
-      "6trafficcostPerPerson": "150",
-      "7moveTo": [
+      "gemId": "246",
+      "gemName": "Oetwil a.d.L",
+      "moveOutTot": 145,
+      "moveInTot": 145,
+      "emptyFlatsPercent": "0.68",
+      "trafficcostPerPerson": "150",
+      "moveTo": [
         "0",
         "2",
         "0",
@@ -29859,16 +30021,17 @@
         "2",
         "4",
         "26"
-      ]
+      ],
+      "population": "2326"
     },
     {
-      "1gemId": "247",
-      "2gemName": "Schlieren",
-      "3moveOutTot": 970,
-      "4moveInTot": 1067,
-      "5emptyFlatsPercent": "0.04",
-      "6trafficcostPerPerson": "111",
-      "7moveTo": [
+      "gemId": "247",
+      "gemName": "Schlieren",
+      "moveOutTot": 970,
+      "moveInTot": 1067,
+      "emptyFlatsPercent": "0.04",
+      "trafficcostPerPerson": "111",
+      "moveTo": [
         "1",
         "10",
         "3",
@@ -30040,16 +30203,17 @@
         "62",
         "19",
         "348"
-      ]
+      ],
+      "population": "17170"
     },
     {
-      "1gemId": "248",
-      "2gemName": "Uitikon",
-      "3moveOutTot": 165,
-      "4moveInTot": 199,
-      "5emptyFlatsPercent": "1.37",
-      "6trafficcostPerPerson": "369",
-      "7moveTo": [
+      "gemId": "248",
+      "gemName": "Uitikon",
+      "moveOutTot": 165,
+      "moveInTot": 199,
+      "emptyFlatsPercent": "1.37",
+      "trafficcostPerPerson": "369",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -30221,16 +30385,17 @@
         "4",
         "3",
         "60"
-      ]
+      ],
+      "population": "3944"
     },
     {
-      "1gemId": "249",
-      "2gemName": "Unterengstringen",
-      "3moveOutTot": 171,
-      "4moveInTot": 203,
-      "5emptyFlatsPercent": "1.13",
-      "6trafficcostPerPerson": "138",
-      "7moveTo": [
+      "gemId": "249",
+      "gemName": "Unterengstringen",
+      "moveOutTot": 171,
+      "moveInTot": 203,
+      "emptyFlatsPercent": "1.13",
+      "trafficcostPerPerson": "138",
+      "moveTo": [
         "2",
         "0",
         "0",
@@ -30402,16 +30567,17 @@
         "5",
         "8",
         "52"
-      ]
+      ],
+      "population": "3393"
     },
     {
-      "1gemId": "250",
-      "2gemName": "Urdorf",
-      "3moveOutTot": 354,
-      "4moveInTot": 478,
-      "5emptyFlatsPercent": "1.30",
-      "6trafficcostPerPerson": "156",
-      "7moveTo": [
+      "gemId": "250",
+      "gemName": "Urdorf",
+      "moveOutTot": 354,
+      "moveInTot": 478,
+      "emptyFlatsPercent": "1.30",
+      "trafficcostPerPerson": "156",
+      "moveTo": [
         "0",
         "10",
         "1",
@@ -30583,16 +30749,17 @@
         "0",
         "3",
         "94"
-      ]
+      ],
+      "population": "9456"
     },
     {
-      "1gemId": "251",
-      "2gemName": "Weiningen",
-      "3moveOutTot": 239,
-      "4moveInTot": 213,
-      "5emptyFlatsPercent": "0.90",
-      "6trafficcostPerPerson": "151",
-      "7moveTo": [
+      "gemId": "251",
+      "gemName": "Weiningen",
+      "moveOutTot": 239,
+      "moveInTot": 213,
+      "emptyFlatsPercent": "0.90",
+      "trafficcostPerPerson": "151",
+      "moveTo": [
         "0",
         "0",
         "0",
@@ -30764,16 +30931,17 @@
         "9",
         "0",
         "52"
-      ]
+      ],
+      "population": "4281"
     },
     {
-      "1gemId": "261",
-      "2gemName": "Zürich",
-      "3moveOutTot": 12729,
-      "4moveInTot": 8913,
-      "5emptyFlatsPercent": "0.12",
-      "6trafficcostPerPerson": "624",
-      "7moveTo": [
+      "gemId": "261",
+      "gemName": "Zürich",
+      "moveOutTot": 12729,
+      "moveInTot": 8913,
+      "emptyFlatsPercent": "0.12",
+      "trafficcostPerPerson": "624",
+      "moveTo": [
         "14",
         "109",
         "73",
@@ -30945,7 +31113,8 @@
         "171",
         "81",
         "0"
-      ]
+      ],
+      "population": "379915"
     }
   ]
 }

@@ -6,7 +6,7 @@ jQuery(function() {
 	
 
 
-$.get('data/data_leerwoh_2012.csv', function( in_data ) {
+$.get('data/CSV/data_population_dens_2012.csv', function( in_data ) {
 	// console.log( "-- Daten sind da - length:" + in_data.length );
 
 	var line = in_data.split('\n',300);
@@ -33,15 +33,20 @@ $.get('data/data_leerwoh_2012.csv', function( in_data ) {
 
 	// console.log(datacontainer);
 
-	var leerwoh = {};
+	var PersProQM = {};
+	var spacePerPers=[];
 	for (var index = 0; index < datacontainer.length; index++) {
 		var BFS_num = datacontainer[index]['BFS_NR'];
-		var leerValue = datacontainer[index]['INDIKATOR_VALUE'];
-		console.log(datacontainer[index]['INDIKATOR_VALUE']);
-		leerwoh[BFS_num]= leerValue;
+		var countProQM = datacontainer[index]['INDIKATOR_VALUE'];
+		_.forEach(datacontainer[index], function(obj){
+			spacePerPers= return 1 / obj['INDIKATOR_VALUE'];
+			
+		});
+		// console.log(datacontainer[index]['INDIKATOR_VALUE']);
+		PersProQM[BFS_num]= countProQM;
 	};
-	console.log(leerwoh);
-	window.leerwoh = leerwoh;
+	console.log(spacePerPers);
+	window.PersProQM = PersProQM;
 
 	});
 	

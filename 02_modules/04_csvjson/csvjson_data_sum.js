@@ -9,30 +9,35 @@ $(document).ready(function() {
         allAdded = [];
 
     // load data
-    $.get("data/gemeinde_nameKey.json", function(data) {
+    $.get("data/JSON/gemeinde_nameKey.json", function(data) {
         // console.log("-- Daten sind da --", data);
         nameKey = data;
         evalData();
     });
 
-    $.get("data/gemeinde_move_to.json", function(data) {
+    $.get("data/JSON/gemeinde_move_to.json", function(data) {
         // console.log("-- Daten sind da --", data);
         moveTo = data;
         evalData();
     });
 
-    $.get('data/gemeinde_leerwoh_2013.json', function(data){
+    $.get('data/JSON/gemeinde_leerwoh_2013.json', function(data){
         // console.log("-- Daten sind da --", data);
         flats = data;
         evalData();
     });
 
-        $.get('data/gemeinde_trafficcost_2012.json', function(data){
+        $.get('data/JSON/gemeinde_trafficcost_2012.json', function(data){
         // console.log("-- Daten sind da --", data);
         costs = data;
         evalData();
     });
 
+   $.get('data/JSON/gemeinde_population_2012.json', function(data){
+        // console.log("-- Daten sind da --", data);
+        population = data;
+        evalData();
+    });
     function evalData() {
         if (nameKey && moveTo && flats && costs) {
 
@@ -78,13 +83,14 @@ $(document).ready(function() {
             _.forEach(nameKey, function(obj, key){
                // console.log("elem ", key);
                 var  dataContainer = {};
-                dataContainer["1_gemId"]= key;
-                dataContainer["2_gemName"] = obj;
-                dataContainer["3_moveOutTot"]=allAdded[i];
-                dataContainer["4_moveInTot"]=group[i];
-                dataContainer["5_emptyFlatsPercent"]=flats[key];
-                dataContainer["6_trafficcostPerPerson"]=costs[key];
-                dataContainer["7_moveTo"]= moveTo['gemeinden'][i]['moveTo'];
+                dataContainer["gemId"]= key;
+                dataContainer["gemName"] = obj;
+                dataContainer["moveOutTot"]=allAdded[i];
+                dataContainer["moveInTot"]=group[i];
+                dataContainer["emptyFlatsPercent"]=flats[key];
+                dataContainer["trafficcostPerPerson"]=costs[key];
+                dataContainer["moveTo"]= moveTo['gemeinden'][i]['moveTo'];
+                dataContainer["population"]=population[key];
                 i++;
 
                 gemeinden["gemeinden"].push(dataContainer);
