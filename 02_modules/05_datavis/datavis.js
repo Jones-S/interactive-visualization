@@ -120,7 +120,7 @@ d3.json("data.json", function(error, json) {
         var indexFromLeft = 0; //how many lines were added from left
         var indexFromRight = 0; //respectively from the right side
         var curAttach; //saves the current attachment point
-        
+
         //calc x,y for every connection
         _.forEach(obj["connections"][0], function(elem, j){
             var linesOfConnection = Math.abs(Math.round(elem["delta"]/20)); //e.g. 7
@@ -219,21 +219,7 @@ d3.json("data.json", function(error, json) {
     var path = [];
     path[0] = circleInfo[0]["connections"][0]["0-1"]["pathEnds"][0];
     path[1] = { x: bgCircCenterX, y: bgCircCenterY };
-    path[2] = circleInfo[1]["connections"][0]["1-0"]["pathEnds"][6];
-
-
-    svgGroup.append("path")
-        .data(path)
-        .attr("class", "line")
-        .attr("d", line(path))
-        .attr("fill", "none")
-        .attr("stroke-width", 0.6)
-        .attr("stroke", "#15897a");
-
-    var path = [];
-    path[0] = circleInfo[0]["connections"][0]["0-1"]["pathEnds"][2];
-    path[1] = { x: bgCircCenterX, y: bgCircCenterY };
-    path[2] = circleInfo[1]["connections"][0]["1-0"]["pathEnds"][5];
+    path[2] = circleInfo[1]["connections"][0]["1-0"]["pathEnds"][0];
 
 
     svgGroup.append("path")
@@ -247,7 +233,21 @@ d3.json("data.json", function(error, json) {
     var path = [];
     path[0] = circleInfo[0]["connections"][0]["0-1"]["pathEnds"][1];
     path[1] = { x: bgCircCenterX, y: bgCircCenterY };
-    path[2] = circleInfo[1]["connections"][0]["1-0"]["pathEnds"][4];
+    path[2] = circleInfo[1]["connections"][0]["1-0"]["pathEnds"][1];
+
+
+    svgGroup.append("path")
+        .data(path)
+        .attr("class", "line")
+        .attr("d", line(path))
+        .attr("fill", "none")
+        .attr("stroke-width", 0.6)
+        .attr("stroke", "#15897a");
+
+    var path = [];
+    path[0] = circleInfo[0]["connections"][0]["0-1"]["pathEnds"][2];
+    path[1] = { x: bgCircCenterX, y: bgCircCenterY };
+    path[2] = circleInfo[1]["connections"][0]["1-0"]["pathEnds"][2];
 
 
     svgGroup.append("path")
@@ -259,9 +259,9 @@ d3.json("data.json", function(error, json) {
         .attr("stroke", "#c23400");
 
         var path = [];
-    path[0] = _.last(circleInfo[0]["connections"][0]["0-1"]["pathEnds"]);
+    path[0] = circleInfo[0]["connections"][0]["0-1"]["pathEnds"][3];
     path[1] = { x: bgCircCenterX, y: bgCircCenterY };
-    path[2] = circleInfo[1]["connections"][0]["1-0"]["pathEnds"][0];
+    path[2] = circleInfo[1]["connections"][0]["1-0"]["pathEnds"][3];
 
 
     svgGroup.append("path")
@@ -270,7 +270,7 @@ d3.json("data.json", function(error, json) {
         .attr("d", line(path))
         .attr("fill", "none")
         .attr("stroke-width", 0.6)
-        .attr("stroke", "#15897a");
+        .attr("stroke", "#edd400");
 
 
     // _(circleInfo).forEach(function(num){ console.log("hey " + num["centerPos"]["yM"])});
