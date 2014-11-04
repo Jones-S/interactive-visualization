@@ -160,7 +160,7 @@ d3.json("data.json", function(error, json) {
                 curKey = i + "-" + plusStep; // "3-7"
                 console.log(curKey);
                 _.forEach(obj["connections"][curKey]["pathEnds"], function(elem){
-                    curAttach = startLeft + (indexFromLeft * lineAngleStep); //calc current Attachment point for line from left
+                    curAttach = startLeft - (indexFromLeft * lineAngleStep); //calc current Attachment point for line from left
                     x = rad * Math.cos(curAttach) + bgCircCenterX; //calc x depending on current attachment point
                     y = rad * Math.sin(curAttach) + bgCircCenterY; //calc x depending on current attachment point
                     indexFromLeft ++; //increase counter from left
