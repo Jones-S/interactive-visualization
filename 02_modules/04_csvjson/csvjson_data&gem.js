@@ -36,11 +36,47 @@ $(document).ready(function() {
         console.log("-- Pushed " + dataContainer.length + " objects in our container");
         console.log(dataContainer[170]);
         console.log(dataContainer);
+    });
 
+$.get('gem_def.csv', function( in_data ) {
+    console.log( "-- Daten sind da - length:" + in_data.length );
 
-        window.dataContainer = dataContainer;
+    var line = in_data.split('\n',300);
+    console.log( "Wir haben " + line.length + " Zeilen gefunden" );
 
-        // //print array values to text in json format
+    var propertyNames = line[0].split(',');
+    var dataholder =[];
+
+    for (var index = 1; index < line.length; index += 1) {
+        line[index]
+
+        var single_line = line[index];
+        var partsArray = single_line.split(',');
+        var object = {};
+
+        for (var index2  = 0; index2  < partsArray.length; index2 += 1) {
+            var propertyName = propertyNames[index2];
+            var value = partsArray[index2];
+            object[propertyName] = value
+        }; 
+        dataholder.push(object);
+    };
+    console.log('pushed'+ dataholder.length+'object in container');
+
+    console.log(dataholder);
+
+    var moveInto = {};
+    for (var i = 0; i < dataholder.length; i++) {
+        var BFSnum = dataholder[i]['BFS']; // oder dataholder[i].BFS
+        var gemeindenName = dataholder[i]['Gemeinden']; // oder dataholder[i].Gemeinde
+        // console.log(gemeindenName);
+        moveInto[BFSnum] = gemeindenName;
+
+    };
+    console.log(moveInto);
+    });
+
+        //print array values to text in json format
         // var text = '{ "gemeinden": [{ "gemIdentifier" : "';
         // //add values to string
         // for (var i = 0; i < dataContainer.length; i++) {
@@ -74,10 +110,6 @@ $(document).ready(function() {
         // //add text as html to .json div
         // $(".json").html(text);
 
-    });
-
-
-
     // //initiate chromestore
     // var cs = new ChromeStore([{
     //     path: 'videos/clips'
@@ -105,4 +137,4 @@ $(document).ready(function() {
     // });
 
 
-});
+}); // Jquery schliessen

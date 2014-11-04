@@ -48,5 +48,6 @@ $.get('gem_def.csv', function( in_data ) {
 
 	};
 	console.log(moveInto);
+	window.moveInto = moveInto;
 	});
 });
