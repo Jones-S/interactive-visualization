@@ -31,13 +31,14 @@ d3.json("data.json", function(error, json) {
     var bgCircCenterY = height/2;
     var minSize = 2; //min radius of circles independent of population in px
     var maxTraffCost = _.max(_.pluck(data["gemeinden"], "trafficCosts")); //use loDash to get max
-    var lineAngleStep = Math.PI / 100; //in radians
+    var maxDstBtwnLines = 0.02; //in radians
     //calc circle count and angle step
     var increase = Math.PI * 2 / data["gemeinden"].length;
     var angle = 0;
     var rad = 120; //radius of circle with circles on it
     var lines; //holds all paths
     var animFlag = false; //defines if animation should be played
+    var sliderVal = 0.5; //holds tension
 
     // fill circle info array
     var circleInfo = [];
@@ -99,9 +100,9 @@ d3.json("data.json", function(error, json) {
             };
             //set first points form left and right in dock
             var angleShift = (((obj["circleRad"]*2 - (obj["circleRad"]/3)) / rad)/ totalLines); // still in px ... (obj["circleRad"]*2 ~ b = alpha * rad
-            // var angleShift = 0.01;
-            obj["angleShift"] = angleShift;
+            angleShift = (angleShift > maxDstBtwnLines) ? maxDstBtwnLines : angleShift;
             console.log("angleShift: " + angleShift);
+            obj["angleShift"] = angleShift;
             var firstRight = obj["angle"] - halfLines * angleShift;
             var firstLeft = obj["angle"] + halfLines * angleShift;
             obj["firstPoints"] = { "left" : firstLeft, "right" : firstRight }; //save them to the array
@@ -231,7 +232,8 @@ d3.json("data.json", function(error, json) {
         .y(function(d) {
             return d.y;
         })
-        .interpolate("basis");
+        .interpolate("bundle")
+        .tension(sliderVal);
 
     // draw all lines
     _.forEach(circleInfo, function(obj){
@@ -277,41 +279,41 @@ d3.json("data.json", function(error, json) {
     });
 
 
-    //get all first left and first right angles and save it into new array
-    var allStartPoints = [];
-    _.forEach(circleInfo, function(obj) {
-        var object = {};
-        x = rad * Math.cos(obj["firstPoints"]["left"]) + bgCircCenterX;
-        y = rad * Math.sin(obj["firstPoints"]["left"]) + bgCircCenterY;
-        object = {"x" : x, "y": y};
-        allStartPoints.push(object);
-        var object = {};
-        x = rad * Math.cos(obj["firstPoints"]["right"]) + bgCircCenterX;
-        y = rad * Math.sin(obj["firstPoints"]["right"]) + bgCircCenterY;
-        object = {"x" : x, "y": y};
-        allStartPoints.push(object);
-    });
+    // //get all first left and first right angles and save it into new array
+    // var allStartPoints = [];
+    // _.forEach(circleInfo, function(obj) {
+    //     var object = {};
+    //     x = rad * Math.cos(obj["firstPoints"]["left"]) + bgCircCenterX;
+    //     y = rad * Math.sin(obj["firstPoints"]["left"]) + bgCircCenterY;
+    //     object = {"x" : x, "y": y};
+    //     allStartPoints.push(object);
+    //     var object = {};
+    //     x = rad * Math.cos(obj["firstPoints"]["right"]) + bgCircCenterX;
+    //     y = rad * Math.sin(obj["firstPoints"]["right"]) + bgCircCenterY;
+    //     object = {"x" : x, "y": y};
+    //     allStartPoints.push(object);
+    // });
 
 
-    var startPoints = svgGroup.selectAll(".startCircle")
-        .data(allStartPoints)
-        .enter()
-        .append("circle");
+    // var startPoints = svgGroup.selectAll(".startCircle")
+    //     .data(allStartPoints)
+    //     .enter()
+    //     .append("circle");
 
-    var startPointAttr = startPoints
-        .each(function(d, i){
-            d3.select(this).attr({
-                cx: function(d){
-                        return d.x;
-                    },
-                cy: function(d){
-                        return d.y;
-                    }
-            })
-        })
-        .attr("r", "3")
-        .style("fill", "rgba(0, 237, 103, .4)")
-        .attr("class", "startCircle");
+    // var startPointAttr = startPoints
+    //     .each(function(d, i){
+    //         d3.select(this).attr({
+    //             cx: function(d){
+    //                     return d.x;
+    //                 },
+    //             cy: function(d){
+    //                     return d.y;
+    //                 }
+    //         })
+    //     })
+    //     .attr("r", "3")
+    //     .style("fill", "rgba(0, 237, 103, .4)")
+    //     .attr("class", "startCircle");
 
     //animate lines
     function transition() {
@@ -336,7 +338,12 @@ d3.json("data.json", function(error, json) {
 
     });
 
-    // transition();
+    $('#slider').on('change', function(){
+        sliderVal = $('#slider').val();
+        console.log("sliderVal: " + sliderVal);
+        // line.tension(sliderVal);
+        // path.attr("d", function(d, i) { return line(splines[i]); });
+    });
 
 
 }); //d3 json event

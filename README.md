@@ -38,4 +38,7 @@ http://bost.ocks.org/mike/selection/
 code shorthands
 http://www.punkchip.com/javascript-shorthand/
 
+different line interpolations in d3
+http://bl.ocks.org/mbostock/4342190
+
 ```
