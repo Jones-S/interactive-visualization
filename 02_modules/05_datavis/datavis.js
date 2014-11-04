@@ -102,16 +102,12 @@ d3.json("data.json", function(error, json) {
         var x = obj["centerPos"]["xM"];
         var y = obj["centerPos"]["yM"];
         _.forEach(obj["connections"][0], function(elem){
-            for (var i = Math.abs(Math.round(elem["delta"]/20)) - 1; i >= 0; i--) { //for every line (calc first)
+            for (var i = Math.round( Math.abs(elem["delta"]/20 )) - 1; i >= 0; i--) { //for every line (calc first) -> Math.abs FIRST!!!
                 elem["pathEnds"].push({ "x": x , "y": y });
             };
         });
 
     });
-
-    console.log("POSITIV " + (Math.round(30/20)));
-        console.log("----");
-    console.log("NEGATIV " +(Math.round(-30/20)));
 
 
     //move x,y of pathends
@@ -285,20 +281,23 @@ d3.json("data.json", function(error, json) {
             //draw line
             _.forEach(elem["pathEnds"], function(item, j){ //all path elements  -> array with 0-7 e.g.
                 // console.log("ITEM_ :" + item["x"]);
-                // console.log(reverseKey);
+                console.log(reverseKey);
                 var x = circleInfo[to]["connections"][0][reverseKey]["pathEnds"][j]["x"];
                 var y = circleInfo[to]["connections"][0][reverseKey]["pathEnds"][j]["y"];
-                // console.log("x: " + x + "y: " +y + "OF element " + to + "-" + from + " and pathend " + j);
+                console.log("x: " + x + "y: " +y + "OF element " + to + "-" + from + " and pathend " + j);
+                var path = [];
+                    path[0] = {"x": item["x"] , "y": item["y"]};
+                    path[1] = { x: bgCircCenterX, y: bgCircCenterY }; //center of circle as control point
+                    path[2] = {"x": x , "y": y};
+
+
                 svgGroup.append("path")
-                .data([
-                    {"x": item["x"] , "y": item["y"]},
-                    {"x": 140 , "y": 200},
-                ])
-                .attr("class", "line")
-                .attr("d", line(path))
-                .attr("fill", "none")
-                .attr("stroke-width", 0.6)
-                .attr("stroke", "#edd400");
+                    .data(path)
+                    .attr("class", "line")
+                    .attr("d", line(path))
+                    .attr("fill", "none")
+                    .attr("stroke-width", 0.6)
+                    .attr("stroke", "#edd400");
             });
         });
     });
