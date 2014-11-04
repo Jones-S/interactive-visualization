@@ -4,6 +4,12 @@ $(document).ready(function() {
 //because json is loaded asynchronously, all functions concerning data are written inside
 var data;
 
+var sum = _.reduce([1, 2, 3], function(sum, num) {
+  return sum + num;
+});
+console.log(sum);
+// → 6
+
 //mapping function
 function map_range(value, low1, high1, low2, high2) {
     return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
@@ -39,7 +45,7 @@ d3.json("data.json", function(error, json) {
         gemObject = {
             "name" : data["gemeinden"][i]["gemeinde"],
             "centerPos" : { "xM" : 0, "yM" : 0 },
-            // "connections" : [
+            "connections" : {}
             //     // how the content will look like
             //     // "0-0" : {   "delta" : 0,
             //     //             "pathEnds" : [{ "x" : 0, "y" : 0}] //x und y pos of path ending on the circle, can have more than one element with x,y if more than 1 line
@@ -48,17 +54,15 @@ d3.json("data.json", function(error, json) {
         };
 
         var object = {};
-        var connections = [];
 
-        _(data["gemeinden"]).forEach(function(gem, j){
+        _.forEach(gem["nach"], function(obj, j){
             var key = i + "-" + j; //e.g. "0-1" > from gemeinde 0 to gemeinde 1
             //now calculate delta between the gemeinden including itself (always 0)
-            object[key] = { delta: data["gemeinden"][j]["nach"][i] - data["gemeinden"][i]["nach"][j],
-                pathEnds: []
+            gemObject["connections"][key] = { "delta": data["gemeinden"][j]["nach"][i] - data["gemeinden"][i]["nach"][j],
+                "pathEnds": []
             };
         });
-        connections.push(object); //
-        gemObject["connections"] = connections;
+
         circleInfo.push(gemObject);
 
     });
@@ -73,7 +77,7 @@ d3.json("data.json", function(error, json) {
         angle += increase;
         var totalLines = 0;
 
-        _.forEach(obj["connections"][0], function(elem){
+        _.forEach(obj["connections"], function(elem){
             var lines = Math.abs(Math.round(elem["delta"]/20)); //e.g. 7 lines for 140 people
             totalLines += lines;
         })
@@ -83,15 +87,15 @@ d3.json("data.json", function(error, json) {
             var halfLines = 0;
             if (even) {
                 halfLines = obj["totalLines"]/2;
-                console.log(halfLines);
+                // console.log(halfLines);
                 halfLines -= 0.5; //because in the center is no point
-                console.log(halfLines);
+                // console.log(halfLines);
             } else {
                 halfLines = Math.floor(obj["totalLines"]/2); //round floor because if odd -> one pathending will be centered
             };
             //set first points form left and right in dock
-            var firstLeft = obj["angle"] + halfLines * lineAngleStep;
             var firstRight = obj["angle"] - halfLines * lineAngleStep;
+            var firstLeft = obj["angle"] + halfLines * lineAngleStep;
             obj["firstPoints"] = { "left" : firstLeft, "right" : firstRight }; //save them to the array
             if(obj["totalLines"] > 0){
         };
@@ -101,21 +105,25 @@ d3.json("data.json", function(error, json) {
     _.forEach(circleInfo, function(obj){
         var x = obj["centerPos"]["xM"];
         var y = obj["centerPos"]["yM"];
-        _.forEach(obj["connections"][0], function(elem){
+        _.forEach(obj["connections"], function(elem){
             for (var i = Math.round( Math.abs(elem["delta"]/20 )) - 1; i >= 0; i--) { //for every line (calc first) -> Math.abs FIRST!!!
                 elem["pathEnds"].push({ "x": x , "y": y });
             };
         });
 
     });
+    // console.log(circleInfo);
+    // console.log(circleInfo[0]["connections"]["0-1"]);
+
+    window.circleInfo = circleInfo;
 
 
     //move x,y of pathends
     _.forEach(circleInfo, function(obj, i){ //e.g. {"connection" : ..., "name" ...} etc
         var totalLines = obj["totalLines"];
-        var moveFrom, curIndex = i;
-        var startLeft = obj.firstPoints.left;
-        var startRight = obj.firstPoints.right;
+        var curIndex = i;
+        var startLeft = obj["firstPoints"]["left"];
+        var startRight = obj["firstPoints"]["right"];
         var x;
         var y;
         var indexFromLeft = 0; //how many lines were added from left
@@ -123,103 +131,81 @@ d3.json("data.json", function(error, json) {
         var curAttach; //saves the current attachment point
         var curKey;
 
-        var cncts = obj["connections"][0].length -1 ; //e.g. 7
-        var minusStep, plusStep = curIndex; //set step to start-index
+        var cncts = _.size(obj["connections"]) - 1; //e.g. 7
+        var minusStep = curIndex; //set step to start-index
+        var plusStep = curIndex;
 
-        var increment = (curIndex >= (cncts - curIndex)) ? curIndex : cncts; //set increment var for for loop
+        var increment = (curIndex >= (cncts - curIndex)) ? curIndex : (cncts - curIndex); //set increment var for for loop
+        console.log("increment : " + increment + " minusStep : " + minusStep + " plusStep : " + plusStep + " cncts : " + cncts);
 
-        for (increment > 0; increment--) {
+        for (var j = increment; j >= 0; j--) {
+            // console.log("My J: " + j);
             if(minusStep >= 0){
+                console.log("from right " + i + " - " + minusStep);
                 curKey = i + "-" + minusStep; // "3-2"
-                _.forEach(obj["connections"][0][curKey]["pathEnds"], function(elem){
-                    console.log("elem : " +elem);
+                // console.log(obj["connections"][curKey]);
+                _.forEach(obj["connections"][curKey]["pathEnds"], function(elem){
                     curAttach = startRight + (indexFromRight * lineAngleStep); //calc current Attachment point for line from left
                     x = rad * Math.cos(curAttach) + bgCircCenterX; //calc x depending on current attachment point
                     y = rad * Math.sin(curAttach) + bgCircCenterY; //calc x depending on current attachment point
                     indexFromRight ++; //increase counter from left
-                    elem = {"x" : x, "y": y};
+                    elem["x"] = x;
+                    elem["y"] = y;
                 });
-                minusStep--;
+                minusStep --;
             }
 
             if (plusStep <= cncts ) {
+                // console.log("i: " + i);
                 curKey = i + "-" + plusStep; // "3-7"
-                _.forEach(obj["connections"][0][curKey]["pathEnds"], function(elem){
-                    console.log("elem : " +elem);
+                console.log(curKey);
+                _.forEach(obj["connections"][curKey]["pathEnds"], function(elem){
                     curAttach = startLeft + (indexFromLeft * lineAngleStep); //calc current Attachment point for line from left
                     x = rad * Math.cos(curAttach) + bgCircCenterX; //calc x depending on current attachment point
                     y = rad * Math.sin(curAttach) + bgCircCenterY; //calc x depending on current attachment point
                     indexFromLeft ++; //increase counter from left
-                    elem = {"x" : x, "y": y};
+                    elem["x"] = x;
+                    elem["y"] = y;
+                    console.log(elem);
                 });
-                plusStep--;
+                plusStep ++;
             }
         };
 
 
 
-        while( minusStep >= 0 || plusStep <= cncts){
-            if( minusStep >= 0){
-                curKey = i + "-"  + minusStep; //first time = "0-0"
-                _.forEach(obj["connections"][0][curKey]["pathEnds"], function(elem){
-                    console.log("elem : " +elem);
-                });
-            //     curAttach = startRight + (indexFromRight * lineAngleStep); //calc current Attachment point for line from left
-            //     x = rad * Math.cos(curAttach) + bgCircCenterX; //calc x depending on current attachment point
-            //     y = rad * Math.sin(curAttach) + bgCircCenterY; //calc x depending on current attachment point
-            //     indexFromRight ++; //increase counter from left
-            //     obj["connections"][0][curKey]["pathEnds"][i] = {"x" : x, "y": y};
-            };
+        // //calc x,y for every connection
+        // _.forEach(obj["connections"], function(elem, j){ //e.g. "2-3"
+        //     var linesOfConnection = Math.abs(Math.round(elem["delta"]/20)); //e.g. 7
+        //     var moveFromTo = j.split("-"); // split "0-2" = j into {0, 2} 0= from 2 = to
+        //     var from = moveFromTo[0]; //2
+        //     var to = moveFromTo[1]; //3
 
-        }
+        //     if (from != to && from < to) { //if 1-1 dont do nothing, if 0-1, 0-2 etc start add pathends from left side of dock
+        //         for (var i = linesOfConnection - 1; i >= 0; i--) { //for every line calc new x,y from left
+        //             curAttach = startLeft - (indexFromLeft * lineAngleStep); //calc current Attachment point for line from left
+        //             x = rad * Math.cos(curAttach) + bgCircCenterX; //calc x depending on current attachment point
+        //             y = rad * Math.sin(curAttach) + bgCircCenterY; //calc x depending on current attachment point
+        //             // console.log("X: " + x + "   Y: " + y + "    &k: " + k);
+        //             indexFromLeft ++; //increase counter from left
+        //             elem["pathEnds"][i] = {"x" : x, "y": y};
+        //         };
 
-        if(curIndex >= (cncts - curIndex)){ //if 4-4 -> 4 > als 3 (7-4) then count for loop with bigger number (curIndex)
-            for (var k = curIndex - 1; k >= 0; k--) {
-                curKey = i + "-" + k;
-                console.log(curKey);
-
-                // curAttach = startLeft - (indexFromLeft * lineAngleStep); //calc current Attachment point for line from left
-                // x = rad * Math.cos(curAttach) + bgCircCenterX; //calc x depending on current attachment point
-                // y = rad * Math.sin(curAttach) + bgCircCenterY; //calc x depending on current attachment point
-                // // console.log("X: " + x + "   Y: " + y + "    &k: " + k);
-                // indexFromLeft ++; //increase counter from left
-                // elem["pathEnds"][i] = {"x" : x, "y": y};
-            };
-        };
-
-        //calc x,y for every connection
-        _.forEach(obj["connections"][0], function(elem, j){ //e.g. "2-3"
-            var linesOfConnection = Math.abs(Math.round(elem["delta"]/20)); //e.g. 7
-            var moveFromTo = j.split("-"); // split "0-2" = j into {0, 2} 0= from 2 = to
-            var from = moveFromTo[0]; //2
-            var to = moveFromTo[1]; //3
-
-            if (from != to && from < to) { //if 1-1 dont do nothing, if 0-1, 0-2 etc start add pathends from left side of dock
-                for (var i = linesOfConnection - 1; i >= 0; i--) { //for every line calc new x,y from left
-                    curAttach = startLeft - (indexFromLeft * lineAngleStep); //calc current Attachment point for line from left
-                    x = rad * Math.cos(curAttach) + bgCircCenterX; //calc x depending on current attachment point
-                    y = rad * Math.sin(curAttach) + bgCircCenterY; //calc x depending on current attachment point
-                    // console.log("X: " + x + "   Y: " + y + "    &k: " + k);
-                    indexFromLeft ++; //increase counter from left
-                    elem["pathEnds"][i] = {"x" : x, "y": y};
-                };
-
-            } else if ( from != to && from > to){ //if 1-1 don't do nothing, if 3-0, 3-1 etc start adding pathend coordinates from the right side
-                for (var i = linesOfConnection - 1; i >= 0; i--) {
-                    curAttach = startRight + (indexFromRight * lineAngleStep); //calc current Attachment point for line from left
-                    x = rad * Math.cos(curAttach) + bgCircCenterX; //calc x depending on current attachment point
-                    y = rad * Math.sin(curAttach) + bgCircCenterY; //calc x depending on current attachment point
-                    indexFromRight ++; //increase counter from left
-                    elem["pathEnds"][i] = {"x" : x, "y": y};
-                    // k ++;
-                };
-            };
-        });
+        //     } else if ( from != to && from > to){ //if 1-1 don't do nothing, if 3-0, 3-1 etc start adding pathend coordinates from the right side
+        //         for (var i = linesOfConnection - 1; i >= 0; i--) {
+        //             curAttach = startRight + (indexFromRight * lineAngleStep); //calc current Attachment point for line from left
+        //             x = rad * Math.cos(curAttach) + bgCircCenterX; //calc x depending on current attachment point
+        //             y = rad * Math.sin(curAttach) + bgCircCenterY; //calc x depending on current attachment point
+        //             indexFromRight ++; //increase counter from left
+        //             elem["pathEnds"][i] = {"x" : x, "y": y};
+        //             // k ++;
+        //         };
+        //     };
+        // });
 
     });
 
 
-    console.log(circleInfo);
 
 
     //draw svg
@@ -276,9 +262,9 @@ d3.json("data.json", function(error, json) {
         .interpolate("basis");
 
     var path = [];
-    path[0] = circleInfo[0]["connections"][0]["0-1"]["pathEnds"][0];
+    path[0] = circleInfo[0]["connections"]["0-1"]["pathEnds"][0];
     path[1] = { x: bgCircCenterX, y: bgCircCenterY };
-    path[2] = circleInfo[1]["connections"][0]["1-0"]["pathEnds"][0];
+    path[2] = circleInfo[1]["connections"]["1-0"]["pathEnds"][0];
 
 
     svgGroup.append("path")
@@ -290,9 +276,9 @@ d3.json("data.json", function(error, json) {
         .attr("stroke", "#15897a");
 
     var path = [];
-    path[0] = circleInfo[0]["connections"][0]["0-1"]["pathEnds"][1];
+    path[0] = circleInfo[0]["connections"]["0-1"]["pathEnds"][1];
     path[1] = { x: bgCircCenterX, y: bgCircCenterY };
-    path[2] = circleInfo[1]["connections"][0]["1-0"]["pathEnds"][1];
+    path[2] = circleInfo[1]["connections"]["1-0"]["pathEnds"][1];
 
 
     svgGroup.append("path")
@@ -304,9 +290,9 @@ d3.json("data.json", function(error, json) {
         .attr("stroke", "#15897a");
 
     var path = [];
-    path[0] = circleInfo[0]["connections"][0]["0-1"]["pathEnds"][2];
+    path[0] = circleInfo[0]["connections"]["0-1"]["pathEnds"][2];
     path[1] = { x: bgCircCenterX, y: bgCircCenterY };
-    path[2] = circleInfo[1]["connections"][0]["1-0"]["pathEnds"][2];
+    path[2] = circleInfo[1]["connections"]["1-0"]["pathEnds"][2];
 
 
     svgGroup.append("path")
@@ -318,9 +304,9 @@ d3.json("data.json", function(error, json) {
         .attr("stroke", "#c23400");
 
         var path = [];
-    path[0] = circleInfo[0]["connections"][0]["0-1"]["pathEnds"][3];
+    path[0] = circleInfo[0]["connections"]["0-1"]["pathEnds"][3];
     path[1] = { x: bgCircCenterX, y: bgCircCenterY };
-    path[2] = circleInfo[1]["connections"][0]["1-0"]["pathEnds"][3];
+    path[2] = circleInfo[1]["connections"]["1-0"]["pathEnds"][3];
 
 
     svgGroup.append("path")
@@ -334,7 +320,7 @@ d3.json("data.json", function(error, json) {
 
     // draw all lines
     _.forEach(circleInfo, function(obj){
-        _.forEach(obj["connections"][0], function(elem, i){ //e.g. elem = 0-1
+        _.forEach(obj["connections"], function(elem, i){ //e.g. elem = 0-1
             var moveFromTo = i.split("-"); // split "0-2" = i into {0, 2} 0= from 2 = to
             // console.log(i);
             var from = moveFromTo[0];
@@ -345,8 +331,8 @@ d3.json("data.json", function(error, json) {
             _.forEach(elem["pathEnds"], function(item, j){ //all path elements  -> array with 0-7 e.g.
                 // console.log("ITEM_ :" + item["x"]);
                 // console.log(reverseKey);
-                var x = circleInfo[to]["connections"][0][reverseKey]["pathEnds"][j]["x"];
-                var y = circleInfo[to]["connections"][0][reverseKey]["pathEnds"][j]["y"];
+                var x = circleInfo[to]["connections"][reverseKey]["pathEnds"][j]["x"];
+                var y = circleInfo[to]["connections"][reverseKey]["pathEnds"][j]["y"];
                 // console.log("x: " + x + "y: " +y + "OF element " + to + "-" + from + " and pathend " + j);
                 var path = [];
                     path[0] = {"x": item["x"] , "y": item["y"]};
@@ -366,7 +352,42 @@ d3.json("data.json", function(error, json) {
     });
 
 
+    //get all first left and first right angles and save it into new array
+    var allStartPoints = [];
+    _.forEach(circleInfo, function(obj) {
+        var object = {};
+        x = rad * Math.cos(obj["firstPoints"]["left"]) + bgCircCenterX;
+        y = rad * Math.sin(obj["firstPoints"]["left"]) + bgCircCenterY;
+        object = {"x" : x, "y": y};
+        allStartPoints.push(object);
+        var object = {};
+        x = rad * Math.cos(obj["firstPoints"]["right"]) + bgCircCenterX;
+        y = rad * Math.sin(obj["firstPoints"]["right"]) + bgCircCenterY;
+        object = {"x" : x, "y": y};
+        allStartPoints.push(object);
+    });
 
+    console.log(allStartPoints);
+
+    var startPoints = svgGroup.selectAll(".startCircle")
+        .data(allStartPoints)
+        .enter()
+        .append("circle");
+
+    var startPointAttr = startPoints
+        .each(function(d, i){
+            d3.select(this).attr({
+                cx: function(d){
+                        return d.x;
+                    },
+                cy: function(d){
+                        return d.y;
+                    }
+            })
+        })
+        .attr("r", "3")
+        .style("fill", "#00ed67")
+        .attr("class", "startCircle");
 
 
 });
