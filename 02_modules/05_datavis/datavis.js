@@ -36,6 +36,8 @@ d3.json("data.json", function(error, json) {
     var increase = Math.PI * 2 / data["gemeinden"].length;
     var angle = 0;
     var rad = 120; //radius of circle with circles on it
+    var lines; //holds all paths
+    var animFlag = false; //defines if animation should be played
 
     // fill circle info array
     var circleInfo = [];
@@ -80,8 +82,8 @@ d3.json("data.json", function(error, json) {
         var totalLines = 0;
 
         _.forEach(obj["connections"], function(elem){
-            var lines = Math.abs(Math.round(elem["delta"]/20)); //e.g. 7 lines for 140 people
-            totalLines += lines;
+            var objLines = Math.abs(Math.round(elem["delta"]/20)); //e.g. 7 lines for 140 people
+            totalLines += objLines;
         })
         obj["totalLines"] = totalLines;
             //calc startAngle (lineAngle) for first line
@@ -106,6 +108,7 @@ d3.json("data.json", function(error, json) {
             if(obj["totalLines"] > 0){
         };
     });
+
 
     //set all x,y of paths in center or the circles
     _.forEach(circleInfo, function(obj){
@@ -248,14 +251,14 @@ d3.json("data.json", function(error, json) {
                     path[2] = {"x": x , "y": y};
 
 
-                svgGroup.append("path")
+                lines = svgGroup.append("path")
                     .data(path)
                     .attr("class", "line")
                     .attr("d", line(path))
                     .style("fill", "none")
                     .style("stroke-width", 0.6)
                     .style("stroke", "rgba(254, 255, 223, 0.82)")
-                    .style("stroke-dasharray", "2, 2")
+                    .style("stroke-dasharray", "6")
 
             });
         });
@@ -298,12 +301,32 @@ d3.json("data.json", function(error, json) {
         .style("fill", "rgba(0, 237, 103, .4)")
         .attr("class", "startCircle");
 
+    //animate lines
+    function transition() {
+        console.log("Dr. Jones: ");
+        if(animFlag){
+            d3.selectAll(".line").transition().duration(1000).ease("linear")
+            .style("stroke-dashoffset", "12")
+            .each("end", function() {
+                d3.selectAll(".line").style("stroke-dashoffset", "0");
+                transition();
+            });
+        }
+    }
 
-});
+    //start animation on dblclick
+    $("svg").dblclick(function() {
+        if(animFlag){
+            animFlag = false;
+        } else {
+            animFlag = true;
+            transition();
+        }
+
+    });
+
+    // transition();
 
 
-
-
-
-
-});
+}); //d3 json event
+}); //jquery document ready
