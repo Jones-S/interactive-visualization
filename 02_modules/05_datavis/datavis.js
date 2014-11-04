@@ -35,10 +35,11 @@ d3.json("data.json", function(error, json) {
     //calc circle count and angle step
     var increase = Math.PI * 2 / data["gemeinden"].length;
     var angle = 0;
-    var rad = 120; //radius of circle with circles on it
+    var rad = 280; //radius of circle with circles on it
     var lines; //holds all paths
     var animFlag = false; //defines if animation should be played
-    var sliderVal = 0.5; //holds tension
+    var sliderVal = 0.8; //holds tension
+    var alphaLimit = 100; //100+ people will be displayed with lines in full alpha ( = 1.0)
 
     // fill circle info array
     var circleInfo = [];
@@ -245,6 +246,12 @@ d3.json("data.json", function(error, json) {
 
             //draw line
             _.forEach(elem["pathEnds"], function(item, j){ //all path elements  -> array with 0-7 e.g.
+                var numOfPeople = (Math.abs(elem["delta"]) > alphaLimit) ? alphaLimit : Math.abs(elem["delta"]);
+                var alphaMap = d3.scale.linear() //map number of people to an alpha value
+                    .domain([1, 100])
+                    .range([0.3, 1]);
+                var strokeColor = "rgba(254, 255, 223," + alphaMap(numOfPeople) + ")";
+
                 //prohibit program to draw double lines
                 if (from >= to){
                     var x = circleInfo[to]["connections"][reverseKey]["pathEnds"][j]["x"];
@@ -268,8 +275,8 @@ d3.json("data.json", function(error, json) {
                     .attr("class", "line")
                     .attr("d", line(path))
                     .style("fill", "none")
-                    .style("stroke-width", 0.6)
-                    .style("stroke", "rgba(254, 255, 223, 0.82)")
+                    .style("stroke-width", 1)
+                    .style("stroke", strokeColor)
                     .style("stroke-dasharray", "6")
 
                 }
