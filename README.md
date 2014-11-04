@@ -35,4 +35,7 @@ https://egghead.io/lessons/core-javascript-introduction-to-lodash
 selections of d3.js explained
 http://bost.ocks.org/mike/selection/
 
+code shorthands
+http://www.punkchip.com/javascript-shorthand/
+
 ```

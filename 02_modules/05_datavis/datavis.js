@@ -111,9 +111,9 @@ d3.json("data.json", function(error, json) {
 
 
     //move x,y of pathends
-    _.forEach(circleInfo, function(obj, i){
+    _.forEach(circleInfo, function(obj, i){ //e.g. {"connection" : ..., "name" ...} etc
         var totalLines = obj["totalLines"];
-        var moveFrom = i;
+        var moveFrom, curIndex = i;
         var startLeft = obj.firstPoints.left;
         var startRight = obj.firstPoints.right;
         var x;
@@ -121,14 +121,78 @@ d3.json("data.json", function(error, json) {
         var indexFromLeft = 0; //how many lines were added from left
         var indexFromRight = 0; //respectively from the right side
         var curAttach; //saves the current attachment point
+        var curKey;
+
+        var cncts = obj["connections"][0].length -1 ; //e.g. 7
+        var minusStep, plusStep = curIndex; //set step to start-index
+
+        var increment = (curIndex >= (cncts - curIndex)) ? curIndex : cncts; //set increment var for for loop
+
+        for (increment > 0; increment--) {
+            if(minusStep >= 0){
+                curKey = i + "-" + minusStep; // "3-2"
+                _.forEach(obj["connections"][0][curKey]["pathEnds"], function(elem){
+                    console.log("elem : " +elem);
+                    curAttach = startRight + (indexFromRight * lineAngleStep); //calc current Attachment point for line from left
+                    x = rad * Math.cos(curAttach) + bgCircCenterX; //calc x depending on current attachment point
+                    y = rad * Math.sin(curAttach) + bgCircCenterY; //calc x depending on current attachment point
+                    indexFromRight ++; //increase counter from left
+                    elem = {"x" : x, "y": y};
+                });
+                minusStep--;
+            }
+
+            if (plusStep <= cncts ) {
+                curKey = i + "-" + plusStep; // "3-7"
+                _.forEach(obj["connections"][0][curKey]["pathEnds"], function(elem){
+                    console.log("elem : " +elem);
+                    curAttach = startLeft + (indexFromLeft * lineAngleStep); //calc current Attachment point for line from left
+                    x = rad * Math.cos(curAttach) + bgCircCenterX; //calc x depending on current attachment point
+                    y = rad * Math.sin(curAttach) + bgCircCenterY; //calc x depending on current attachment point
+                    indexFromLeft ++; //increase counter from left
+                    elem = {"x" : x, "y": y};
+                });
+                plusStep--;
+            }
+        };
+
+
+
+        while( minusStep >= 0 || plusStep <= cncts){
+            if( minusStep >= 0){
+                curKey = i + "-"  + minusStep; //first time = "0-0"
+                _.forEach(obj["connections"][0][curKey]["pathEnds"], function(elem){
+                    console.log("elem : " +elem);
+                });
+            //     curAttach = startRight + (indexFromRight * lineAngleStep); //calc current Attachment point for line from left
+            //     x = rad * Math.cos(curAttach) + bgCircCenterX; //calc x depending on current attachment point
+            //     y = rad * Math.sin(curAttach) + bgCircCenterY; //calc x depending on current attachment point
+            //     indexFromRight ++; //increase counter from left
+            //     obj["connections"][0][curKey]["pathEnds"][i] = {"x" : x, "y": y};
+            };
+
+        }
+
+        if(curIndex >= (cncts - curIndex)){ //if 4-4 -> 4 > als 3 (7-4) then count for loop with bigger number (curIndex)
+            for (var k = curIndex - 1; k >= 0; k--) {
+                curKey = i + "-" + k;
+                console.log(curKey);
+
+                // curAttach = startLeft - (indexFromLeft * lineAngleStep); //calc current Attachment point for line from left
+                // x = rad * Math.cos(curAttach) + bgCircCenterX; //calc x depending on current attachment point
+                // y = rad * Math.sin(curAttach) + bgCircCenterY; //calc x depending on current attachment point
+                // // console.log("X: " + x + "   Y: " + y + "    &k: " + k);
+                // indexFromLeft ++; //increase counter from left
+                // elem["pathEnds"][i] = {"x" : x, "y": y};
+            };
+        };
 
         //calc x,y for every connection
-        _.forEach(obj["connections"][0], function(elem, j){
+        _.forEach(obj["connections"][0], function(elem, j){ //e.g. "2-3"
             var linesOfConnection = Math.abs(Math.round(elem["delta"]/20)); //e.g. 7
             var moveFromTo = j.split("-"); // split "0-2" = j into {0, 2} 0= from 2 = to
-            var from = moveFromTo[0];
-            var to = moveFromTo[1];
-            var k = 0; //counts which connection i'm moving -> index for array with all (x,y) pathendings
+            var from = moveFromTo[0]; //2
+            var to = moveFromTo[1]; //3
 
             if (from != to && from < to) { //if 1-1 dont do nothing, if 0-1, 0-2 etc start add pathends from left side of dock
                 for (var i = linesOfConnection - 1; i >= 0; i--) { //for every line calc new x,y from left
@@ -137,8 +201,7 @@ d3.json("data.json", function(error, json) {
                     y = rad * Math.sin(curAttach) + bgCircCenterY; //calc x depending on current attachment point
                     // console.log("X: " + x + "   Y: " + y + "    &k: " + k);
                     indexFromLeft ++; //increase counter from left
-                    elem["pathEnds"][k] = {"x" : x, "y": y};
-                    k ++;
+                    elem["pathEnds"][i] = {"x" : x, "y": y};
                 };
 
             } else if ( from != to && from > to){ //if 1-1 don't do nothing, if 3-0, 3-1 etc start adding pathend coordinates from the right side
@@ -147,8 +210,8 @@ d3.json("data.json", function(error, json) {
                     x = rad * Math.cos(curAttach) + bgCircCenterX; //calc x depending on current attachment point
                     y = rad * Math.sin(curAttach) + bgCircCenterY; //calc x depending on current attachment point
                     indexFromRight ++; //increase counter from left
-                    elem["pathEnds"][k] = {"x" : x, "y": y};
-                    k ++;
+                    elem["pathEnds"][i] = {"x" : x, "y": y};
+                    // k ++;
                 };
             };
         });
@@ -281,10 +344,10 @@ d3.json("data.json", function(error, json) {
             //draw line
             _.forEach(elem["pathEnds"], function(item, j){ //all path elements  -> array with 0-7 e.g.
                 // console.log("ITEM_ :" + item["x"]);
-                console.log(reverseKey);
+                // console.log(reverseKey);
                 var x = circleInfo[to]["connections"][0][reverseKey]["pathEnds"][j]["x"];
                 var y = circleInfo[to]["connections"][0][reverseKey]["pathEnds"][j]["y"];
-                console.log("x: " + x + "y: " +y + "OF element " + to + "-" + from + " and pathend " + j);
+                // console.log("x: " + x + "y: " +y + "OF element " + to + "-" + from + " and pathend " + j);
                 var path = [];
                     path[0] = {"x": item["x"] , "y": item["y"]};
                     path[1] = { x: bgCircCenterX, y: bgCircCenterY }; //center of circle as control point
