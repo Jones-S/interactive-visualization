@@ -77,17 +77,18 @@ $(document).ready(function() {
             var i = 0;
             _.forEach(nameKey, function(obj, key){
                // console.log("elem ", key);
-                var  object = {};
-                object["gemId"]= key;
-                object["gemName"] = obj;
-                object["moveOutTot"]=allAdded[i];
-                object["moveInTot"]=group[i];
-                object["emptyFlatsPercent"]=flats[key];
-                object["trafficcostPerPerson"]=costs[key];
-                object["moveTo"]= moveTo['gemeinden'][i]['moveTo'];
+                var  dataContainer = {};
+                dataContainer["1_gemId"]= key;
+                dataContainer["2_gemName"] = obj;
+                dataContainer["3_moveOutTot"]=allAdded[i];
+                dataContainer["4_moveInTot"]=group[i];
+                dataContainer["5_emptyFlatsPercent"]=flats[key];
+                dataContainer["6_trafficcostPerPerson"]=costs[key];
+                dataContainer["7_moveTo"]= moveTo['gemeinden'][i]['moveTo'];
                 i++;
 
-                gemeinden.push(object);
+                gemeinden["gemeinden"].push(dataContainer);
+                // console.log(dataContainer);
                 console.log(gemeinden['gemeinden']);
                 window.gemeinden = gemeinden;
 
