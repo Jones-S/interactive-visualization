@@ -243,12 +243,22 @@ d3.json("data.json", function(error, json) {
 
             //draw line
             _.forEach(elem["pathEnds"], function(item, j){ //all path elements  -> array with 0-7 e.g.
-                var x = circleInfo[to]["connections"][reverseKey]["pathEnds"][j]["x"];
-                var y = circleInfo[to]["connections"][reverseKey]["pathEnds"][j]["y"];
-                var path = [];
-                    path[0] = {"x": item["x"] , "y": item["y"]};
-                    path[1] = { x: bgCircCenterX, y: bgCircCenterY }; //center of circle as control point
-                    path[2] = {"x": x , "y": y};
+                //prohibit program to draw double lines
+                if (from >= to){
+                    var x = circleInfo[to]["connections"][reverseKey]["pathEnds"][j]["x"];
+                    var y = circleInfo[to]["connections"][reverseKey]["pathEnds"][j]["y"];
+                    var path = [];
+                    //define path animation direction
+                    if (circleInfo[to]["connections"][reverseKey]["delta"] < 0){
+                        path[0] = {"x": item["x"] , "y": item["y"]};
+                        path[1] = { x: bgCircCenterX, y: bgCircCenterY }; //center of circle as control point
+                        path[2] = {"x": x , "y": y};
+                    } else {
+                        path[2] = {"x": item["x"] , "y": item["y"]};
+                        path[1] = { x: bgCircCenterX, y: bgCircCenterY }; //center of circle as control point
+                        path[0] = {"x": x , "y": y};
+                    }
+
 
 
                 lines = svgGroup.append("path")
@@ -259,6 +269,8 @@ d3.json("data.json", function(error, json) {
                     .style("stroke-width", 0.6)
                     .style("stroke", "rgba(254, 255, 223, 0.82)")
                     .style("stroke-dasharray", "6")
+
+                }
 
             });
         });
@@ -303,7 +315,6 @@ d3.json("data.json", function(error, json) {
 
     //animate lines
     function transition() {
-        console.log("Dr. Jones: ");
         if(animFlag){
             d3.selectAll(".line").transition().duration(1000).ease("linear")
             .style("stroke-dashoffset", "12")
