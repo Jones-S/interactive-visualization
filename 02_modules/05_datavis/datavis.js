@@ -109,6 +109,11 @@ d3.json("data.json", function(error, json) {
 
     });
 
+    console.log("POSITIV " + (Math.round(30/20)));
+        console.log("----");
+    console.log("NEGATIV " +(Math.round(-30/20)));
+
+
     //move x,y of pathends
     _.forEach(circleInfo, function(obj, i){
         var totalLines = obj["totalLines"];
@@ -137,7 +142,6 @@ d3.json("data.json", function(error, json) {
                     // console.log("X: " + x + "   Y: " + y + "    &k: " + k);
                     indexFromLeft ++; //increase counter from left
                     elem["pathEnds"][k] = {"x" : x, "y": y};
-                    // console.log(k);
                     k ++;
                 };
 
@@ -148,14 +152,10 @@ d3.json("data.json", function(error, json) {
                     y = rad * Math.sin(curAttach) + bgCircCenterY; //calc x depending on current attachment point
                     indexFromRight ++; //increase counter from left
                     elem["pathEnds"][k] = {"x" : x, "y": y};
-                    // console.log(k);
                     k ++;
                 };
             };
         });
-
-        //access key [from - to], e.g. "1-0"
-
 
     });
 
@@ -273,7 +273,38 @@ d3.json("data.json", function(error, json) {
         .attr("stroke", "#edd400");
 
 
-    // _(circleInfo).forEach(function(num){ console.log("hey " + num["centerPos"]["yM"])});
+    // draw all lines
+    _.forEach(circleInfo, function(obj){
+        _.forEach(obj["connections"][0], function(elem, i){ //e.g. elem = 0-1
+            var moveFromTo = i.split("-"); // split "0-2" = i into {0, 2} 0= from 2 = to
+            // console.log(i);
+            var from = moveFromTo[0];
+            var to = moveFromTo[1];
+            var reverseKey = to + "-" + from; //make "2-3" from i = "3-2"
+
+            //draw line
+            _.forEach(elem["pathEnds"], function(item, j){ //all path elements  -> array with 0-7 e.g.
+                // console.log("ITEM_ :" + item["x"]);
+                // console.log(reverseKey);
+                var x = circleInfo[to]["connections"][0][reverseKey]["pathEnds"][j]["x"];
+                var y = circleInfo[to]["connections"][0][reverseKey]["pathEnds"][j]["y"];
+                // console.log("x: " + x + "y: " +y + "OF element " + to + "-" + from + " and pathend " + j);
+                svgGroup.append("path")
+                .data([
+                    {"x": item["x"] , "y": item["y"]},
+                    {"x": 140 , "y": 200},
+                ])
+                .attr("class", "line")
+                .attr("d", line(path))
+                .attr("fill", "none")
+                .attr("stroke-width", 0.6)
+                .attr("stroke", "#edd400");
+            });
+        });
+    });
+
+
+
 
 
 });
