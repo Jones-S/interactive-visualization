@@ -20,7 +20,7 @@ function round5(x)
 { return Math.round(x/5)*5; }
 
 
-d3.json("data.json", function(error, json) {
+d3.json("final_data.json", function(error, json) {
     if (error) return console.warn(error);
     data = json;
 
@@ -30,7 +30,7 @@ d3.json("data.json", function(error, json) {
     var bgCircCenterX = width/2;
     var bgCircCenterY = height/2;
     var minSize = 2; //min radius of circles independent of population in px
-    var maxTraffCost = _.max(_.pluck(data["gemeinden"], "trafficCosts")); //use loDash to get max
+    var maxTraffCost = _.max(_.pluck(data["gemeinden"], "trafficcostPerPerson")); //use loDash to get max
     var maxDstBtwnLines = 0.02; //in radians
     //calc circle count and angle step
     var increase = Math.PI * 2 / data["gemeinden"].length;
@@ -40,6 +40,8 @@ d3.json("data.json", function(error, json) {
     var animFlag = false; //defines if animation should be played
     var sliderVal = 0.8; //holds tension
     var alphaLimit = 100; //100+ people will be displayed with lines in full alpha ( = 1.0)
+    var peoplePerLine = 50;
+    var scaleOnZoom = 1.4;
 
     // fill circle info array
     var circleInfo = [];
@@ -48,7 +50,7 @@ d3.json("data.json", function(error, json) {
     _(data["gemeinden"]).forEach(function(obj, i){
         var pop = ((obj["population"]/11600 < minSize) ? minSize : obj["population"]/11600)
         gemObject = {
-            "name" : data["gemeinden"][i]["gemeinde"],
+            "name" : data["gemeinden"][i]["gemName"],
             "centerPos" : { "xM" : 0, "yM" : 0 },
             "connections" : {},
             "circleRad" : pop,
@@ -58,15 +60,18 @@ d3.json("data.json", function(error, json) {
             //     //         }
             // ]
         };
+        // console.log("gemId: " + gemObject["name"]);
 
         var object = {};
 
-        _.forEach(obj["nach"], function(elem, j){
+        _.forEach(obj["moveTo"], function(elem, j){
             var key = i + "-" + j; //e.g. "0-1" > from gemeinde 0 to gemeinde 1
             //now calculate delta between the gemeinden including itself (always 0)
-            gemObject["connections"][key] = { "delta": data["gemeinden"][j]["nach"][i] - data["gemeinden"][i]["nach"][j],
+            gemObject["connections"][key] = {
+                "delta": data["gemeinden"][j]['moveTo'][i] - data["gemeinden"][i]['moveTo'][j],
                 "pathEnds": []
             };
+
         });
 
         circleInfo.push(gemObject);
@@ -84,7 +89,7 @@ d3.json("data.json", function(error, json) {
         var totalLines = 0;
 
         _.forEach(obj["connections"], function(elem){
-            var objLines = Math.abs(Math.round(elem["delta"]/20)); //e.g. 7 lines for 140 people
+            var objLines = Math.abs(Math.round(elem["delta"]/peoplePerLine)); //e.g. 7 lines for 140 people
             totalLines += objLines;
         })
         obj["totalLines"] = totalLines;
@@ -102,7 +107,6 @@ d3.json("data.json", function(error, json) {
             //set first points form left and right in dock
             var angleShift = (((obj["circleRad"]*2 - (obj["circleRad"]/3)) / rad)/ totalLines); // still in px ... (obj["circleRad"]*2 ~ b = alpha * rad
             angleShift = (angleShift > maxDstBtwnLines) ? maxDstBtwnLines : angleShift;
-            console.log("angleShift: " + angleShift);
             obj["angleShift"] = angleShift;
             var firstRight = obj["angle"] - halfLines * angleShift;
             var firstLeft = obj["angle"] + halfLines * angleShift;
@@ -117,7 +121,7 @@ d3.json("data.json", function(error, json) {
         var x = obj["centerPos"]["xM"];
         var y = obj["centerPos"]["yM"];
         _.forEach(obj["connections"], function(elem){
-            for (var i = Math.round( Math.abs(elem["delta"]/20 )) - 1; i >= 0; i--) { //for every line (calc first) -> Math.abs FIRST!!!
+            for (var i = Math.round( Math.abs(elem["delta"]/peoplePerLine )) - 1; i >= 0; i--) { //for every line (calc first) -> Math.abs FIRST!!!
                 elem["pathEnds"].push({ "x": x , "y": y });
             };
         });
@@ -222,12 +226,13 @@ d3.json("data.json", function(error, json) {
                     colorMap = Math.floor(colorMap); //and round it to whole numbers to use as rgb
                     // console.log(colorMap + " - " + d["trafficCosts"]);
                     return "rgba(" + colorMap +", 0, 0, 0.8)";
-                    }
+                    },
+                class:  "gemCircle"
             })
         })
 
     //Add the SVG Text Element to the svgContainer
-    var text = svgContainer.selectAll("text")
+    var text = svgGroup.selectAll("text")
         .data(circleInfo)
         .enter()
         .append("text");
@@ -304,50 +309,13 @@ d3.json("data.json", function(error, json) {
                     .style("fill", "none")
                     .style("stroke-width", 1)
                     .style("stroke", strokeColor)
-                    .style("stroke-dasharray", "6")
+                    .style("stroke-dasharray", "2")
 
                 }
 
             });
         });
     });
-
-
-    // //get all first left and first right angles and save it into new array
-    // var allStartPoints = [];
-    // _.forEach(circleInfo, function(obj) {
-    //     var object = {};
-    //     x = rad * Math.cos(obj["firstPoints"]["left"]) + bgCircCenterX;
-    //     y = rad * Math.sin(obj["firstPoints"]["left"]) + bgCircCenterY;
-    //     object = {"x" : x, "y": y};
-    //     allStartPoints.push(object);
-    //     var object = {};
-    //     x = rad * Math.cos(obj["firstPoints"]["right"]) + bgCircCenterX;
-    //     y = rad * Math.sin(obj["firstPoints"]["right"]) + bgCircCenterY;
-    //     object = {"x" : x, "y": y};
-    //     allStartPoints.push(object);
-    // });
-
-
-    // var startPoints = svgGroup.selectAll(".startCircle")
-    //     .data(allStartPoints)
-    //     .enter()
-    //     .append("circle");
-
-    // var startPointAttr = startPoints
-    //     .each(function(d, i){
-    //         d3.select(this).attr({
-    //             cx: function(d){
-    //                     return d.x;
-    //                 },
-    //             cy: function(d){
-    //                     return d.y;
-    //                 }
-    //         })
-    //     })
-    //     .attr("r", "3")
-    //     .style("fill", "rgba(0, 237, 103, .4)")
-    //     .attr("class", "startCircle");
 
     //animate lines
     function transition() {
@@ -377,6 +345,22 @@ d3.json("data.json", function(error, json) {
         console.log("sliderVal: " + sliderVal);
         // line.tension(sliderVal);
         // path.attr("d", function(d, i) { return line(splines[i]); });
+    });
+
+    //double click on circle event
+
+    $( ".gemCircle" ).click(function() {
+        // alert("Double Clicked");
+        var position = $( this ).position();
+        console.log(position);
+        position.top = -(position.top - height/2);
+        position.left = position.top - width/2;
+        var translate = "translate(" + position.left + "," + position.top + ") scale(" + scaleOnZoom + ")";
+        svgGroup.transition()
+            .attr("transform", translate)
+            .duration(300)
+            // .ease("elastic")
+            .delay(100);
     });
 
 
