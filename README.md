@@ -41,4 +41,7 @@ http://www.punkchip.com/javascript-shorthand/
 different line interpolations in d3
 http://bl.ocks.org/mbostock/4342190
 
+update pattern bostock
+http://bl.ocks.org/mbostock/3808234
+
 ```

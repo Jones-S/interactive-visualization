@@ -41,7 +41,8 @@ d3.json("final_data.json", function(error, json) {
     var sliderVal = 0.8; //holds tension
     var alphaLimit = 100; //100+ people will be displayed with lines in full alpha ( = 1.0)
     var peoplePerLine = 50;
-    var scaleOnZoom = 1.5;
+    var scaleOnZoom = 2;
+    var zoomFlag = false;
 
     // fill circle info array
     var circleInfo = [];
@@ -356,15 +357,35 @@ d3.json("final_data.json", function(error, json) {
         position.left = $( this ).attr("cx");
         position.top =  $( this ).attr("cy");
         console.log(position);
-        position.top = -(position.top - height/2) / scaleOnZoom;
-        position.left = -(position.left - width/2) / scaleOnZoom;
+        position.top = -(position.top * scaleOnZoom - height/2);
+        position.left = -(position.left  * scaleOnZoom - width/2);
         var translate = "translate(" + position.left + "," + position.top + ") scale(" + scaleOnZoom + ")";
-        
+
         svgGroup.transition()
             .attr("transform", translate)
             .duration(300)
             // .ease("elastic")
             .delay(100);
+        zoomFlag = true;
+
+    });
+
+    //zoom out again
+
+    $( "#slider" ).click(function() {
+        // alert("Double Clicked");
+        if(zoomFlag){
+            zoomFlag = false;
+            console.log("Dr. Jones: " );
+
+            svgGroup.transition()
+               .attr("transform", "translate(0,0) scale(1)")
+               .duration(300)
+               // .ease("elastic")
+               .delay(100);
+
+        }
+
     });
 
 

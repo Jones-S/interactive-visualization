@@ -83,9 +83,19 @@ $(document).ready(function() {
     var doubleclick = $("svg circle");
     doubleclick.dblclick(function() {
         // alert("Double Clicked");
+        var position = {};
+        var scaleOnZoom = 1.25;
+        var width = $("svg").width();
+        var height = $("svg").height();
+        position.left = $( this ).attr("cx");
+        position.top =  $( this ).attr("cy");
+        console.log( position);
+        position.top = -(position.top * scaleOnZoom - height/2);
+        position.left = -(position.left  * scaleOnZoom - width/2);
+
+        var translate = "translate(" + position.left + "," + position.top + ") scale(" + scaleOnZoom + ")";
         circleGroup.transition()
-            .attr("transform", "translate(80,5)")
-            .attr("transform", "scale(1.4)")
+            .attr("transform", translate)
             .duration(300)
             // .ease("elastic")
             .delay(100);
