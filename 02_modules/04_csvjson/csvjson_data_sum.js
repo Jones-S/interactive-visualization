@@ -44,7 +44,7 @@ $(document).ready(function() {
         evalData();
     });
     function evalData() {
-        if (nameKey && moveTo && flats && costs) {
+        if (nameKey && moveTo && flats && costs && density) {
 
             //  function getGemeideName(gemeindeId) {
             //     return nameKey[gemeindeId];
@@ -91,6 +91,7 @@ $(document).ready(function() {
                // console.log("elem ", key);
                 var  dataContainer = {};
                 dataContainer["gemId"]= parseInt(key,10);
+                dataContainer["contId"]= i;
                 dataContainer["gemName"] = obj;
                 dataContainer["moveOutTot"]=allAdded[i];
                 dataContainer["moveInTot"]=group[i];

@@ -34,7 +34,7 @@ body {
 	font-weight: 300;
 }
 
-.firstbutton, .secondbutton, .thirdbutton {
+.firstbutton, .secondbutton, .thirdbutton, .fourthbutton {
 	background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
     background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
 
@@ -52,21 +52,8 @@ body {
     padding: 0.25em 1em;
     text-align: center;
     white-space: nowrap;
-}
-
-.firstbutton {
     background-color: white;
     color: black;
-}
-
-.secondbutton {
-    background-color: #93c000;
-    color: white;
-}
-
-.thirdbutton {
-    background-color: #c05943;
-    color: white;
 }
 
 .buttongroup {

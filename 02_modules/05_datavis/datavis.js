@@ -30,6 +30,35 @@ $.get("final_data.json", function(json) {
     });
 
 
+ _.mixin({deepFindKeyVal: function (obj, key, val) {
+
+
+    function findNested (obj, key, val, memo) {
+        _.isArray(memo) || (memo = []);
+
+        var isMatch = false;
+
+        _.forOwn(obj, function(v, i) {
+            if (i === key && v === val) {
+                isMatch = true;
+            }
+        });
+        if (isMatch) {
+            memo.push(obj);
+        } else {
+            _.forOwn(obj, function(v, i) {
+                 findNested(v, key, val, memo);
+            });
+        }
+
+
+        return memo;
+    }
+
+    return findNested(obj, key, val);
+
+}});
+
 
 
 
@@ -58,6 +87,7 @@ function evalData() {
         var scaleOnZoom = 2;
         var zoomFlag = false;
         var lines; var gemCircles; var text;
+        var activeGems = [];
 
         // fill circle info array
         var circleInfo = [];
@@ -246,8 +276,7 @@ function evalData() {
         calcLinePos(circleInfoShort);
 
 
-        window.circleInfo = circleInfo;
-        window.circleInfoShort = circleInfoShort;
+
 
 
 
@@ -498,9 +527,30 @@ function evalData() {
 
         // UPDATE ACTIVE ARRAY WITH CLICKED ONES
 
-        function updateActives(id){
+        function updateActives(name){
+            var name = name;
+            //check if id is already in active array
+            if(_.find(activeGems, { 'gemName': name })) {
+                console.log("name: " + name);
+                _.remove(activeGems, { 'gemName': name });
+            } else {
+                var result = _.deepFindKeyVal(data["gemeinden"], "gemName", name);
+                console.log(result);
+                if (result){
+                    var newMoveTo = [];
+                    var contId;
+                    _.forEach(activeGems, function(obj, i){ //for each existing object -> reduce moveTo
+                        contId = obj["contId"];
+                        //add itself to the newMoveTo if at right position
+                        newMove
+                        newMoveTo.push(result[0]["moveTo"][contId]); //get moveTo at specific indices
+                    });
 
-            
+
+                    activeGems.push(result[0]);
+                }
+            }
+
         }
 
         //ANIMATIONS AND INTERACTIONS
@@ -517,8 +567,8 @@ function evalData() {
             }
         }
 
-        //start animation on dblclick
-        $("svg").dblclick(function() {
+        //start animation on
+        $(".fourthbutton").click(function() {
             if(animFlag){
                 animFlag = false;
             } else {
@@ -587,9 +637,9 @@ function evalData() {
         });
 
         $( ".map svg path" ).click(function() {
-            var id = $(this).attr('id');
-            console.log("gem clicked " + id);
-            updateActives(id);
+            var name = $(this).find('title').text();
+            console.log(name);
+            updateActives(name);
         });
 
 
@@ -597,6 +647,10 @@ function evalData() {
 
 
         }
+
+        window.circleInfo = circleInfo;
+        window.circleInfoShort = circleInfoShort;
+        window.activeGems = activeGems;
     }
 
 }); //jquery document ready
