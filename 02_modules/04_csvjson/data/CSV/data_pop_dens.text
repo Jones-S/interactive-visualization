@@ -1,0 +1,23 @@
+BFS_NR;
+GEBIET_NAME;
+THEMA_NAME;
+SET_NAME;
+SUBSET_NAME;
+INDIKATOR_ID;
+INDIKATOR_NAME;
+INDIKATOR_JAHR;
+INDIKATOR_VALUE;
+EINHEIT_KURZ;
+EINHEIT_LANG;
+
+1;
+Aeugst a.A.;
+Bevölkerung und Soziales;
+Bevölkerungsbestand und Haushalte;
+Bevölkerungsbestand;
+460;
+Bevölkerungsdichte [Einw./km2];
+2012;
+248.9;
+Einw./km2;
+Einwohner pro Quadratkilometer;
