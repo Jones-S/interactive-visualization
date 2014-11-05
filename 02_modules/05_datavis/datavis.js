@@ -41,7 +41,7 @@ d3.json("final_data.json", function(error, json) {
     var sliderVal = 0.8; //holds tension
     var alphaLimit = 100; //100+ people will be displayed with lines in full alpha ( = 1.0)
     var peoplePerLine = 50;
-    var scaleOnZoom = 1.4;
+    var scaleOnZoom = 1.5;
 
     // fill circle info array
     var circleInfo = [];
@@ -222,10 +222,10 @@ d3.json("final_data.json", function(error, json) {
                     }, //todo: write mapping function and set a max size
                 fill: function(d) {
                     //use mapping function to map trafficCosts to RGB from 0 - 255
-                    var colorMap = map_range(d["trafficCosts"], 0, maxTraffCost, 255, 120 );
+                    var colorMap = map_range(d["trafficcostPerPerson"], 0, maxTraffCost, 100, 300 ); //hsl 0 -350
                     colorMap = Math.floor(colorMap); //and round it to whole numbers to use as rgb
                     // console.log(colorMap + " - " + d["trafficCosts"]);
-                    return "rgba(" + colorMap +", 0, 0, 0.8)";
+                    return "hsla(" + colorMap + ", 100%, 50%, 0.3)";
                     },
                 class:  "gemCircle"
             })
@@ -343,19 +343,23 @@ d3.json("final_data.json", function(error, json) {
     $('#slider').on('change', function(){
         sliderVal = $('#slider').val();
         console.log("sliderVal: " + sliderVal);
-        // line.tension(sliderVal);
-        // path.attr("d", function(d, i) { return line(splines[i]); });
+        d3.selectAll(".line")
+        // .attr("d", line());
+        .attr("d", function(d, i) { return line(splines[i]); });
     });
 
     //double click on circle event
 
     $( ".gemCircle" ).click(function() {
         // alert("Double Clicked");
-        var position = $( this ).position();
+        var position = {};
+        position.left = $( this ).attr("cx");
+        position.top =  $( this ).attr("cy");
         console.log(position);
-        position.top = -(position.top - height/2);
-        position.left = position.top - width/2;
+        position.top = -(position.top - height/2) / scaleOnZoom;
+        position.left = -(position.left - width/2) / scaleOnZoom;
         var translate = "translate(" + position.left + "," + position.top + ") scale(" + scaleOnZoom + ")";
+        
         svgGroup.transition()
             .attr("transform", translate)
             .duration(300)
