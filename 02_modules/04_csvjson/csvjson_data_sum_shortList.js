@@ -50,6 +50,13 @@ $(document).ready(function() {
             //     return nameKey[gemeindeId];
             // }
 
+             // _.forEach(moveTo['gemeinden'], function(gemeindeData) {
+             //    var shortMoveTo=[];
+             //    if(gemeindeData['moveTo'][i]<= 100){
+             //       shortMoveTo= return gemeindeData['moveTo'];
+             //    }
+             // });
+
             _.forEach(moveTo['gemeinden'], function(gemeindeData) {
 
                 var reduced = _.reduce(gemeindeData['moveTo'], function(result, key) { // rechnet Total moveIn Gemeinde aus
@@ -88,18 +95,18 @@ $(document).ready(function() {
             gemeinden["gemeinden"] = [];
             var i = 0;
             _.forEach(nameKey, function(obj, key){
-                 if(key <=100 && i <= 100){
+                 if(key <=100){
                // console.log("elem ", key);
                 var  dataContainer = {};
-                dataContainer["gemId"]= parseInt(key,10);
-                dataContainer["gemName"] = obj;
-                dataContainer["moveOutTot"]=allAdded[i];
-                dataContainer["moveInTot"]=group[i];
-                dataContainer["emptyFlatsPercent"]=parseInt(flats[key],10);
-                dataContainer["trafficcostPerPerson"]=parseInt(costs[key],10);
-                dataContainer["moveTo"]= moveTo['gemeinden'][i]['moveTo'];
-                dataContainer["population"]=parseInt(population[key],10);
-                dataContainer["populationDensity"]=density[key];
+                // dataContainer["gemId"]= parseInt(key,10);
+                // dataContainer["gemName"] = obj;
+                // dataContainer["moveOutTot"]=allAdded[i];
+                // dataContainer["moveInTot"]=group[i];
+                // dataContainer["emptyFlatsPercent"]=parseInt(flats[key],10);
+                // dataContainer["trafficcostPerPerson"]=parseInt(costs[key],10);
+                dataContainer["moveTo"]= moveTo['gemeinden'][i]['moveTo'][key];
+                // dataContainer["population"]=parseInt(population[key],10);
+                // dataContainer["populationDensity"]=density[key];
                 i++;
             }
                 gemeinden["gemeinden"].push(dataContainer);
