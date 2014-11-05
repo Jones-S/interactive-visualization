@@ -42,7 +42,7 @@ function evalData() {
         // some necessary global vars
         var width = $(window).width();
         var height = $(window).height();
-        var bgCircCenterX = width/2;
+        var bgCircCenterX = width/2 - 200;
         var bgCircCenterY = height/2;
         var minSize = 2; //min radius of circles independent of population in px
         var maxTraffCost = _.max(_.pluck(data["gemeinden"], "trafficcostPerPerson")); //use loDash to get max
@@ -271,7 +271,7 @@ function evalData() {
 
         //add bg circle
         var bgCircle = svgGroup.append("circle")
-            .attr("cx", width/2).attr("cy", height/2).attr("r", rad)
+            .attr("cx", bgCircCenterX).attr("cy", bgCircCenterY).attr("r", rad)
             .style("fill", "none")
             .style("stroke-dasharray", ("3,3")) // make the stroke dashed
             .style("stroke", "rgba(255, 255, 255, 0.5)");
@@ -477,7 +477,7 @@ function evalData() {
 
         } //update function
 
-        update(circleInfoShort);
+        update(circleInfo);
 
 
 
@@ -496,7 +496,12 @@ function evalData() {
 
 
 
+        // UPDATE ACTIVE ARRAY WITH CLICKED ONES
 
+        function updateActives(id){
+
+            
+        }
 
         //ANIMATIONS AND INTERACTIONS
 
@@ -527,7 +532,7 @@ function evalData() {
             sliderVal = $('#slider').val();
             console.log("sliderVal: " + sliderVal);
             d3.selectAll(".line")
-            // .attr("d", line());
+            update(circleInfo);
         });
 
         //double click on circle event
@@ -574,6 +579,17 @@ function evalData() {
         $( ".firstbutton" ).click(function() {
             update(circleInfoShort);
 
+        });
+
+        $( ".map svg path" ).mouseover(function() {
+            console.log("hover");
+
+        });
+
+        $( ".map svg path" ).click(function() {
+            var id = $(this).attr('id');
+            console.log("gem clicked " + id);
+            updateActives(id);
         });
 
 
