@@ -21,6 +21,50 @@ body {
 	font-weight: 300;
 }
 
+.firstbutton, .secondbutton, .thirdbutton {
+	background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+    
+    background-origin: border-box;
+    
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px rgba(255, 255, 255, 0.1) inset;
+    border-radius: 0.25em;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 87.5%;
+    line-height: 1.5;
+    margin: 0.5em 0.5em 0 0;
+    padding: 0.25em 1em;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.firstbutton {
+    background-color: white;
+    color: black;
+}
+
+.secondbutton {
+    background-color: #93c000;
+    color: white;
+}
+
+.thirdbutton {
+    background-color: #c05943;
+    color: white;
+}
+
+.buttongroup {
+	display: block;
+	width: 350px;
+	margin: 0 300px;
+	position: fixed;
+}
+
+
+
 input {
 	background-color: rgba(79, 204, 50, 0);
 	width: 120px;

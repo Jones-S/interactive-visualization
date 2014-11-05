@@ -29,6 +29,13 @@ $.get("final_data.json", function(json) {
         evalData();
     });
 
+
+
+
+
+
+
+
 function evalData() {
     if (datashort && data) {
 
@@ -44,13 +51,13 @@ function evalData() {
         var increase = Math.PI * 2 / data["gemeinden"].length;
         var angle = 0;
         var rad = 280; //radius of circle with circles on it
-        var lines; //holds all paths
         var animFlag = false; //defines if animation should be played
         var sliderVal = 0.8; //holds tension
         var alphaLimit = 100; //100+ people will be displayed with lines in full alpha ( = 1.0)
-        var peoplePerLine = 45;
+        var peoplePerLine = 20;
         var scaleOnZoom = 2;
         var zoomFlag = false;
+        var lines; var gemCircles; var text;
 
         // fill circle info array
         var circleInfo = [];
@@ -88,112 +95,171 @@ function evalData() {
 
         });
 
-        //calc all positions of the lines
-        _.forEach(circleInfo, function(obj){
-            var cx = rad * Math.cos(angle) + bgCircCenterX; //calc x of M of circle
-            obj["centerPos"]["xM"] = cx;
-            var cy = rad * Math.sin(angle) + bgCircCenterY;
-            obj["centerPos"]["yM"] = cy;
-            obj["angle"] = angle;
-            angle += increase;
-            var totalLines = 0;
+        // fill circle info array
+        var circleInfoShort = [];
 
-            _.forEach(obj["connections"], function(elem){
-                var objLines = Math.abs(Math.round(elem["delta"]/peoplePerLine)); //e.g. 7 lines for 140 people
-                totalLines += objLines;
-            })
-            obj["totalLines"] = totalLines;
-                //calc startAngle (lineAngle) for first line
-                var even = (obj["totalLines"] % 2 == 0); //check if line count is even or odd
-                var halfLines = 0;
-                if (even) {
-                    halfLines = obj["totalLines"]/2;
-                    // console.log(halfLines);
-                    halfLines -= 0.5; //because in the center is no point
-                    // console.log(halfLines);
-                } else {
-                    halfLines = Math.floor(obj["totalLines"]/2); //round floor because if odd -> one pathending will be centered
-                };
-                //set first points form left and right in dock
-                var angleShift = (((obj["circleRad"]*2 - (obj["circleRad"]/3)) / rad)/ totalLines); // still in px ... (obj["circleRad"]*2 ~ b = alpha * rad
-                angleShift = (angleShift > maxDstBtwnLines) ? maxDstBtwnLines : angleShift;
-                obj["angleShift"] = angleShift;
-                var firstRight = obj["angle"] - halfLines * angleShift;
-                var firstLeft = obj["angle"] + halfLines * angleShift;
-                obj["firstPoints"] = { "left" : firstLeft, "right" : firstRight }; //save them to the array
-                if(obj["totalLines"] > 0){
+        var gemObject = {};
+        _(datashort["gemeinden"]).forEach(function(obj, i){
+            var pop = ((obj["population"]/11600 < minSize) ? minSize : obj["population"]/11600)
+            gemObject = {
+                "name" : datashort["gemeinden"][i]["gemName"],
+                "centerPos" : { "xM" : 0, "yM" : 0 },
+                "connections" : {},
+                "circleRad" : pop,
+                "trafficcostPerPerson" : obj["trafficcostPerPerson"]
+                //     // how the content will look like
+                //     // "0-0" : {   "delta" : 0,
+                //     //             "pathEnds" : [{ "x" : 0, "y" : 0}] //x und y pos of path ending on the circle, can have more than one element with x,y if more than 1 line
+                //     //         }
+                // ]
             };
+            // console.log("gemId: " + gemObject["name"]);
+
+            var object = {};
+
+            _.forEach(obj["moveTo"], function(elem, j){
+                var key = i + "-" + j; //e.g. "0-1" > from gemeinde 0 to gemeinde 1
+                //now calculate delta between the gemeinden including itself (always 0)
+                gemObject["connections"][key] = {
+                    "delta": datashort["gemeinden"][j]['moveTo'][i] - datashort["gemeinden"][i]['moveTo'][j],
+                    "pathEnds": []
+                };
+
+            });
+
+            circleInfoShort.push(gemObject);
+
         });
 
+        function calcLinePos(data){
+            increase = Math.PI * 2 / data.length;
+            maxTraffCost = _.max(_.pluck(data, "trafficcostPerPerson")); //use loDash to get max
 
-        //set all x,y of paths in center or the circles
-        _.forEach(circleInfo, function(obj){
-            var x = obj["centerPos"]["xM"];
-            var y = obj["centerPos"]["yM"];
-            _.forEach(obj["connections"], function(elem){
-                for (var i = Math.round( Math.abs(elem["delta"]/peoplePerLine )) - 1; i >= 0; i--) { //for every line (calc first) -> Math.abs FIRST!!!
-                    elem["pathEnds"].push({ "x": x , "y": y });
+
+             //calc all positions of the lines
+            _.forEach(data, function(obj){
+                var cx = rad * Math.cos(angle) + bgCircCenterX; //calc x of M of circle
+                obj["centerPos"]["xM"] = cx;
+                var cy = rad * Math.sin(angle) + bgCircCenterY;
+                obj["centerPos"]["yM"] = cy;
+                obj["angle"] = angle;
+                angle += increase;
+                var totalLines = 0;
+
+                _.forEach(obj["connections"], function(elem){
+                    var objLines = Math.abs(Math.round(elem["delta"]/peoplePerLine)); //e.g. 7 lines for 140 people
+                    totalLines += objLines;
+                })
+                obj["totalLines"] = totalLines;
+                    //calc startAngle (lineAngle) for first line
+                    var even = (obj["totalLines"] % 2 == 0); //check if line count is even or odd
+                    var halfLines = 0;
+                    if (even) {
+                        halfLines = obj["totalLines"]/2;
+                        // console.log(halfLines);
+                        halfLines -= 0.5; //because in the center is no point
+                        // console.log(halfLines);
+                    } else {
+                        halfLines = Math.floor(obj["totalLines"]/2); //round floor because if odd -> one pathending will be centered
+                    };
+                    //set first points form left and right in dock
+                    var angleShift = (((obj["circleRad"]*2 - (obj["circleRad"]/3)) / rad)/ totalLines); // still in px ... (obj["circleRad"]*2 ~ b = alpha * rad
+                    angleShift = (angleShift > maxDstBtwnLines) ? maxDstBtwnLines : angleShift;
+                    obj["angleShift"] = angleShift;
+                    var firstRight = obj["angle"] - halfLines * angleShift;
+                    var firstLeft = obj["angle"] + halfLines * angleShift;
+                    obj["firstPoints"] = { "left" : firstLeft, "right" : firstRight }; //save them to the array
+                    if(obj["totalLines"] > 0){
                 };
             });
 
-        });
-        // console.log(circleInfo);
-        // console.log(circleInfo[0]["connections"]["0-1"]);
+
+            //set all x,y of paths in center or the circles
+            _.forEach(data, function(obj){
+                var x = obj["centerPos"]["xM"];
+                var y = obj["centerPos"]["yM"];
+                _.forEach(obj["connections"], function(elem){
+                    for (var i = Math.round( Math.abs(elem["delta"]/peoplePerLine )) - 1; i >= 0; i--) { //for every line (calc first) -> Math.abs FIRST!!!
+                        elem["pathEnds"].push({ "x": x , "y": y });
+                    };
+                });
+
+            });
+
+            //move x,y of pathends
+            _.forEach(data, function(obj, i){ //e.g. {"connection" : ..., "name" ...} etc
+                var totalLines = obj["totalLines"];
+                var angleShift = obj["angleShift"];
+                var curIndex = i;
+                var startLeft = obj["firstPoints"]["left"];
+                var startRight = obj["firstPoints"]["right"];
+                var x;
+                var y;
+                var indexFromLeft = 0; //how many lines were added from left
+                var indexFromRight = 0; //respectively from the right side
+                var curAttach; //saves the current attachment point
+                var curKey;
+
+                var cncts = _.size(obj["connections"]) - 1; //e.g. 7
+                var minusStep = curIndex; //set step to start-index
+                var plusStep = curIndex;
+
+                var increment = (curIndex >= (cncts - curIndex)) ? curIndex : (cncts - curIndex); //set increment var for for loop
+                // console.log("increment : " + increment + " minusStep : " + minusStep + " plusStep : " + plusStep + " cncts : " + cncts);
+
+                for (var j = increment; j >= 0; j--) {
+                    // console.log("My J: " + j);
+                    if(minusStep >= 0){
+                        curKey = i + "-" + minusStep; // "3-2"
+                        _.forEach(obj["connections"][curKey]["pathEnds"], function(elem){
+                            curAttach = startRight + (indexFromRight * angleShift); //calc current Attachment point for line from left
+                            x = rad * Math.cos(curAttach) + bgCircCenterX; //calc x depending on current attachment point
+                            y = rad * Math.sin(curAttach) + bgCircCenterY; //calc x depending on current attachment point
+                            indexFromRight ++; //increase counter from left
+                            elem["x"] = x;
+                            elem["y"] = y;
+                        });
+                        minusStep --;
+                    }
+
+                    if (plusStep <= cncts ) {
+                        curKey = i + "-" + plusStep; // "3-7"
+                        _.forEach(obj["connections"][curKey]["pathEnds"], function(elem){
+                            curAttach = startLeft - (indexFromLeft * angleShift); //calc current Attachment point for line from left
+                            x = rad * Math.cos(curAttach) + bgCircCenterX; //calc x depending on current attachment point
+                            y = rad * Math.sin(curAttach) + bgCircCenterY; //calc x depending on current attachment point
+                            indexFromLeft ++; //increase counter from left
+                            elem["x"] = x;
+                            elem["y"] = y;
+                        });
+                        plusStep ++;
+                    }
+                };
+
+            });
+
+
+        }
+
+
+        calcLinePos(circleInfo);
+        calcLinePos(circleInfoShort);
+
 
         window.circleInfo = circleInfo;
+        window.circleInfoShort = circleInfoShort;
 
 
-        //move x,y of pathends
-        _.forEach(circleInfo, function(obj, i){ //e.g. {"connection" : ..., "name" ...} etc
-            var totalLines = obj["totalLines"];
-            var angleShift = obj["angleShift"];
-            var curIndex = i;
-            var startLeft = obj["firstPoints"]["left"];
-            var startRight = obj["firstPoints"]["right"];
-            var x;
-            var y;
-            var indexFromLeft = 0; //how many lines were added from left
-            var indexFromRight = 0; //respectively from the right side
-            var curAttach; //saves the current attachment point
-            var curKey;
 
-            var cncts = _.size(obj["connections"]) - 1; //e.g. 7
-            var minusStep = curIndex; //set step to start-index
-            var plusStep = curIndex;
 
-            var increment = (curIndex >= (cncts - curIndex)) ? curIndex : (cncts - curIndex); //set increment var for for loop
-            // console.log("increment : " + increment + " minusStep : " + minusStep + " plusStep : " + plusStep + " cncts : " + cncts);
 
-            for (var j = increment; j >= 0; j--) {
-                // console.log("My J: " + j);
-                if(minusStep >= 0){
-                    curKey = i + "-" + minusStep; // "3-2"
-                    _.forEach(obj["connections"][curKey]["pathEnds"], function(elem){
-                        curAttach = startRight + (indexFromRight * angleShift); //calc current Attachment point for line from left
-                        x = rad * Math.cos(curAttach) + bgCircCenterX; //calc x depending on current attachment point
-                        y = rad * Math.sin(curAttach) + bgCircCenterY; //calc x depending on current attachment point
-                        indexFromRight ++; //increase counter from left
-                        elem["x"] = x;
-                        elem["y"] = y;
-                    });
-                    minusStep --;
-                }
 
-                if (plusStep <= cncts ) {
-                    curKey = i + "-" + plusStep; // "3-7"
-                    _.forEach(obj["connections"][curKey]["pathEnds"], function(elem){
-                        curAttach = startLeft - (indexFromLeft * angleShift); //calc current Attachment point for line from left
-                        x = rad * Math.cos(curAttach) + bgCircCenterX; //calc x depending on current attachment point
-                        y = rad * Math.sin(curAttach) + bgCircCenterY; //calc x depending on current attachment point
-                        indexFromLeft ++; //increase counter from left
-                        elem["x"] = x;
-                        elem["y"] = y;
-                    });
-                    plusStep ++;
-                }
-            };
 
-        });
+
+
+
+
+
 
 
         //draw svg
@@ -213,16 +279,24 @@ function evalData() {
 
 
 
+
+
+
+
+
+        // UPDATE SVG WITH NEW DATA
+
         //update svg with data as input
         function update(data) {
 
             // DATA JOIN
             // Join new data with old elements, if any.
-            var gemCircles = svgGroup.selectAll(".dataCircle")
+            gemCircles = svgGroup.selectAll(".gemCircle")
                 .data(data);
 
-            var text = svgGroup.selectAll("text")
+            text = svgGroup.selectAll("text")
                 .data(data);
+
 
             // UPDATE
             // Update old elements as needed.
@@ -230,6 +304,7 @@ function evalData() {
                 .duration(750);
             text.transition()
                 .duration(750);
+
 
 
             // ENTER
@@ -246,18 +321,23 @@ function evalData() {
                 .duration(750)
                 .style("fill-opacity", 1);
 
+
             // EXIT
             // Remove old elements as needed.
             gemCircles.exit()
                 .transition()
                 .duration(750)
-                .style("fill-opacity", 1e-6) //1e-6 extremly small number -> prohibit flickering ??
+                .style("fill-opacity", 0) //1e-6 extremly small number -> prohibit flickering ??
                 .remove();
+
             text.exit()
                 .transition()
                 .duration(750)
-                .style("fill-opacity", 1e-6) //1e-6 extremly small number -> prohibit flickering ??
+                .style("fill-opacity", 0) //1e-6 extremly small number -> prohibit flickering ??
                 .remove();
+
+            //delete all old lines
+            d3.selectAll(".line").remove();
 
 
 
@@ -270,6 +350,7 @@ function evalData() {
             })
             .interpolate("bundle")
             .tension(sliderVal);
+
 
             // draw all lines
             _.forEach(data, function(obj){
@@ -289,11 +370,11 @@ function evalData() {
 
                         //prohibit program to draw double lines
                         if (from >= to){
-                            var x = circleInfo[to]["connections"][reverseKey]["pathEnds"][j]["x"];
-                            var y = circleInfo[to]["connections"][reverseKey]["pathEnds"][j]["y"];
+                            var x = data[to]["connections"][reverseKey]["pathEnds"][j]["x"];
+                            var y = data[to]["connections"][reverseKey]["pathEnds"][j]["y"];
                             var path = [];
                             //define path animation direction
-                            if (circleInfo[to]["connections"][reverseKey]["delta"] < 0){
+                            if (data[to]["connections"][reverseKey]["delta"] < 0){
                                 path[0] = {"x": item["x"] , "y": item["y"]};
                                 path[1] = { x: bgCircCenterX, y: bgCircCenterY }; //center of circle as control point
                                 path[2] = {"x": x , "y": y};
@@ -313,6 +394,28 @@ function evalData() {
                             .style("stroke-width", 1)
                             .style("stroke", strokeColor)
                             .style("stroke-dasharray", "2")
+
+
+                        // lines.data(path)
+                        //     .enter()
+                        //     .append("path")
+                        //     .transition()
+                        //     .duration(750)
+                        //     .style("fill-opacity", 1);
+
+                        // lines.exit()
+                        //     .transition()
+                        //     .duration(750)
+                        //     .style("fill-opacity", 1e-6) //1e-6 extremly small number -> prohibit flickering ??
+                        //     .remove();
+
+                        // var lineAttr = lines
+                        //     .attr("class", "line")
+                        //     .attr("d", line(path))
+                        //     .style("fill", "none")
+                        //     .style("stroke-width", 1)
+                        //     .style("stroke", strokeColor)
+                        //     .style("stroke-dasharray", "2")
 
                         }
 
@@ -364,16 +467,38 @@ function evalData() {
                             },
                         class:  "gemCircle"
                     })
+                    .transition()
+                    .duration(750)
+                    .style("fill-opacity", 1);
+
+
+
                 })
 
-        }
+        } //update function
 
-        update(circleInfo);
-
-
+        update(circleInfoShort);
 
 
-       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //ANIMATIONS AND INTERACTIONS
 
         //animate lines
         function transition() {
@@ -428,8 +553,8 @@ function evalData() {
 
         //zoom out again
 
-        $( "#slider" ).click(function() {
-            console.log("slider");
+        $( ".secondbutton" ).click(function() {
+            console.log("secondbutton");
             if(zoomFlag){
                 zoomFlag = false;
                 svgGroup.transition()
@@ -437,9 +562,17 @@ function evalData() {
                    .duration(300)
                    // .ease("elastic")
                    .delay(100);
-
             }
-            update(datashort);
+
+        });
+
+        $( ".thirdbutton" ).click(function() {
+            update(circleInfo);
+
+        });
+
+        $( ".firstbutton" ).click(function() {
+            update(circleInfoShort);
 
         });
 
