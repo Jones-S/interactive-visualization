@@ -1,44 +1,50 @@
 {
     "gemeinden": [
         {
-            "gemeinde": "Zürich",
+            "gemName": "Zürich",
             "gemId": 1,
             "population": 350000,
-            "trafficCosts": 210,
+            "trafficcostPerPerson": 210,
             "spacePerPerson": 0.25,
-            "nach": [0, 5, 10, 60, 1]
+            "moveTo": [0, 5, 10, 60, 1],
+            "populationDensity": 0.002017677782241864
         },
         {
-            "gemeinde": "Bülach",
+            "gemName": "Bülach",
             "gemId": 2,
             "population": 120000,
-            "trafficCosts": 60,
+            "trafficcostPerPerson": 60,
             "spacePerPerson": 1.2,
-            "nach": [145, 0, 60, 6, 10]
+            "moveTo": [145, 0, 60, 6, 10],
+            "populationDensity": 0.001017677782241864
         },
         {
-            "gemeinde": "Winterthur",
+            "gemName": "Winterthur",
             "gemId": 3,
             "population": 200000,
-            "trafficCosts": 305,
+            "trafficcostPerPerson": 305,
             "spacePerPerson": 0.7,
-            "nach": [45, 5, 0, 1, 5]
+            "moveTo": [45, 5, 0, 1, 5],
+            "populationDensity": 0.002017677782241864
         },
         {
-            "gemeinde": "Weiningen",
+            "gemName": "Weiningen",
             "gemId": 4,
             "population": 5000,
-            "trafficCosts": 20,
+            "trafficcostPerPerson": 20,
             "spacePerPerson": 6.3,
-            "nach": [22, 36, 3, 0, 0]
+            "moveTo": [22, 36, 3, 0, 0],
+            "populationDensity": 0.00617677782241864
         },
         {
-            "gemeinde": "Affoltern am Albis",
+            "gemName": "Affoltern am Albis",
             "gemId": 5,
             "population": 20001,
-            "trafficCosts": 56,
+            "trafficcostPerPerson": 56,
             "spacePerPerson": 4.3,
-            "nach": [15, 3, 53, 10, 0]
+            "moveTo": [15, 3, 53, 10, 0],
+            "populationDensity": 0.003017677782241864
+
         }
 
     ]
