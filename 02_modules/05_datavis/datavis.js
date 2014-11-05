@@ -226,6 +226,33 @@ d3.json("data.json", function(error, json) {
             })
         })
 
+    //Add the SVG Text Element to the svgContainer
+    var text = svgContainer.selectAll("text")
+        .data(circleInfo)
+        .enter()
+        .append("text");
+
+    //add text to circles
+    var offset;
+    var textLabels = text
+        .attr("x", function(d) {
+            offset = 55; // in pixel
+            return (rad * Math.cos(d["angle"]) + bgCircCenterX + offset);
+        })
+        .attr("y", function(d) {
+            return (rad * Math.sin(d["angle"]) + bgCircCenterY + 7);
+        })
+        .text(function(d) {
+            return d["name"];
+        })
+        .attr("transform", function(d) {
+                var degrees = d["angle"] * (180/Math.PI);
+                return "rotate(" + degrees + " " + (rad * Math.cos(d["angle"]) + bgCircCenterX) +"," + (rad * Math.sin(d["angle"]) + bgCircCenterY) +")";
+        })
+        .attr("class", "label");
+
+
+
    var line = d3.svg.line()
         .x(function(d) {
             return d.x;
@@ -249,7 +276,7 @@ d3.json("data.json", function(error, json) {
                 var numOfPeople = (Math.abs(elem["delta"]) > alphaLimit) ? alphaLimit : Math.abs(elem["delta"]);
                 var alphaMap = d3.scale.linear() //map number of people to an alpha value
                     .domain([1, 100])
-                    .range([0.3, 1]);
+                    .range([0.15, 1]);
                 var strokeColor = "rgba(254, 255, 223," + alphaMap(numOfPeople) + ")";
 
                 //prohibit program to draw double lines
