@@ -19,6 +19,7 @@ $.get('data/CSV/data_population_dens_2012.csv', function( in_data ) {
 			object.push(value)
 		};
 		datacontainer.push(object);
+		window.datacontainer = datacontainer;
 	};
 
 	// console.log(datacontainer);

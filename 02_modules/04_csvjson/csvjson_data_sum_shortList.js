@@ -88,6 +88,7 @@ $(document).ready(function() {
             gemeinden["gemeinden"] = [];
             var i = 0;
             _.forEach(nameKey, function(obj, key){
+                 if(key <=100 && i <= 100){
                // console.log("elem ", key);
                 var  dataContainer = {};
                 dataContainer["gemId"]= parseInt(key,10);
@@ -100,7 +101,7 @@ $(document).ready(function() {
                 dataContainer["population"]=parseInt(population[key],10);
                 dataContainer["populationDensity"]=density[key];
                 i++;
-
+            }
                 gemeinden["gemeinden"].push(dataContainer);
                 // console.log(dataContainer);
                 console.log(gemeinden['gemeinden']);
