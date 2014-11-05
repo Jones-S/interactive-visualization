@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 //first load json data into array
 //because json is loaded asynchronously, all functions concerning data are written inside
-var data;
+var datajson;
 
 var sum = _.reduce([1, 2, 3], function(sum, num) {
   return sum + num;
@@ -25,7 +25,7 @@ $.get("data.json", function(json) {
     });
 
 $.get("final_data.json", function(json) {
-        data = json;
+        datajson = json;
         evalData();
     });
 
@@ -66,7 +66,7 @@ $.get("final_data.json", function(json) {
 
 
 function evalData() {
-    if (datashort && data) {
+    if (datashort && datajson) {
 
         // some necessary global vars
         var width = $(window).width();
@@ -74,10 +74,10 @@ function evalData() {
         var bgCircCenterX = width/2 - 200;
         var bgCircCenterY = height/2;
         var minSize = 2; //min radius of circles independent of population in px
-        var maxTraffCost = _.max(_.pluck(data["gemeinden"], "trafficcostPerPerson")); //use loDash to get max
+        var maxTraffCost = _.max(_.pluck(datajson["gemeinden"], "trafficcostPerPerson")); //use loDash to get max
         var maxDstBtwnLines = 0.02; //in radians
         //calc circle count and angle step
-        var increase = Math.PI * 2 / data["gemeinden"].length;
+        var increase = Math.PI * 2 / datajson["gemeinden"].length;
         var angle = 0;
         var rad = 280; //radius of circle with circles on it
         var animFlag = false; //defines if animation should be played
@@ -93,10 +93,10 @@ function evalData() {
         var circleInfo = [];
 
         var gemObject = {};
-        _(data["gemeinden"]).forEach(function(obj, i){
+        _(datajson["gemeinden"]).forEach(function(obj, i){
             var pop = ((obj["population"]/11600 < minSize) ? minSize : obj["population"]/11600)
             gemObject = {
-                "name" : data["gemeinden"][i]["gemName"],
+                "name" : datajson["gemeinden"][i]["gemName"],
                 "centerPos" : { "xM" : 0, "yM" : 0 },
                 "connections" : {},
                 "circleRad" : pop,
@@ -115,7 +115,7 @@ function evalData() {
                 var key = i + "-" + j; //e.g. "0-1" > from gemeinde 0 to gemeinde 1
                 //now calculate delta between the gemeinden including itself (always 0)
                 gemObject["connections"][key] = {
-                    "delta": data["gemeinden"][j]['moveTo'][i] - data["gemeinden"][i]['moveTo'][j],
+                    "delta": datajson["gemeinden"][j]['moveTo'][i] - datajson["gemeinden"][i]['moveTo'][j],
                     "pathEnds": []
                 };
 
@@ -160,6 +160,7 @@ function evalData() {
             circleInfoShort.push(gemObject);
 
         });
+
 
         function calcLinePos(data){
             increase = Math.PI * 2 / data.length;
@@ -531,23 +532,58 @@ function evalData() {
             var name = name;
             //check if id is already in active array
             if(_.find(activeGems, { 'gemName': name })) {
-                console.log("name: " + name);
                 _.remove(activeGems, { 'gemName': name });
-            } else {
-                var result = _.deepFindKeyVal(data["gemeinden"], "gemName", name);
-                console.log(result);
+            } else { //ok its not, then add it
+                var result = _.deepFindKeyVal(datajson["gemeinden"], "gemName", name); //get the data object beloning to that name
+                // console.log(result);
                 if (result){
                     var newMoveTo = [];
-                    var contId;
+                    var currentId;
+                    var lastId = -1;
+                    var incomeId = result[0]["contId"];
+
+
                     _.forEach(activeGems, function(obj, i){ //for each existing object -> reduce moveTo
-                        contId = obj["contId"];
+                        currentId = obj["contId"];
                         //add itself to the newMoveTo if at right position
-                        newMove
-                        newMoveTo.push(result[0]["moveTo"][contId]); //get moveTo at specific indices
+                        if(activeGems[0]["gemId"] > incomeId || activeGems[activeGems.length-1]["gemId"] < incomeId ){ //if current object
+                            newMoveTo.push(result[0]["moveTo"][incomeId]);
+                        } else if ( lastId < incomeId < currentId ){
+                            newMoveTo.push(result[0]["moveTo"][incomeId]);
+                        }
+                        //add moveTo from index with ids from already added objects in array
+                        newMoveTo.push(result[0]["moveTo"][currentId]); //get moveTo at specific indices
+                        lastId = currentId;
+
                     });
 
+                    if(activeGems.length == 0){ // if array is still empty then push anyway
+                        newMoveTo.push(result[0]["moveTo"][incomeId]);
+                        console.log(result[0]["moveTo"][incomeId]);
+                    }
 
-                    activeGems.push(result[0]);
+                    console.log(datajson["gemeinden"][170]);
+                    console.log("Dr. Jones");
+                    result[0]["moveTo"] = newMoveTo; //replace moveTo of result
+
+                    activeGems.push(result[0]); //push result object into active Array
+
+                    //add moveTo information to existing objects
+                    //but first sort array
+                    activeGems = _.map(_.sortBy(activeGems, ['contId']));
+                    // find index of newly added element
+                    var atIndex = _.findIndex(activeGems, { 'contId': incomeId });
+                    //extend moveTos of existing gems in activeGems
+                    _.forEach(activeGems, function(obj, i){
+                        if(obj["contId"] != incomeId){ //the last added object has alread an up to date moveTo array
+                            var origData = _.deepFindKeyVal(data["gemeinden"], "contId", obj["contId"]); //find the orig data with the full moveTo array
+                            console.log(origData[0]);
+                            origData = origData[0]["moveTo"][incomeId]; //and get the specific value from the moveTo array
+                            obj["moveTo"].splice[atIndex, 0, origData]; //and add the moveTo value to the array object in active array at the given index (matching with the index of the newly added elem in the array itself)
+                        }
+                    });
+
+                    window.activeGems = activeGems;
                 }
             }
 
@@ -639,6 +675,8 @@ function evalData() {
         $( ".map svg path" ).click(function() {
             var name = $(this).find('title').text();
             console.log(name);
+            console.log(datajson["gemeinden"][170]);
+            console.log("Dr. Jones");
             updateActives(name);
         });
 
@@ -650,7 +688,7 @@ function evalData() {
 
         window.circleInfo = circleInfo;
         window.circleInfoShort = circleInfoShort;
-        window.activeGems = activeGems;
+        
     }
 
 }); //jquery document ready
