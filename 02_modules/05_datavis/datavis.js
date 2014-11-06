@@ -67,8 +67,9 @@ $.get("final_data.json", function(json) {
 
 function evalData() {
     if (datashort && datajson) {
-        //first make a deep copy of the datajson array to save for later
-        datajson2 = owl.deepCopy(datajson);
+
+    // console.log(datajson);
+
 
         // some necessary global vars
         var width = $(window).width();
@@ -76,10 +77,10 @@ function evalData() {
         var bgCircCenterX = width/2 - 200;
         var bgCircCenterY = height/2;
         var minSize = 2; //min radius of circles independent of population in px
-        var maxTraffCost = _.max(_.pluck(datajson["gemeinden"], "trafficcostPerPerson")); //use loDash to get max
+        var maxTraffCost;
         var maxDstBtwnLines = 0.02; //in radians
         //calc circle count and angle step
-        var increase = Math.PI * 2 / datajson["gemeinden"].length;
+        var increase;
         var angle = 0;
         var rad = 280; //radius of circle with circles on it
         var animFlag = false; //defines if animation should be played
@@ -89,85 +90,51 @@ function evalData() {
         var scaleOnZoom = 2;
         var zoomFlag = false;
         var lines; var gemCircles; var text;
-        var activeGems = [];
+        var activeGems = []; var circleInfo = [];
 
-        // fill circle info array
-        var circleInfo = [];
 
-        var gemObject = {};
-        _(datajson["gemeinden"]).forEach(function(obj, i){
-            var pop = ((obj["population"]/11600 < minSize) ? minSize : obj["population"]/11600)
-            gemObject = {
-                "name" : datajson["gemeinden"][i]["gemName"],
-                "centerPos" : { "xM" : 0, "yM" : 0 },
-                "connections" : {},
-                "circleRad" : pop,
-                "trafficcostPerPerson" : obj["trafficcostPerPerson"]
-                //     // how the content will look like
-                //     // "0-0" : {   "delta" : 0,
-                //     //             "pathEnds" : [{ "x" : 0, "y" : 0}] //x und y pos of path ending on the circle, can have more than one element with x,y if more than 1 line
-                //     //         }
-                // ]
-            };
-            // console.log("gemId: " + gemObject["name"]);
+        function prepareArray(array){
+            // fill circle info array
+            circleInfo = [];
 
-            var object = {};
-
-            _.forEach(obj["moveTo"], function(elem, j){
-                var key = i + "-" + j; //e.g. "0-1" > from gemeinde 0 to gemeinde 1
-                //now calculate delta between the gemeinden including itself (always 0)
-                gemObject["connections"][key] = {
-                    "delta": datajson["gemeinden"][j]['moveTo'][i] - datajson["gemeinden"][i]['moveTo'][j],
-                    "pathEnds": []
+            var gemObject = {};
+            _.forEach(array, function(obj, i){
+                var pop = ((obj["population"]/11600 < minSize) ? minSize : obj["population"]/11600);
+                gemObject = {
+                    "name" : obj["gemName"],
+                    "centerPos" : { "xM" : 0, "yM" : 0 },
+                    "connections" : {},
+                    "circleRad" : pop,
+                    "trafficcostPerPerson" : obj["trafficcostPerPerson"]
                 };
 
-            });
+                var object = {};
 
-            circleInfo.push(gemObject);
+                _.forEach(obj["moveTo"], function(elem, j){ //elem = moveTo value
+                    var key = i + "-" + j; //e.g. "0-1" > from gemeinde 0 to gemeinde 1
+                    //now calculate delta between the gemeinden including itself (always 0)
+                    gemObject["connections"][key] = {
+                        "delta": elem - array[j]['moveTo'][i],
+                        "pathEnds": []
+                    };
 
-        });
+                });
 
-        // fill circle info array
-        var circleInfoShort = [];
+                circleInfo.push(gemObject);
 
-        var gemObject = {};
-        _(datashort["gemeinden"]).forEach(function(obj, i){
-            var pop = ((obj["population"]/11600 < minSize) ? minSize : obj["population"]/11600)
-            gemObject = {
-                "name" : datashort["gemeinden"][i]["gemName"],
-                "centerPos" : { "xM" : 0, "yM" : 0 },
-                "connections" : {},
-                "circleRad" : pop,
-                "trafficcostPerPerson" : obj["trafficcostPerPerson"]
-                //     // how the content will look like
-                //     // "0-0" : {   "delta" : 0,
-                //     //             "pathEnds" : [{ "x" : 0, "y" : 0}] //x und y pos of path ending on the circle, can have more than one element with x,y if more than 1 line
-                //     //         }
-                // ]
-            };
-            // console.log("gemId: " + gemObject["name"]);
-
-            var object = {};
-
-            _.forEach(obj["moveTo"], function(elem, j){
-                var key = i + "-" + j; //e.g. "0-1" > from gemeinde 0 to gemeinde 1
-                //now calculate delta between the gemeinden including itself (always 0)
-                gemObject["connections"][key] = {
-                    "delta": datashort["gemeinden"][j]['moveTo'][i] - datashort["gemeinden"][i]['moveTo'][j],
-                    "pathEnds": []
-                };
 
             });
+        }
 
-            circleInfoShort.push(gemObject);
-
-        });
 
 
         function calcLinePos(data){
             increase = Math.PI * 2 / data.length;
             maxTraffCost = _.max(_.pluck(data, "trafficcostPerPerson")); //use loDash to get max
-
+            increase = Math.PI * 2 / data.length;
+            console.log("----- calcLIne with DATA ");
+            console.log(data);
+            console.log("----- calcLIne with DATA ");
 
              //calc all positions of the lines
             _.forEach(data, function(obj){
@@ -274,8 +241,6 @@ function evalData() {
         }
 
 
-        calcLinePos(circleInfo);
-        calcLinePos(circleInfoShort);
 
 
 
@@ -293,19 +258,6 @@ function evalData() {
 
 
 
-        //draw svg
-        var svgContainer = d3.select("body").append("svg")
-            .attr("width", width)
-            .attr("height", height);
-        //add group to contain all circles
-        var svgGroup = svgContainer.append("g");
-
-        //add bg circle
-        var bgCircle = svgGroup.append("circle")
-            .attr("cx", bgCircCenterX).attr("cy", bgCircCenterY).attr("r", rad)
-            .style("fill", "none")
-            .style("stroke-dasharray", ("3,3")) // make the stroke dashed
-            .style("stroke", "rgba(255, 255, 255, 0.5)");
 
 
 
@@ -508,7 +460,6 @@ function evalData() {
 
         } //update function
 
-        update(circleInfo);
 
 
 
@@ -593,11 +544,28 @@ function evalData() {
                         }
                     });
 
+                    prepareArray(activeGems); //prepare cricleInfo with content of activeGems
+                    calcLinePos(circleInfo);
+                    update(circleInfo);
                     window.activeGems = activeGems;
+
                 }
             }
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         //ANIMATIONS AND INTERACTIONS
 
@@ -689,14 +657,28 @@ function evalData() {
         });
 
 
+        //draw svg
+        var svgContainer = d3.select("body").append("svg")
+            .attr("width", width)
+            .attr("height", height);
+        //add group to contain all circles
+        var svgGroup = svgContainer.append("g");
+
+        //add bg circle
+        var bgCircle = svgGroup.append("circle")
+            .attr("cx", bgCircCenterX).attr("cy", bgCircCenterY).attr("r", rad)
+            .style("fill", "none")
+            .style("stroke-dasharray", ("3,3")) // make the stroke dashed
+            .style("stroke", "rgba(255, 255, 255, 0.5)");
+
+        prepareArray(datajson["gemeinden"]);
+        calcLinePos(circleInfo);
+        update(circleInfo);
 
 
+    } //eval data if
 
-        }
 
-        window.circleInfo = circleInfo;
-        window.circleInfoShort = circleInfoShort;
-        
-    }
+} //evalData
 
 }); //jquery document ready
