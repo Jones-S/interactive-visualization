@@ -76,7 +76,7 @@ function evalData() {
         var height = $(window).height();
         var bgCircCenterX = width/2 - 200;
         var bgCircCenterY = height/2;
-        var minSize = 6; //min radius of circles independent of population in px
+        var minSize = 1; //min radius of circles independent of population in px
         var maxTraffCost;
         var maxDstBtwnLines = 0.02; //in radians
         //calc circle count and angle step
@@ -85,8 +85,9 @@ function evalData() {
         var rad = 280; //radius of circle with circles on it
         var animFlag = false; //defines if animation should be played
         var sliderVal = 0.8; //holds tension
+        var divideFactor = 4250; 
         var alphaLimit = 100; //100+ people will be displayed with lines in full alpha ( = 1.0)
-        var peoplePerLine = 30;
+        var peoplePerLine = 20;
         var scaleOnZoom = 2;
         var zoomFlag = false;
         var lines; var gemCircles; var text;
@@ -99,7 +100,7 @@ function evalData() {
 
             var gemObject = {};
             _.forEach(array, function(obj, i){
-                var pop = ((obj["population"]/11600 < minSize) ? minSize : obj["population"]/11600);
+                var pop = ((obj["population"]/divideFactor < minSize) ? minSize : obj["population"]/divideFactor);
                 gemObject = {
                     "name" : obj["gemName"],
                     "centerPos" : { "xM" : 0, "yM" : 0 },
@@ -407,7 +408,7 @@ function evalData() {
             var offset;
             var textLabels = text
                 .attr("x", function(d) {
-                    offset = 55; // in pixel
+                    offset = 11; // in pixel
                     return (rad * Math.cos(d["angle"]) + bgCircCenterX + offset);
                 })
                 .attr("y", function(d) {
@@ -420,7 +421,9 @@ function evalData() {
                         var degrees = d["angle"] * (180/Math.PI);
                         return "rotate(" + degrees + " " + (rad * Math.cos(d["angle"]) + bgCircCenterX) +"," + (rad * Math.sin(d["angle"]) + bgCircCenterY) +")";
                 })
-                .attr("class", "label");
+                .attr("class", function(d) {
+                    return "label " + d["name"] ;
+                })
 
 
 
@@ -440,7 +443,7 @@ function evalData() {
                             }, //todo: write mapping function and set a max size
                         fill: function(d) {
                             //use mapping function to map trafficCosts to RGB from 0 - 255
-                            var colorMap = map_range(d["trafficcostPerPerson"], 0, maxTraffCost, 0, 35 ); //hsl 0 -350
+                            var colorMap = map_range(d["trafficcostPerPerson"], 0, maxTraffCost, 35, 0 ); //hsl 0 -350
                             colorMap = Math.floor(colorMap); //and round it to whole numbers to use as rgb
                             // console.log(colorMap + " - " + d["trafficCosts"]);
                             return "hsla(" + colorMap + ", 100%, 58%, 0.7)";
@@ -605,14 +608,29 @@ function evalData() {
 
         });
 
-        $('#slider').on('change', function(){
-            sliderVal = $('#slider').val();
+        $('#tensionslider').on('change', function(){
+            sliderVal = $('#tensionslider').val();
             console.log("sliderVal: " + sliderVal);
             d3.selectAll(".line")
             update(circleInfo);
         });
 
-        //double click on circle event
+        $('#peopleslider').on('change', function(){
+            peoplePerLine = $('#peopleslider').val();
+            d3.selectAll(".line")
+            prepareArray(datajson["gemeinden"]);
+            calcLinePos(circleInfo);
+            update(circleInfo);
+        });
+
+        $('#dividerslider').on('change', function(){
+            divideFactor = $('#dividerslider').val();
+            console.log("divideFactor: " + divideFactor);
+            d3.selectAll(".line")
+            prepareArray(datajson["gemeinden"]);
+            calcLinePos(circleInfo);
+            update(circleInfo);
+        });
 
         $( ".gemCircle" ).click(function() {
             console.log("cliked");
@@ -633,7 +651,7 @@ function evalData() {
 
         });
 
-        //zoom out again
+        //zoom
 
         $( ".thirdbutton" ).click(function() {
             console.log("secondbutton");
@@ -643,8 +661,8 @@ function evalData() {
             position.top =  132.47;
             // position.top = -(position.top * scaleOnZoom - height/2);
             // position.left = -(position.left  * scaleOnZoom - width/2);
-            position.top =  - (height/2 + 1380);
-            position.left = -(position.left) - 800;
+            position.top =  - (height/2 + 1220);
+            position.left = -(position.left) - 500;
             var translate = "translate(" + position.left + "," + position.top + ") scale(" + scaleOnZoom + ") rotate(" + (38.5) + ")";
 
             d3.select(".group")
@@ -656,6 +674,8 @@ function evalData() {
             zoomFlag = true;
             $(".map svg").css("visibility", "hidden");
             $(".detailimg img").delay(840).fadeIn(300);
+            $(" .Rickenbach").hide();
+            $(" .label").css("opacity", "0.5");
 
 
 
@@ -673,17 +693,22 @@ function evalData() {
                    .delay(100);
             $(".map svg").css("visibility", "visible");
             $(".detailimg img").hide();
-            }
-
-        });
-
-        $( ".map svg path" ).mouseover(function() {
-            console.log("hover");
+            $(" .label").css("opacity", "1");
+            $(" .Rickenbach").show();
+        }
 
         });
 
         $( ".map svg path" ).click(function() {
             var name = $(this).find('title').text();
+            console.log($(this).css("fill"));
+
+            console.log($(this).css("fill"));
+            if($(this).css("fill") == "#ffffff"){
+                $(this).css("fill", "none");
+            } else {
+                $(this).css("fill", "white");
+            };
             console.log(name);
             updateActives(name);
         });

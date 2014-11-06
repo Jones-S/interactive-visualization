@@ -66,15 +66,26 @@ body {
 	display: none;
 }
 
+.sliders {
+	position: absolute;
+	top: 10%;
+	left: 102%;
+	width: 8px;
+}
+
+.active {
+	fill: #fff;
+}
 
 
 input {
 	background-color: rgba(79, 204, 50, 0);
-	width: 120px;
-	top: 3%;
-	left: 50%;
+	width: 10px;
+	height: 120px;
 	display:block;
-	position: absolute;
+	-webkit-transform: rotate(90deg);
+	float: right;
+	margin: 10px;
 }
 
 input[type=range] {
@@ -82,7 +93,7 @@ input[type=range] {
     -webkit-appearance: none;
     /*fix for FF unable to apply focus style bug */
     /*required for proper track sizing in FF*/
-    width: 120px;
+    width: 110px;
 }
 
 input[type=range]::-webkit-slider-runnable-track {
