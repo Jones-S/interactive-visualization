@@ -11,7 +11,7 @@
 }
 
 body {
-	background-color: #0a0d10;
+	background-color: #10161e;
 }
 
 .map svg {
@@ -35,32 +35,35 @@ body {
 }
 
 .firstbutton, .secondbutton, .thirdbutton, .fourthbutton {
-	background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
-    background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
 
-    background-origin: border-box;
-
-    border: 1px solid rgba(0, 0, 0, 0.1);
-
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px rgba(255, 255, 255, 0.1) inset;
     border-radius: 0.25em;
     cursor: pointer;
     display: inline-block;
-    font-size: 87.5%;
+    font-size: 9px;
     line-height: 1.5;
-    margin: 0.5em 0.5em 0 0;
-    padding: 0.25em 1em;
+    margin: 0.2em 0.2em 0 0;
+    padding: 0.15em 1em;
     text-align: center;
-    white-space: nowrap;
-    background-color: white;
-    color: black;
+    background-color: rgba(255, 82, 0, 4.0);
+    color: white;
+    float: left;
+    width: 28px;
 }
 
 .buttongroup {
 	display: block;
-	width: 350px;
-	margin: 0 300px;
-	position: fixed;
+	width: 30px;
+	position: absolute;
+    right: 1%;
+    bottom: 1%;
+}
+
+.detailimg img {
+	position: absolute;
+	top: 247px;
+	left: 586px;
+	float: left;
+	display: none;
 }
 
 
@@ -68,8 +71,10 @@ body {
 input {
 	background-color: rgba(79, 204, 50, 0);
 	width: 120px;
-	margin: 5% auto;
-	display:block
+	top: 3%;
+	left: 50%;
+	display:block;
+	position: absolute;
 }
 
 input[type=range] {

@@ -76,7 +76,7 @@ function evalData() {
         var height = $(window).height();
         var bgCircCenterX = width/2 - 200;
         var bgCircCenterY = height/2;
-        var minSize = 2; //min radius of circles independent of population in px
+        var minSize = 6; //min radius of circles independent of population in px
         var maxTraffCost;
         var maxDstBtwnLines = 0.02; //in radians
         //calc circle count and angle step
@@ -86,7 +86,7 @@ function evalData() {
         var animFlag = false; //defines if animation should be played
         var sliderVal = 0.8; //holds tension
         var alphaLimit = 100; //100+ people will be displayed with lines in full alpha ( = 1.0)
-        var peoplePerLine = 20;
+        var peoplePerLine = 30;
         var scaleOnZoom = 2;
         var zoomFlag = false;
         var lines; var gemCircles; var text;
@@ -132,9 +132,6 @@ function evalData() {
             increase = Math.PI * 2 / data.length;
             maxTraffCost = _.max(_.pluck(data, "trafficcostPerPerson")); //use loDash to get max
             increase = Math.PI * 2 / data.length;
-            console.log("----- calcLIne with DATA ");
-            console.log(data);
-            console.log("----- calcLIne with DATA ");
 
              //calc all positions of the lines
             _.forEach(data, function(obj){
@@ -288,42 +285,8 @@ function evalData() {
             text.transition()
                 .duration(750);
 
-
-
-            // ENTER
-            // Create new elements as needed.
-            gemCircles.enter()
-                .append("circle")
-                .transition()
-                .duration(750)
-                .style("fill-opacity", 1);
-
-            text.enter()
-                .append("text")
-                .transition()
-                .duration(750)
-                .style("fill-opacity", 1);
-
-
-            // EXIT
-            // Remove old elements as needed.
-            gemCircles.exit()
-                .transition()
-                .duration(750)
-                .style("fill-opacity", 0) //1e-6 extremly small number -> prohibit flickering ??
-                .remove();
-
-            text.exit()
-                .transition()
-                .duration(750)
-                .style("fill-opacity", 0) //1e-6 extremly small number -> prohibit flickering ??
-                .remove();
-
             //delete all old lines
             d3.selectAll(".line").remove();
-
-
-
             var line = d3.svg.line()
             .x(function(d) {
                 return d.x;
@@ -406,6 +369,40 @@ function evalData() {
                 });
             });
 
+
+            // ENTER
+            // Create new elements as needed.
+            gemCircles.enter()
+                .append("circle")
+                .transition()
+                .duration(750)
+                .style("fill-opacity", 1);
+
+            text.enter()
+                .append("text")
+                .transition()
+                .duration(750)
+                .style("fill-opacity", 1);
+
+
+            // EXIT
+            // Remove old elements as needed.
+            gemCircles.exit()
+                .transition()
+                .duration(750)
+                .style("fill-opacity", 0) //1e-6 extremly small number -> prohibit flickering ??
+                .remove();
+
+            text.exit()
+                .transition()
+                .duration(750)
+                .style("fill-opacity", 0) //1e-6 extremly small number -> prohibit flickering ??
+                .remove();
+
+
+
+
+
             //add text to circles
             var offset;
             var textLabels = text
@@ -414,7 +411,7 @@ function evalData() {
                     return (rad * Math.cos(d["angle"]) + bgCircCenterX + offset);
                 })
                 .attr("y", function(d) {
-                    return (rad * Math.sin(d["angle"]) + bgCircCenterY + 7);
+                    return (rad * Math.sin(d["angle"]) + bgCircCenterY + 2); //last number = y offset to align text with center of circle
                 })
                 .text(function(d) {
                     return d["name"];
@@ -443,10 +440,10 @@ function evalData() {
                             }, //todo: write mapping function and set a max size
                         fill: function(d) {
                             //use mapping function to map trafficCosts to RGB from 0 - 255
-                            var colorMap = map_range(d["trafficcostPerPerson"], 0, maxTraffCost, 100, 300 ); //hsl 0 -350
+                            var colorMap = map_range(d["trafficcostPerPerson"], 0, maxTraffCost, 0, 35 ); //hsl 0 -350
                             colorMap = Math.floor(colorMap); //and round it to whole numbers to use as rgb
                             // console.log(colorMap + " - " + d["trafficCosts"]);
-                            return "hsla(" + colorMap + ", 100%, 50%, 0.3)";
+                            return "hsla(" + colorMap + ", 100%, 58%, 0.7)";
                             },
                         class:  "gemCircle"
                     })
@@ -484,7 +481,15 @@ function evalData() {
             var name = name;
             //check if id is already in active array
             if(_.find(activeGems, { 'gemName': name })) {
+                var atIndex = _.findIndex(activeGems, { 'gemName': name });
                 _.remove(activeGems, { 'gemName': name });
+                //also remove moveTos of other elements
+
+                _.forEach(activeGems, function(obj){
+                    obj["moveTo"].splice(atIndex, 1);
+                });
+
+
             } else { //ok its not, then add it
                 var result = _.cloneDeep(_.deepFindKeyVal(datajson["gemeinden"], "gemName", name)); //get the data object beloning to that name && clone it, otherwise I will overwrite the orig array
                 if (result){
@@ -492,16 +497,20 @@ function evalData() {
                     var currentId;
                     var lastId = -1;
                     var incomeId = result[0]["contId"];
+                    var incomePushed = false;
 
 
                     _.forEach(activeGems, function(obj, i){ //for each existing object -> reduce moveTo
                         currentId = obj["contId"];
                         //add itself to the newMoveTo if at right position
-                        if(activeGems[0]["contId"] > incomeId){ //if current object
+                        if(activeGems[0]["contId"] > incomeId && !incomePushed){ //if current object
                             newMoveTo.push(result[0]["moveTo"][incomeId]);
+                            //set flag that income is already pushed
+                            incomePushed = true;
                             console.log("first or LAST");
-                        } else if ( lastId < incomeId < currentId ){
+                        } else if ( lastId < incomeId < currentId && !incomePushed){
                             newMoveTo.push(result[0]["moveTo"][incomeId]);
+                            incomePushed = true;
                         }
                         //add moveTo from index with ids from already added objects in array
                         newMoveTo.push(result[0]["moveTo"][currentId]); //get moveTo at specific indices
@@ -509,19 +518,21 @@ function evalData() {
 
                     });
 
+                    //if new element is the last to come
                     if(activeGems.length != 0 && activeGems[activeGems.length-1]["contId"] < incomeId){
                         newMoveTo.push(result[0]["moveTo"][incomeId]);
+                        console.log("was last");
                     }
 
 
                     if(activeGems.length == 0){ // if array is still empty then push anyway
                         newMoveTo.push(result[0]["moveTo"][incomeId]);
+                        console.log("was first");
                     }
                     console.log(newMoveTo);
 
 
                     result[0]["moveTo"] = newMoveTo; //replace moveTo of result
-                    console.log(newMoveTo);
                     console.log("------ ^^^^ new move to");
                     // result[0]["moveTo"] = ['jonas', 'nora']; //replace moveTo of result
 
@@ -544,13 +555,15 @@ function evalData() {
                         }
                     });
 
-                    prepareArray(activeGems); //prepare cricleInfo with content of activeGems
-                    calcLinePos(circleInfo);
-                    update(circleInfo);
-                    window.activeGems = activeGems;
+
 
                 }
             }
+
+            prepareArray(activeGems); //prepare cricleInfo with content of activeGems
+                calcLinePos(circleInfo);
+                update(circleInfo);
+                window.activeGems = activeGems;
 
         }
 
@@ -622,8 +635,35 @@ function evalData() {
 
         //zoom out again
 
-        $( ".secondbutton" ).click(function() {
+        $( ".thirdbutton" ).click(function() {
             console.log("secondbutton");
+            var position = {};
+            scaleOnZoom = 3.2;
+            position.left = 471.94; //pos of elsau
+            position.top =  132.47;
+            // position.top = -(position.top * scaleOnZoom - height/2);
+            // position.left = -(position.left  * scaleOnZoom - width/2);
+            position.top =  - (height/2 + 1380);
+            position.left = -(position.left) - 800;
+            var translate = "translate(" + position.left + "," + position.top + ") scale(" + scaleOnZoom + ") rotate(" + (38.5) + ")";
+
+            d3.select(".group")
+                .transition()
+                .attr("transform", translate)
+                .duration(800);
+                // .ease("elastic")
+                // .delay(100);
+            zoomFlag = true;
+            $(".map svg").css("visibility", "hidden");
+            $(".detailimg img").delay(840).fadeIn(300);
+
+
+
+
+        });
+
+        $( ".secondbutton" ).click(function() {
+            console.log("thirdbutton");
             if(zoomFlag){
                 zoomFlag = false;
                 svgGroup.transition()
@@ -631,17 +671,9 @@ function evalData() {
                    .duration(300)
                    // .ease("elastic")
                    .delay(100);
+            $(".map svg").css("visibility", "visible");
+            $(".detailimg img").hide();
             }
-
-        });
-
-        $( ".thirdbutton" ).click(function() {
-            update(circleInfo);
-
-        });
-
-        $( ".firstbutton" ).click(function() {
-            update(circleInfoShort);
 
         });
 
@@ -660,16 +692,17 @@ function evalData() {
         //draw svg
         var svgContainer = d3.select("body").append("svg")
             .attr("width", width)
-            .attr("height", height);
+            .attr("height", height)
+            .attr("class", "gemSvg");
         //add group to contain all circles
-        var svgGroup = svgContainer.append("g");
+        var svgGroup = svgContainer.append("g").attr("class", "group");
 
         //add bg circle
         var bgCircle = svgGroup.append("circle")
             .attr("cx", bgCircCenterX).attr("cy", bgCircCenterY).attr("r", rad)
             .style("fill", "none")
-            .style("stroke-dasharray", ("3,3")) // make the stroke dashed
-            .style("stroke", "rgba(255, 255, 255, 0.5)");
+            // .style("stroke-dasharray", ("")) // make the stroke dashed
+            .style("stroke", "rgba(255, 255, 255, 0.3)");
 
         prepareArray(datajson["gemeinden"]);
         calcLinePos(circleInfo);
