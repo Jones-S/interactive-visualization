@@ -67,6 +67,8 @@ $.get("final_data.json", function(json) {
 
 function evalData() {
     if (datashort && datajson) {
+        //first make a deep copy of the datajson array to save for later
+        datajson2 = owl.deepCopy(datajson);
 
         // some necessary global vars
         var width = $(window).width();
@@ -214,7 +216,6 @@ function evalData() {
                         elem["pathEnds"].push({ "x": x , "y": y });
                     };
                 });
-
             });
 
             //move x,y of pathends
@@ -534,8 +535,7 @@ function evalData() {
             if(_.find(activeGems, { 'gemName': name })) {
                 _.remove(activeGems, { 'gemName': name });
             } else { //ok its not, then add it
-                var result = _.deepFindKeyVal(datajson["gemeinden"], "gemName", name); //get the data object beloning to that name
-                // console.log(result);
+                var result = _.cloneDeep(_.deepFindKeyVal(datajson["gemeinden"], "gemName", name)); //get the data object beloning to that name && clone it, otherwise I will overwrite the orig array
                 if (result){
                     var newMoveTo = [];
                     var currentId;
@@ -546,8 +546,9 @@ function evalData() {
                     _.forEach(activeGems, function(obj, i){ //for each existing object -> reduce moveTo
                         currentId = obj["contId"];
                         //add itself to the newMoveTo if at right position
-                        if(activeGems[0]["gemId"] > incomeId || activeGems[activeGems.length-1]["gemId"] < incomeId ){ //if current object
+                        if(activeGems[0]["contId"] > incomeId){ //if current object
                             newMoveTo.push(result[0]["moveTo"][incomeId]);
+                            console.log("first or LAST");
                         } else if ( lastId < incomeId < currentId ){
                             newMoveTo.push(result[0]["moveTo"][incomeId]);
                         }
@@ -557,16 +558,24 @@ function evalData() {
 
                     });
 
-                    if(activeGems.length == 0){ // if array is still empty then push anyway
+                    if(activeGems.length != 0 && activeGems[activeGems.length-1]["contId"] < incomeId){
                         newMoveTo.push(result[0]["moveTo"][incomeId]);
-                        console.log(result[0]["moveTo"][incomeId]);
                     }
 
-                    console.log(datajson["gemeinden"][170]);
-                    console.log("Dr. Jones");
+
+                    if(activeGems.length == 0){ // if array is still empty then push anyway
+                        newMoveTo.push(result[0]["moveTo"][incomeId]);
+                    }
+                    console.log(newMoveTo);
+
+
                     result[0]["moveTo"] = newMoveTo; //replace moveTo of result
+                    console.log(newMoveTo);
+                    console.log("------ ^^^^ new move to");
+                    // result[0]["moveTo"] = ['jonas', 'nora']; //replace moveTo of result
 
                     activeGems.push(result[0]); //push result object into active Array
+
 
                     //add moveTo information to existing objects
                     //but first sort array
@@ -574,12 +583,13 @@ function evalData() {
                     // find index of newly added element
                     var atIndex = _.findIndex(activeGems, { 'contId': incomeId });
                     //extend moveTos of existing gems in activeGems
+
                     _.forEach(activeGems, function(obj, i){
                         if(obj["contId"] != incomeId){ //the last added object has alread an up to date moveTo array
-                            var origData = _.deepFindKeyVal(data["gemeinden"], "contId", obj["contId"]); //find the orig data with the full moveTo array
-                            console.log(origData[0]);
+                            //go back to clone to get the data:
+                            var origData = _.cloneDeep(_.deepFindKeyVal(datajson["gemeinden"], "contId", obj["contId"])); //find the orig data with the full moveTo array and clone it
                             origData = origData[0]["moveTo"][incomeId]; //and get the specific value from the moveTo array
-                            obj["moveTo"].splice[atIndex, 0, origData]; //and add the moveTo value to the array object in active array at the given index (matching with the index of the newly added elem in the array itself)
+                            obj["moveTo"].splice(atIndex, 0, origData); //and add the moveTo value to the array object in active array at the given index (matching with the index of the newly added elem in the array itself)
                         }
                     });
 
@@ -675,8 +685,6 @@ function evalData() {
         $( ".map svg path" ).click(function() {
             var name = $(this).find('title').text();
             console.log(name);
-            console.log(datajson["gemeinden"][170]);
-            console.log("Dr. Jones");
             updateActives(name);
         });
 

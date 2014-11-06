@@ -47,4 +47,7 @@ http://bl.ocks.org/mbostock/3808234
 javascript wat (wät)
 video luege
 
+clone array in javascript
+http://stackoverflow.com/questions/597588/how-do-you-clone-an-array-of-objects-in-javascript
+
 ```
