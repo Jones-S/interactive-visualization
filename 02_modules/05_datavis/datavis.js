@@ -85,7 +85,7 @@ function evalData() {
         var rad = 280; //radius of circle with circles on it
         var animFlag = false; //defines if animation should be played
         var sliderVal = 0.8; //holds tension
-        var divideFactor = 4250; 
+        var divideFactor = 4250;
         var alphaLimit = 100; //100+ people will be displayed with lines in full alpha ( = 1.0)
         var peoplePerLine = 20;
         var scaleOnZoom = 2;
@@ -618,7 +618,11 @@ function evalData() {
         $('#peopleslider').on('change', function(){
             peoplePerLine = $('#peopleslider').val();
             d3.selectAll(".line")
-            prepareArray(datajson["gemeinden"]);
+            if(activeGems.length != 0){
+                prepareArray(activeGems);
+            } else {
+                prepareArray(datajson["gemeinden"]);
+            }
             calcLinePos(circleInfo);
             update(circleInfo);
         });
@@ -627,7 +631,11 @@ function evalData() {
             divideFactor = $('#dividerslider').val();
             console.log("divideFactor: " + divideFactor);
             d3.selectAll(".line")
-            prepareArray(datajson["gemeinden"]);
+            if(activeGems.length != 0){
+                prepareArray(activeGems);
+            } else {
+                prepareArray(datajson["gemeinden"]);
+            }
             calcLinePos(circleInfo);
             update(circleInfo);
         });
