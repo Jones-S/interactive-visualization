@@ -669,8 +669,8 @@ function evalData() {
             position.top =  132.47;
             // position.top = -(position.top * scaleOnZoom - height/2);
             // position.left = -(position.left  * scaleOnZoom - width/2);
-            position.top =  - (height/2 + 1220);
-            position.left = -(position.left) - 500;
+            position.top =  - (height/2 + 920);
+            position.left = -(position.left) - 300;
             var translate = "translate(" + position.left + "," + position.top + ") scale(" + scaleOnZoom + ") rotate(" + (38.5) + ")";
 
             d3.select(".group")
