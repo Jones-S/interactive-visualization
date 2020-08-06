@@ -38,7 +38,6 @@ body {
 
     border-radius: 0.25em;
     cursor: pointer;
-    display: inline-block;
     font-size: 9px;
     line-height: 1.5;
     margin: 0.2em 0.2em 0 0;
@@ -46,13 +45,12 @@ body {
     text-align: center;
     background-color: rgba(255, 82, 0, 4.0);
     color: white;
-    float: left;
-    width: 28px;
+    float: right;
+    width: auto;
 }
 
 .buttongroup {
 	display: block;
-	width: 30px;
 	position: absolute;
     right: 1%;
     bottom: 1%;
